@@ -8,6 +8,6 @@
       }
     ],
     "comma-dangle": ["error", "never"],
-    "react/prop-types": "ignore"
+    "react/prop-types": 0
   }
 }
