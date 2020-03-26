@@ -1,8 +1,8 @@
 import React from 'react';
-import RelatedProducts from './RelatedProducts';
-import YourOutfit from './YourOutfit';
-import ComparisonModal from './ComparisonModal';
-import data from './dummy.json';
+import RelatedProducts from './relatedProducts/RelatedProducts';
+import YourOutfit from './yourOutfit/YourOutfit';
+// import ComparisonModal from './comparisonModal/ComparisonModal';
+import data from '../../sampleData/sampleStore';
 
 class RelateAndCompare extends React.Component {
   constructor(props) {
@@ -13,9 +13,9 @@ class RelateAndCompare extends React.Component {
   render() {
     return (
       <div>
-        <RelatedProducts relatedProducts={data} />
-        <YourOutfit savedOutfit={data} />
-        <ComparisonModal />
+        <RelatedProducts relatedProducts={data.related} />
+        <YourOutfit savedOutfit={data.related} />
+        {/* <ComparisonModal /> */}
       </div>
     );
   }
