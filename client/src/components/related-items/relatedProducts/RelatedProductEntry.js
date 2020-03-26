@@ -2,7 +2,7 @@ import React from 'react';
 
 const RelatedProductsEntry = ({ category, name, price, image }) => {
   return (
-    <div>
+    <div className="col">
       <button type="button">temp</button>
       <img src={image} alt="product" />
       <p>{category}</p>
