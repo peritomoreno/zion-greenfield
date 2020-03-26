@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux';
+import currentProductReducer from './currentProductReducer';
+import currentStylesReducer from './currentStylesReducer';
+import selectedReducer from './selectedReducer';
 
-var rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  selected: selectedReducer,
+  currentProduct: currentProductReducer,
+  currentStyles: currentStylesReducer
+});
 
 export default rootReducer;
