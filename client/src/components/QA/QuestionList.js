@@ -1,12 +1,16 @@
 import React from 'react';
-import { Question } from './Question';
+import QuestionItem from './QuestionItem';
 
-export const QuestionList = ({ questions }) => {
+const QuestionList = ({ questions }) => {
   return (
     <div>
       {questions.map((question) => {
-        return <Question currentQuestion={question} />;
+        return (
+          <QuestionItem key={question.question_id} currentQuestion={question} />
+        );
       })}
     </div>
   );
 };
+
+export default QuestionList;
