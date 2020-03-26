@@ -53,7 +53,7 @@ const sampleStore = {
   },
 
   // from Product API
-  styles: [
+  currentStyles: [
     {
       style_id: 1,
       name: 'Forest Green & Black',
