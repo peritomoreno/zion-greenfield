@@ -2,18 +2,28 @@ import React from 'react';
 import ProductInfo from './productInfo';
 import ImageGallery from './imageGallery';
 import ProductDescription from './productDescription';
+import StyleSelector from './styleSelector';
 
 // const { selected, currentProduct, styles } = sampleStore;
 
-const Overview = ({ sampleStore: { selected, currentProduct, styles } }) => (
+const Overview = ({
+  sampleStore: { selected, currentProduct, currentStyles }
+}) => (
   <div data-testid="productOverview">
     <div style={{ display: 'flex' }}>
       <ImageGallery selected={selected} />
-      <ProductInfo
-        selected={selected}
-        currentProduct={currentProduct}
-        currentStyles={styles}
-      />
+      <div>
+        <ProductInfo
+          selected={selected}
+          currentProduct={currentProduct}
+          currentStyles={currentStyles}
+        />
+        <StyleSelector
+          selectedStyleName={selected.style.name}
+          selectedStyleId={selected.style.style_id}
+          styles={currentStyles}
+        />
+      </div>
     </div>
     <ProductDescription currentProduct={currentProduct} />
   </div>
