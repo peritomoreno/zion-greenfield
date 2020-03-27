@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import RatingsBreakdown from './RatingsBreakdown.js';
+import RatingsBreakdown from './RatingsBreakdown';
 
 it('renders the Ratings Breakdown component', () => {
   const { getByTestId } = render(<RatingsBreakdown />);

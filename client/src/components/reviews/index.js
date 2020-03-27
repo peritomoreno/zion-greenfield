@@ -1,19 +1,19 @@
 import React from 'react';
-import ReviewList from './ReviewList.js';
-import RatingsBreakdown from './RatingsBreakdown.js';
-import ProductBreakdown from './ProductBreakdown.js';
+import ReviewList from './ReviewList';
+import RatingsBreakdown from './RatingsBreakdown';
+import ProductBreakdown from './ProductBreakdown';
 
-const ReviewWidget = (reviewData) => (
+const ReviewWidget = ({ sampleStore }) => (
   <div data-testid="reviews">
     Reviews Components
     <section>
-      <ReviewList reviewList={reviewData} />
+      <ReviewList reviewList={sampleStore.reviewData} />
     </section>
     <section>
-      <RatingsBreakdown />
+      <RatingsBreakdown reviewData={sampleStore.reviewData} />
     </section>
     <section>
-      <ProductBreakdown />
+      <ProductBreakdown productBreakdown={sampleStore.reviewData} />
     </section>
   </div>
 );
