@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/RatingStars.css';
 
 const RatingStars = ({ rating }) => {
   const ratingPercentage =
