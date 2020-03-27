@@ -1,6 +1,6 @@
 import React from 'react';
 import RelatedProductsEntry from './RelatedProductEntry';
-
+/*
 const getDefaultStyle = (styles) => {
   let result = null;
   styles.forEach((style) => {
@@ -10,22 +10,25 @@ const getDefaultStyle = (styles) => {
   });
   return result;
 };
+*/
 
 const RelatedProducts = ({ relatedProducts }) => {
   return (
     <div>
       <p>Related Products</p>
-      {relatedProducts.map((product) => {
-        return (
-          <RelatedProductsEntry
-            key={product.id}
-            image={getDefaultStyle(product.styles).photos[0].thumbnail_url}
-            category={product.category}
-            name={product.name}
-            price={getDefaultStyle(product.styles).original_price}
-          />
-        );
-      })}
+      <div className="row">
+        {relatedProducts.map((product) => {
+          return (
+            <RelatedProductsEntry
+              key={product.id}
+              image={product.thumbnail_url}
+              category={product.category}
+              name={product.name}
+              price={product.default_price}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
