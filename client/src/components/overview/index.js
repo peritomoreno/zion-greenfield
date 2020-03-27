@@ -3,6 +3,7 @@ import ProductInfo from './productInfo';
 import ImageGallery from './imageGallery';
 import ProductDescription from './productDescription';
 import StyleSelector from './styleSelector';
+import CartForm from './cartForm';
 
 // const { selected, currentProduct, styles } = sampleStore;
 
@@ -23,6 +24,7 @@ const Overview = ({
           selectedStyleId={selected.style.style_id}
           styles={currentStyles}
         />
+        <CartForm selectedStyle={selected.style} />
       </div>
     </div>
     <ProductDescription currentProduct={currentProduct} />
