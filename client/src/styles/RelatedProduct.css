@@ -13,7 +13,7 @@
 .outfit-card {
   border: 1px solid black;
   height: 310px;
-  width: 216px;
+  width: 203px;
   position: relative;
   margin-bottom: 50px;
 }
@@ -57,9 +57,7 @@
 
 .add-outfit {
   position: absolute;
-  top: 50%;
-  position: absolute;
-  top: 50%;
+  top: 46%;
 }
 
 .outfit-card:hover,
@@ -69,7 +67,7 @@
 }
 
 .add-to-outfit {
-  padding-left: 65px;
+  padding-left: 55px;
   font-weight: 500;
   color: rgb(93, 93, 93);
 }
