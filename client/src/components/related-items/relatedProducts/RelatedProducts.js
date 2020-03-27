@@ -14,9 +14,9 @@ const getDefaultStyle = (styles) => {
 
 const RelatedProducts = ({ relatedProducts }) => {
   return (
-    <div>
-      <p>Related Products</p>
-      <div className="row">
+    <div className="related-container">
+      <p className="related-title">Related Products</p>
+      <div className="row related-card-container">
         {relatedProducts.map((product) => {
           return (
             <RelatedProductsEntry

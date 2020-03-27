@@ -15,11 +15,15 @@ const getDefaultStyle = (styles) => {
 
 const YourOutfit = () => {
   return (
-    <div>
-      <p>Your Outfit</p>
-      <div>
-        <p>+</p>
-        <p>Add to Outfit</p>
+    <div className="related-container">
+      <p className="related-title">Your Outfit</p>
+      <div className="outfit-card">
+        <div>
+          {/* <p>+</p> */}
+          <div className="add-outfit">
+            <p className="add-to-outfit">Add to Outfit</p>
+          </div>
+        </div>
       </div>
     </div>
   );
