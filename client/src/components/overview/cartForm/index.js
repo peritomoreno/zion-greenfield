@@ -2,7 +2,6 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 
 const CartForm = ({ selectedStyle: { skus } }) => {
-  console.log(Object.keys(skus));
   return (
     <div data-testid="cartForm" className="container">
       <Formik

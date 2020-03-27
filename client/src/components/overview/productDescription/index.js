@@ -5,9 +5,10 @@ const ProductDescription = ({ currentProduct }) => {
   return (
     <div
       data-testid="productDescription"
-      style={{ display: 'flex', alignItems: 'center' }}
+      // style={{ display: 'flex', alignItems: 'center' }}
+      className="row"
     >
-      <div style={{ flex: '1 1 50%' }}>
+      <div className="col-md-8">
         <div>
           <h3>{currentProduct.slogan}</h3>
         </div>
@@ -18,7 +19,7 @@ const ProductDescription = ({ currentProduct }) => {
           amet iusto odio sapiente temporibus culpa illo? Praesentium?
         </div>
       </div>
-      <div style={{ flex: '1 1 50%' }}>
+      <div className="col-md-4">
         <FeatureList features={currentProduct.features} />
       </div>
     </div>

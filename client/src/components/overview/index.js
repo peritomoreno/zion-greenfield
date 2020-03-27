@@ -11,9 +11,11 @@ const Overview = ({
   sampleStore: { selected, currentProduct, currentStyles }
 }) => (
   <div data-testid="productOverview">
-    <div style={{ display: 'flex' }}>
-      <ImageGallery selected={selected} />
-      <div>
+    <div className="row">
+      <div className="col-md-8">
+        <ImageGallery selected={selected} />
+      </div>
+      <div className="col-md-4">
         <ProductInfo
           selected={selected}
           currentProduct={currentProduct}
@@ -27,6 +29,7 @@ const Overview = ({
         <CartForm selectedStyle={selected.style} />
       </div>
     </div>
+
     <ProductDescription currentProduct={currentProduct} />
   </div>
 );
