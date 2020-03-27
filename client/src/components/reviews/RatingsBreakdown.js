@@ -1,7 +1,6 @@
 import React from 'react';
 
 const RatingsBreakdown = ({ reviewData }) => {
-  console.log(reviewData);
   let aggregate = 0;
   const numReviews = reviewData.length;
   const ratingsBreakdown = { overallRating: 0, 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
