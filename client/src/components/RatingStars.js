@@ -2,10 +2,10 @@ import React from 'react';
 import '../styles/RatingStars.css';
 
 const RatingStars = ({ rating }) => {
-  const ratingPercentage =
-    Math.floor((Number(rating) / 5) * 100).toString() + '%';
-  console.log(ratingPercentage);
-  let styles = {
+  const ratingPercentage = `${Math.floor(
+    (Number(rating) / 5) * 100
+  ).toString()}%`;
+  const styles = {
     width: ratingPercentage
   };
 
@@ -13,10 +13,10 @@ const RatingStars = ({ rating }) => {
     <div data-classid="ratingStars">
       <table>
         <tbody>
-          <tr class="ratingStars">
+          <tr className="ratingStars">
             <td>
-              <div class="stars-outer">
-                <div class="stars-inner" style={styles}></div>
+              <div className="stars-outer">
+                <div className="stars-inner" style={styles} />
               </div>
             </td>
           </tr>
