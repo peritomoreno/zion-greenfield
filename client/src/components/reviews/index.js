@@ -1,8 +1,9 @@
 import React from 'react';
-import ReviewList from './ReviewList';
-import RatingsBreakdown from './RatingsBreakdown';
-import ProductBreakdown from './ProductBreakdown';
+import ReviewList from './reviewList/ReviewList';
+import RatingsBreakdown from './ratingsBreakdown/RatingsBreakdown';
+import ProductBreakdown from './productBreakdown/ProductBreakdown';
 import data from '../../sampleData/sampleStore';
+import '../../styles/Reviews.css';
 
 class ReviewWidget extends React.Component {
   constructor(props) {
@@ -13,16 +14,27 @@ class ReviewWidget extends React.Component {
   render() {
     return (
       <div data-testid="reviews">
-        Reviews Components
-        <section>
-          <ReviewList reviewList={data.reviewData} />
-        </section>
-        <section>
-          <RatingsBreakdown reviewData={data.reviewData} />
-        </section>
-        <section>
-          <ProductBreakdown productBreakdown={data.reviewData} />
-        </section>
+        <table>
+          <tr>
+            <th>Ratings & Reviews</th>
+            <th> </th>
+          </tr>
+          <tr>
+            <td valign="top">
+              <section>
+                <RatingsBreakdown reviewData={data.reviewData} />
+              </section>
+              <section>
+                <ProductBreakdown productBreakdown={data.reviewData} />
+              </section>
+            </td>
+            <td>
+              <section>
+                <ReviewList reviewList={data.reviewData} />
+              </section>
+            </td>
+          </tr>
+        </table>
       </div>
     );
   }

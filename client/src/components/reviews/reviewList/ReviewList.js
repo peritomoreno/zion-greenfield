@@ -20,7 +20,7 @@ const ReviewList = ({ reviewList }) => {
                 key={review.review_id}
                 summary={review.summary}
                 body={review.body}
-                reviewerName={review.reviewerName}
+                reviewerName={review.reviewer_name}
                 date={review.date}
               />
             </tr>
