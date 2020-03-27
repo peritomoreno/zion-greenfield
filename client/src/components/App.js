@@ -3,7 +3,7 @@ import sampleStore from '../sampleData/sampleStore';
 import Overview from './overview';
 import RelateAndCompare from './related-items/RelateAndCompare';
 import ReviewWidget from './reviews';
-import QA from './QA/QA';
+import QA from './QA';
 
 function App() {
   return (

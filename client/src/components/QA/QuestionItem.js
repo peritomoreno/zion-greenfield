@@ -28,11 +28,25 @@ const QuestionItem = ({ currentQuestion }) => {
       <h3>Q: {title}</h3>
       <div className="sideAction">
         Helpful?{' '}
-        <button type="button" style={{ color: '#919191' }}>
+        <button
+          type="button"
+          style={{
+            color: '#919191',
+            border: 'none',
+            textDecoration: 'underline'
+          }}
+        >
           Yes
         </button>
         ({helpfulness}) |{' '}
-        <button type="button" style={{ color: '#919191' }}>
+        <button
+          type="button"
+          style={{
+            color: '#919191',
+            border: 'none',
+            textDecoration: 'underline'
+          }}
+        >
           Add Answer
         </button>
       </div>
@@ -41,7 +55,11 @@ const QuestionItem = ({ currentQuestion }) => {
       {!(
         sortedAnswers.length <= 2 || answerPaginate >= sortedAnswers.length
       ) && (
-        <button type="button" onClick={handleLoadMoreAnswer}>
+        <button
+          type="button"
+          onClick={handleLoadMoreAnswer}
+          style={{ fontWeight: 'bold', border: 'none' }}
+        >
           LOAD MORE ANSWERS
         </button>
       )}
