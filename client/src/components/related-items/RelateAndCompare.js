@@ -13,7 +13,7 @@ class RelateAndCompare extends React.Component {
 
   render() {
     return (
-      <div>
+      <div data-testid="relate-compare">
         <RelatedProducts relatedProducts={data.related} />
         <YourOutfit savedOutfit={data.related} />
         {/* <ComparisonModal /> */}

@@ -14,7 +14,7 @@ const getDefaultStyle = (styles) => {
 
 const RelatedProducts = ({ relatedProducts }) => {
   return (
-    <div className="related-container">
+    <div className="related-container" data-testid="related-products">
       <p className="related-title">Related Products</p>
       <div className="row related-card-container">
         {relatedProducts.map((product) => {

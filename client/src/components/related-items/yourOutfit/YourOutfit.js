@@ -15,7 +15,7 @@ const getDefaultStyle = (styles) => {
 
 const YourOutfit = () => {
   return (
-    <div className="related-container">
+    <div className="related-container" data-testid="your-outfit">
       <p className="related-title">Your Outfit</p>
       <div className="outfit-card">
         <div>

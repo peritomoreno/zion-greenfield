@@ -2,7 +2,7 @@ import React from 'react';
 
 const RelatedProductsEntry = ({ category, name, price, image }) => {
   return (
-    <div className="col related-card">
+    <div className="col related-card" data-testid="related-product-entry">
       <button type="button" className="related-button">
         *
       </button>

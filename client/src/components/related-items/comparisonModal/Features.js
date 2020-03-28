@@ -2,7 +2,7 @@ import React from 'react';
 
 const Features = () => {
   return (
-    <tbody>
+    <tbody data-testid="features">
       <tr>
         <td>current product</td>
         <td>features</td>

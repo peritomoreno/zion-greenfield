@@ -3,7 +3,7 @@ import Features from './Features';
 
 const ComparisonModal = () => {
   return (
-    <div>
+    <div data-testid="comparison-modal">
       <p>Comparing</p>
       <table>
         <thead>
