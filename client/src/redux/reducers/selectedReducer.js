@@ -13,9 +13,9 @@ const defaultState = {
 
 const selectedReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case 'SELECT_STYLE':
+    case 'SET_STYLE':
       return { ...state, style: action.payload };
-    case 'SELECT_THUMBNAIL':
+    case 'SET_THUMBNAIL':
       return { ...state, thumbnailIndex: action.payload };
     default:
       return state;

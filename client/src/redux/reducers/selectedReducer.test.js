@@ -1,5 +1,5 @@
 import selectedReducer from './selectedReducer';
-import { selectStyle, selectThumbnail } from '../actions/selected';
+import { setStyle, setThumbnail } from '../actions/selected';
 
 const initialState = {
   style: {
@@ -18,8 +18,8 @@ beforeEach(() => {
   global.initialState = { ...initialState };
 });
 
-it('immutably reduces the SELECT_STYLE action', () => {
-  const action = selectStyle(newState.style);
+it('immutably reduces the SET_STYLE action', () => {
+  const action = setStyle(newState.style);
   const reducedState = selectedReducer(global.initialState, action);
   expect(reducedState.style).toEqual(newState.style); // ensure new state has updated style
   expect(reducedState).not.toBe(global.initialState); // ensure new state is a new object
@@ -27,7 +27,7 @@ it('immutably reduces the SELECT_STYLE action', () => {
 });
 
 it('immutably reduces the SELECT_THUMBNAIL action', () => {
-  const action = selectThumbnail(newState.thumbnailIndex);
+  const action = setThumbnail(newState.thumbnailIndex);
   const reducedState = selectedReducer(global.initialState, action);
   expect(reducedState.thumbnailIndex).toEqual(newState.thumbnailIndex);
   expect(reducedState).not.toBe(global.initialState);

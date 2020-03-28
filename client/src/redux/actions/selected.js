@@ -1,11 +1,11 @@
-const selectStyle = (selectedStyle) => ({
-  type: `SELECT_STYLE`,
+const setStyle = (selectedStyle) => ({
+  type: `SET_STYLE`,
   payload: selectedStyle
 });
 
-const selectThumbnail = (thumbnailIndex) => ({
-  type: `SELECT_THUMBNAIL`,
+const setThumbnail = (thumbnailIndex) => ({
+  type: `SET_THUMBNAIL`,
   payload: thumbnailIndex
 });
 
-export { selectStyle, selectThumbnail };
+export { setStyle, setThumbnail };
