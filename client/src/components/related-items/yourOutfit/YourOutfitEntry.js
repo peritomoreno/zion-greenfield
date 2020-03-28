@@ -2,7 +2,7 @@ import React from 'react';
 
 const YourOutfitEntry = ({ category, name, price, image }) => {
   return (
-    <div>
+    <div data-testid="your-outfit-entry">
       <button type="button">temp</button>
       <img src={image} alt="product" />
       <p>{category}</p>
