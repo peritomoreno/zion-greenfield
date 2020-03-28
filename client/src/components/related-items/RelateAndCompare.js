@@ -5,7 +5,7 @@ import YourOutfit from './yourOutfit/YourOutfit';
 // import ComparisonModal from './comparisonModal/ComparisonModal';
 import '../../styles/RelatedProduct.css';
 import {
-  setRelatedProduct,
+  setProductsInfo,
   getRelatedProduct
 } from '../../redux/actions/related';
 
@@ -24,8 +24,8 @@ class RelateAndCompare extends React.Component {
     const { relatedProducts } = this.props;
     return (
       <div data-testid="relate-compare">
-        <RelatedProducts relatedProducts={relatedProducts} />
-        <YourOutfit savedOutfit={relatedProducts} />
+        <RelatedProducts relatedProducts={relatedProducts.products} />
+        <YourOutfit savedOutfit={relatedProducts.products} />
         {/* <ComparisonModal /> */}
       </div>
     );
@@ -40,6 +40,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  _setRelatedProduct: setRelatedProduct,
+  _setProductsInfo: setProductsInfo,
   _getRelatedProduct: getRelatedProduct
 })(RelateAndCompare);
