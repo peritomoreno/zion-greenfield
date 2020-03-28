@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const defaultState = [
   {
     id: 8,
@@ -41,9 +40,6 @@ const defaultState = [
       'https://images.unsplash.com/photo-1500699889581-a7f97ec155d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80'
   }
 ];
-=======
-const defaultState = [];
->>>>>>> 465e61c6b097a402b1563f975c335c0d0746f83f
 
 const relatedProductReducer = (state = defaultState, action) => {
   switch (action.type) {
