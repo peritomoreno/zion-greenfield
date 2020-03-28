@@ -355,7 +355,7 @@ const sampleStore = {
     }
   ],
   // from Product API, Styles API, and related product API
-  related: [
+  relatedProducts: [
     {
       id: 8,
       category: 'Kicks',
