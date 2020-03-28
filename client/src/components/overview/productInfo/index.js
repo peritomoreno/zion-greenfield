@@ -3,18 +3,13 @@ import ProductRating from './ProductRating';
 import ProductDetails from './ProductDetails';
 import SocialCard from './SocialCard';
 
-const ProductInfo = ({ currentProduct, selected }) => (
+const ProductInfo = () => (
   <div data-testid="productInfo">
     <section>
-      <ProductRating currentProduct={currentProduct} />
+      <ProductRating />
     </section>
     <section>
-      <ProductDetails
-        category={currentProduct.category}
-        name={currentProduct.name}
-        original_price={Number(selected.style.original_price)}
-        sale_price={Number(selected.style.sale_price)}
-      />
+      <ProductDetails />
     </section>
     <section>
       <SocialCard />

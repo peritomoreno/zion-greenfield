@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import StyleGrid from './StyleGrid';
 
-const StyleSelector = ({ selectedStyleName, selectedStyleId, styles }) => (
+const StyleSelector = ({ selectedStyleName }) => (
   <div data-testid="styleSelector">
     <div>
       <span>
@@ -9,8 +10,12 @@ const StyleSelector = ({ selectedStyleName, selectedStyleId, styles }) => (
       </span>
       {selectedStyleName}
     </div>
-    <StyleGrid styles={styles} selectedStyleId={selectedStyleId} />
+    <StyleGrid />
   </div>
 );
 
-export default StyleSelector;
+const mapStateToProps = (state) => ({
+  selectedStyleName: state.selected.style.name
+});
+
+export default connect(mapStateToProps)(StyleSelector);

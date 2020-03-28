@@ -1,29 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import FeatureList from './FeatureList';
 
-const ProductDescription = ({ currentProduct }) => {
+const ProductDescription = ({ slogan, description, features }) => {
   return (
-    <div
-      data-testid="productDescription"
-      // style={{ display: 'flex', alignItems: 'center' }}
-      className="row"
-    >
+    <div data-testid="productDescription" className="row">
       <div className="col-md-8">
         <div>
-          <h3>{currentProduct.slogan}</h3>
+          <h3>{slogan}</h3>
         </div>
-        <div>
-          {currentProduct.description} Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Delectus corrupti ipsam architecto voluptatibus
-          sequi nobis harum error, sed deserunt reprehenderit consequatur, ex,
-          amet iusto odio sapiente temporibus culpa illo? Praesentium?
-        </div>
+        <div>{description}</div>
       </div>
       <div className="col-md-4">
-        <FeatureList features={currentProduct.features} />
+        <FeatureList features={features} />
       </div>
     </div>
   );
 };
 
-export default ProductDescription;
+const mapStateToProps = (state) => ({
+  slogan: state.currentProduct.slogan,
+  description: state.currentProduct.description,
+  features: state.currentProduct.features
+});
+
+export default connect(mapStateToProps)(ProductDescription);

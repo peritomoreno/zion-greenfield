@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StyleEntry = ({ style, isSelected }) => (
+const StyleEntry = ({ thumbnailUrl, isSelected, handleClick }) => (
   <div
     data-testid="styleEntry"
     style={{
@@ -9,11 +9,16 @@ const StyleEntry = ({ style, isSelected }) => (
       border: '1px solid gray',
       borderRadius: '100%',
       margin: '10px 10px',
-      backgroundImage: `url("${style.photos[0].thumbnail_url}")`,
+      backgroundImage: `url("${thumbnailUrl}")`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: '50% 50%'
     }}
+    onClick={handleClick}
+    onKeyDown={handleClick}
+    role="option"
+    tabIndex={0}
+    aria-selected={isSelected}
   >
     {isSelected && (
       <div
