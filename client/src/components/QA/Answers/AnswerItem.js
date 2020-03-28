@@ -10,7 +10,7 @@ const dateFormatter = (dateStr) => {
 
 const AnswerItem = ({ answer }) => {
   return (
-    <div>
+    <div data-testid="answerItem">
       <span>{answer.body}</span>
       <br />
       {answer.photos.map((photoUrl) => (

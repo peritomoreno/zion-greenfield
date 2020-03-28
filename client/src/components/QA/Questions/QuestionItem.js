@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AnswerList from './AnswerList';
+import AnswerList from '../Answers/AnswerList';
 
 const QuestionItem = ({ currentQuestion }) => {
   const {
@@ -24,7 +24,7 @@ const QuestionItem = ({ currentQuestion }) => {
   };
 
   return (
-    <div>
+    <div data-testid="questionItem">
       <h3>Q: {title}</h3>
       <div className="sideAction">
         Helpful?{' '}

@@ -3,7 +3,7 @@ import QuestionItem from './QuestionItem';
 
 const QuestionList = ({ questions }) => {
   return (
-    <div>
+    <div data-testid="questionList">
       {questions.map((question) => {
         return (
           <QuestionItem key={question.question_id} currentQuestion={question} />
