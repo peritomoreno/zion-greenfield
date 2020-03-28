@@ -1,4 +1,5 @@
 import React from 'react';
+import RatingStars from '../../RatingStars';
 
 const RatingsBreakdown = ({ reviewData }) => {
   let aggregate = 0;
@@ -17,24 +18,30 @@ const RatingsBreakdown = ({ reviewData }) => {
       <table className="reviews">
         <tbody>
           <tr>
-            <td>Overall Rating: {ratingsBreakdown.overallRating}</td>
-          </tr>
-          <tr>
             <td>
-              {`\u2605 \u2605 \u2605 \u2605 \u2605: ${ratingsBreakdown['5']}`}
+              Overall Rating:{' '}
+              {Math.round(ratingsBreakdown.overallRating * 10) / 10}
+            </td>
+            <td>
+              <RatingStars rating={2} />
             </td>
           </tr>
           <tr>
-            <td>{`\u2605 \u2605 \u2605 \u2605 \u2606: ${ratingsBreakdown['4']}`}</td>
+            <td>
+              <RatingStars rating={5} />: {ratingsBreakdown['5']}
+            </td>
           </tr>
           <tr>
-            <td>{`\u2605 \u2605 \u2605 \u2606 \u2606: ${ratingsBreakdown['3']}`}</td>
+            <RatingStars rating={4} />: {ratingsBreakdown['4']}
           </tr>
           <tr>
-            <td>{`\u2605 \u2605 \u2606 \u2606 \u2606: ${ratingsBreakdown['2']}`}</td>
+            <RatingStars rating={3} />: {ratingsBreakdown['3']}
           </tr>
           <tr>
-            <td>{`\u2605 \u2606 \u2606 \u2606 \u2606: ${ratingsBreakdown['1']}`}</td>
+            <RatingStars rating={2} />: {ratingsBreakdown['2']}
+          </tr>
+          <tr>
+            <RatingStars rating={1} />: {ratingsBreakdown['1']}
           </tr>
         </tbody>
       </table>
