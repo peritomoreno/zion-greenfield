@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QA_API from '../../api/qa';
-import SearchQuestion from './SearchQuestion';
-import QuestionList from './QuestionList';
+import SearchQuestion from './Search/SearchQuestion';
+import QuestionList from './Questions/QuestionList';
 
 const QA = () => {
   const [questions, setQuestions] = useState([]);
@@ -35,7 +35,7 @@ const QA = () => {
   };
 
   return (
-    <div id="qa">
+    <div id="qa" data-testid="qaTest">
       <h1>QUESTIONS & ANSWERS</h1>
       <SearchQuestion />
       {renderQuestionList()}
