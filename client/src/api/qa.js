@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const baseURL = 'http://3.134.102.30';
 
 const fetchByURL = async (url) => {
@@ -5,7 +6,7 @@ const fetchByURL = async (url) => {
     const response = await fetch(url);
     return response.json();
   } catch (err) {
-    throw new Error(err);
+    return { error: err };
   }
 };
 
@@ -20,7 +21,7 @@ const postByURL = async (url, data) => {
     });
     return response.json();
   } catch (err) {
-    throw new Error(err);
+    return { error: err };
   }
 };
 
@@ -29,7 +30,7 @@ const putByURL = async (url) => {
     const response = await fetch(url, { method: 'PUT' });
     return response.status === 204;
   } catch (err) {
-    throw new Error(err);
+    return { error: err };
   }
 };
 

@@ -8,6 +8,7 @@ const QA = () => {
 
   const updateQuestions = async () => {
     const response = await QA_API.fetchAllQuestions(10);
+    if (response.error) return;
     setQuestions(response.results);
   };
 
