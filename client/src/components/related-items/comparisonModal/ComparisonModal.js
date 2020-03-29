@@ -1,7 +1,62 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Features from './Features';
 
-const ComparisonModal = ({ features }) => {
+import {
+  setProductsInfo,
+  getRelatedProduct
+} from '../../../redux/actions/related';
+
+const ComparisonModal = ({ features, currentProduct }) => {
+  const CurrentFeatures = currentProduct.features;
+
+  const getFeature = (featuresArr) => {
+    let feat = featuresArr;
+    feat = feat.map((ft) => {
+      let f = ft;
+      if (f.value === 'null') {
+        f = ft.feature;
+      } else {
+        f = ft.value;
+      }
+      return f;
+    });
+    return feat;
+  };
+
+  // [
+  //   {"feature description 1": [true, false]},
+  //   {"feature description 2": [true, true]}
+  // ]
+
+  const combineFeatures = (current, related) => {
+    // input - two arrays of objs
+    // output - one array of objs
+    const storage = {};
+    const currentFeatures = getFeature(current);
+    const relatedFeatures = getFeature(related);
+
+    currentFeatures.forEach((f) => {
+      storage[f] = [true, false];
+    });
+
+    relatedFeatures.forEach((f) => {
+      if (storage[f] === undefined) {
+        storage[f] = [false, true];
+      } else {
+        storage[f][1] = true;
+      }
+    });
+
+    return Object.entries(storage).map(([key, value]) => {
+      return {
+        description: key,
+        current: value[0],
+        related: value[1]
+      };
+    });
+  };
+
   return (
     <div data-testid="comparison-modal">
       <div className="comparison-modal-container">
@@ -14,7 +69,7 @@ const ComparisonModal = ({ features }) => {
             <p>features</p>
             <p>compared product</p>
           </div>
-          {features.map((feature) => {
+          {combineFeatures(CurrentFeatures, features).map((feature) => {
             return <Features feature={feature} />;
           })}
         </div>
@@ -23,4 +78,15 @@ const ComparisonModal = ({ features }) => {
   );
 };
 
-export default ComparisonModal;
+const mapStateToProps = (state) => {
+  return {
+    relatedProducts: state.relatedProducts,
+    currentProduct: state.currentProduct,
+    selected: state.selected
+  };
+};
+
+export default connect(mapStateToProps, {
+  _setProductsInfo: setProductsInfo,
+  _getRelatedProduct: getRelatedProduct
+})(ComparisonModal);
