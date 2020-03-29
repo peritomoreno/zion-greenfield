@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import ComparisonModal from '../comparisonModal/ComparisonModal';
 import {
   setProductsInfo,
   getRelatedProduct
@@ -10,7 +11,8 @@ const RelatedProductsEntry = ({
   name,
   price,
   productId,
-  relatedProducts
+  relatedProducts,
+  features
 }) => {
   const getImage = (relatedStyles) => {
     let results = null;
@@ -22,10 +24,16 @@ const RelatedProductsEntry = ({
     return results;
   };
 
+  const [isCompareClicked, toggleCompare] = useState(false);
+
   const { styles } = relatedProducts;
   return (
     <div className="col related-card" data-testid="related-product-entry">
-      <button type="button" className="related-button">
+      <button
+        type="button"
+        className="related-button"
+        onClick={() => toggleCompare(!isCompareClicked)}
+      >
         *
       </button>
       <div className="related-image-container">
@@ -37,6 +45,7 @@ const RelatedProductsEntry = ({
         <p className="related-price">${price}</p>
         ⭐⭐⭐⭐⭐
       </div>
+      {isCompareClicked ? <ComparisonModal features={features} /> : ''}
     </div>
   );
 };

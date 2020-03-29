@@ -80,7 +80,7 @@ class RelateAndCompare extends React.Component {
     const { relatedProducts } = this.props;
     const { outfit } = this.state;
     return (
-      <div data-testid="relate-compare">
+      <div data-testid="relate-compare" className="ralated-widget">
         <RelatedProducts
           relatedProducts={relatedProducts.products}
           styles={relatedProducts.styles}
@@ -90,7 +90,6 @@ class RelateAndCompare extends React.Component {
           addOutfitHandler={this.addOutfitHandler}
           deleteOutfitHandler={this.deleteOutfitHandler}
         />
-        <ComparisonModal />
       </div>
     );
   }

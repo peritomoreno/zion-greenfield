@@ -1,14 +1,12 @@
 import React from 'react';
 
-const Features = () => {
+const Features = ({ feature }) => {
   return (
-    <tbody data-testid="features">
-      <tr>
-        <td>current product</td>
-        <td>features</td>
-        <td>compared product</td>
-      </tr>
-    </tbody>
+    <div data-testid="features" className="">
+      <span>*</span>
+      <span>{feature.feature}</span>
+      <span>*</span>
+    </div>
   );
 };
 
