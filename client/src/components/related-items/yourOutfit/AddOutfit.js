@@ -2,7 +2,8 @@ import React from 'react';
 
 const AddOutfit = ({ addOutfitHandler }) => {
   return (
-    <div
+    <button
+      type="button"
       data-testid="your-outfit"
       className="col related-card"
       onClick={addOutfitHandler}
@@ -15,7 +16,7 @@ const AddOutfit = ({ addOutfitHandler }) => {
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 
