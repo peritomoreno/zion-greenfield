@@ -7,7 +7,7 @@ import {
   getRelatedProduct
 } from '../../../redux/actions/related';
 
-const ComparisonModal = ({ features, currentProduct }) => {
+const ComparisonModal = ({ features, currentProduct, name }) => {
   const CurrentFeatures = currentProduct.features;
 
   const getFeature = (featuresArr) => {
@@ -62,12 +62,11 @@ const ComparisonModal = ({ features, currentProduct }) => {
       <div className="comparison-modal-container">
         <div className="comparison-modal">
           <div>
-            <p>Comparing</p>
+            <p className="comparing">Comparing</p>
           </div>
-          <div>
-            <p>current product</p>
-            <p>features</p>
-            <p>compared product</p>
+          <div className="row">
+            <p className="col compare-current-name">{currentProduct.name}</p>
+            <p className="col compare-related-name">{name}</p>
           </div>
           {combineFeatures(CurrentFeatures, features).map((feature) => {
             return <Features feature={feature} />;

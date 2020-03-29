@@ -8,10 +8,14 @@ import {
 
 const Features = ({ feature }) => {
   return (
-    <div data-testid="features" className="">
-      <span>{feature.current ? '*' : ''}</span>
-      <span>{feature.description}</span>
-      <span>{feature.related ? '*' : ''}</span>
+    <div data-testid="features" className="row related-features">
+      <span className="col related-current-check">
+        {feature.current ? '✔️' : ''}
+      </span>
+      <span className="col-6 related-feature">{feature.description}</span>
+      <span className="col related-related-check">
+        {feature.related ? '✔️' : ''}
+      </span>
     </div>
   );
 };

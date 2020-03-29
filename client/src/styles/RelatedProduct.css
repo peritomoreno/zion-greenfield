@@ -19,8 +19,10 @@ ralated-widget {
   margin: -150px 0 0 -250px;
   z-index: 2000;
   width: 500px;
-  height: 300px;
+  /* height: 300px; */
   background: white;
+  padding: 25px 25px 40px 25px;
+  border-radius: 15px;
 }
 
 .related-container {
@@ -101,4 +103,40 @@ ralated-widget {
   font-weight: 250;
   font-size: 0.8rem;
   margin-bottom: 0;
+}
+
+.comparing,
+.related-feature {
+  font-weight: 250;
+}
+
+.comparing {
+  margin-bottom: 0;
+}
+
+.compare-current-name,
+.compare-related-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.compare-related-name {
+  float: right;
+  text-align: right;
+}
+
+.related-features {
+  margin-bottom: 12px;
+}
+
+.related-feature {
+  text-align: center;
+}
+
+.related-current-check {
+  float: left;
+}
+
+.related-related-check {
+  text-align: right;
 }

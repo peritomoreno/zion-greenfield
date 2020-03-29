@@ -45,7 +45,11 @@ const RelatedProductsEntry = ({
         <p className="related-price">${price}</p>
         ⭐⭐⭐⭐⭐
       </div>
-      {isCompareClicked ? <ComparisonModal features={features} /> : ''}
+      {isCompareClicked ? (
+        <ComparisonModal features={features} name={name} />
+      ) : (
+        ''
+      )}
     </div>
   );
 };
