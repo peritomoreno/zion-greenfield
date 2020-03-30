@@ -15,18 +15,19 @@ const StyleGrid = ({
       data-testid="styleGrid"
       style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}
     >
-      {styles.map((style) => (
-        <StyleEntry
-          thumbnailUrl={style.photos[0].thumbnail_url}
-          isSelected={selectedStyleId === style.style_id}
-          handleClick={() => {
-            selectStyle(style);
-            selectThumbnail(
-              Math.min(selectedThumbnailIndex, style.photos.length - 1)
-            );
-          }}
-        />
-      ))}
+      {Array.isArray(styles) &&
+        styles.map((style) => (
+          <StyleEntry
+            thumbnailUrl={style.photos[0].thumbnail_url}
+            isSelected={selectedStyleId === style.style_id}
+            handleClick={() => {
+              selectStyle(style);
+              selectThumbnail(
+                Math.min(selectedThumbnailIndex, style.photos.length - 1)
+              );
+            }}
+          />
+        ))}
     </div>
   );
 };
