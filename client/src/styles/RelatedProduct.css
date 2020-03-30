@@ -1,5 +1,8 @@
-ralated-widget {
+.ralated-widget {
   box-sizing: border-box;
+}
+.clearfix {
+  clear: both;
 }
 
 .comparison-modal-container {
@@ -21,7 +24,7 @@ ralated-widget {
   width: 500px;
   /* height: 300px; */
   background: white;
-  padding: 25px 25px 40px 25px;
+  padding: 25px 30px 50px 30px;
   border-radius: 15px;
 }
 
@@ -30,15 +33,21 @@ ralated-widget {
   width: 100%;
 }
 
+.related-card-container {
+  overflow: scroll;
+}
+
 .related-card {
-  border: 1px solid black;
-  height: 310px;
-  margin: 0 10px 15px 10px;
+  float: left;
+  width: 250px;
+  border: 1px solid rgb(206, 206, 206);
+  height: 400px;
+  margin: 0 20px 20px 0;
   padding: 0;
 }
 
 .outfit-card {
-  border: 1px solid black;
+  border: 1px solid rgb(123, 123, 123);
   height: 310px;
   width: 203px;
   position: relative;
@@ -46,14 +55,7 @@ ralated-widget {
 }
 
 .related-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-.related-image-container {
-  width: 100%;
-  height: 200px;
+  float: right;
 }
 
 .related-image {
@@ -62,6 +64,7 @@ ralated-widget {
 }
 
 .related-product-info {
+  margin-top: 15px;
   padding-left: 10px;
 }
 
@@ -111,13 +114,14 @@ ralated-widget {
 }
 
 .comparing {
-  margin-bottom: 0;
+  margin-bottom: 5px;
 }
 
 .compare-current-name,
 .compare-related-name {
+  color: rgb(0, 0, 0);
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .compare-related-name {

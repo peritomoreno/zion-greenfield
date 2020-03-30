@@ -5,7 +5,7 @@ const AddOutfit = ({ addOutfitHandler }) => {
     <button
       type="button"
       data-testid="your-outfit"
-      className="col related-card"
+      className="related-card"
       onClick={addOutfitHandler}
     >
       <div className="">

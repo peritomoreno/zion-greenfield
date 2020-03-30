@@ -18,7 +18,7 @@ const RelatedProductsEntry = ({
     let results = null;
     relatedStyles.forEach((style) => {
       if (Number(style.product_id) === productId) {
-        results = style.results[0].photos[0].thumbnail_url;
+        results = style.results[0].photos[0].url;
       }
     });
     return results;
@@ -27,8 +27,18 @@ const RelatedProductsEntry = ({
   const [isCompareClicked, toggleCompare] = useState(false);
 
   const { styles } = relatedProducts;
+
+  const imageStyle = {
+    width: '100%',
+    height: '270px',
+    backgroundImage: `url(${getImage(styles)})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  };
+
   return (
-    <div className="col related-card" data-testid="related-product-entry">
+    <div className="related-card" data-testid="related-product-entry">
       <button
         type="button"
         className="related-button"
@@ -37,7 +47,7 @@ const RelatedProductsEntry = ({
         *
       </button>
       <div className="related-image-container">
-        <img src={getImage(styles)} alt="product" className="related-image" />
+        <div style={imageStyle} />
       </div>
       <div className="related-product-info">
         <p className="related-category">{category}</p>

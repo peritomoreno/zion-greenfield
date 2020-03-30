@@ -8,8 +8,17 @@ const YourOutfitEntry = ({
   productId,
   deleteOutfitHandler
 }) => {
+  const imageStyle = {
+    width: '100%',
+    height: '270px',
+    backgroundImage: `url(${image})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  };
+
   return (
-    <div data-testid="your-outfit-entry" className="col related-card">
+    <div data-testid="your-outfit-entry" className="related-card">
       <button
         type="button"
         className="related-button"
@@ -18,7 +27,7 @@ const YourOutfitEntry = ({
         temp
       </button>
       <div className="related-image-container">
-        <img src={image} alt="product" className="related-image" />
+        <div style={imageStyle} />
       </div>
       <div className="related-product-info">
         <p className="related-category">{category}</p>

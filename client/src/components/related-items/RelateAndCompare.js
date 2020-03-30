@@ -17,7 +17,7 @@ class RelateAndCompare extends React.Component {
         {
           id: 20,
           name: 'Lukas 1000 Hoodie',
-          catagory: 'Hoodie',
+          category: 'Hoodie',
           price: '258',
           thumbnail_url:
             'https://images.unsplash.com/photo-1517278322228-3fe7a86cf6f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80'
@@ -25,7 +25,7 @@ class RelateAndCompare extends React.Component {
         {
           id: 0,
           name: 'Alphonso 1050 Shirt',
-          catagory: 'Shirt',
+          category: 'Shirt',
           price: '900',
           rating: '',
           thumbnail_url:
@@ -51,7 +51,7 @@ class RelateAndCompare extends React.Component {
     const product = {
       id: currentProduct.id,
       name: currentProduct.name,
-      catagory: currentProduct.catagory,
+      category: currentProduct.category,
       price: currentProduct.default_price,
       thumbnail_url: selected.style.photos[0].thumbnail_url
     };

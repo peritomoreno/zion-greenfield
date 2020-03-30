@@ -17,21 +17,24 @@ const YourOutfit = ({ outfit, addOutfitHandler, deleteOutfitHandler }) => {
   return (
     <div className="related-container">
       <p className="related-title">Your Outfit</p>
-      <div className="row related-card-container">
-        <AddOutfit addOutfitHandler={addOutfitHandler} />
-        {outfit.map((product) => {
-          return (
-            <YourOutfitEntry
-              key={product.id}
-              productId={product.id}
-              image={product.thumbnail_url}
-              category={product.category}
-              name={product.name}
-              price={product.price}
-              deleteOutfitHandler={deleteOutfitHandler}
-            />
-          );
-        })}
+      <div className="related-card-container">
+        <div style={{ width: (outfit.length + 1) * 275 }}>
+          <AddOutfit addOutfitHandler={addOutfitHandler} />
+          {outfit.map((product) => {
+            console.log(product);
+            return (
+              <YourOutfitEntry
+                key={product.id}
+                productId={product.id}
+                image={product.thumbnail_url}
+                category={product.category}
+                name={product.name}
+                price={product.price}
+                deleteOutfitHandler={deleteOutfitHandler}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
