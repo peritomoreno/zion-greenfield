@@ -20,24 +20,26 @@ class ReviewWidget extends React.Component {
     console.log(currentBreakdowns);
 
     return (
-      <div data-testid="reviews">
-        <div className="review-breakdowns-sidebar-container">
-          <div className="review-breakdowns-sidebar-title h4 lead">
-            Ratings & Reviews
-          </div>
-          <div className="review-breakdowns">
-            <RatingsBreakdown reviewData={currentBreakdowns} />
-          </div>
-          <div className="product-breakdowns">
-            <ProductBreakdown productBreakdown={currentBreakdowns} />
-          </div>
-        </div>
-        <div className="review-review-list-container">
-          <div>
-            <ReviewList reviewList={currentReviews.results} />
-          </div>
-        </div>
-      </div>
+      <Container data-testid="reviews">
+        <Row>
+          <Col className="review-breakdowns-sidebar-container" sm={4}>
+            <Row className="review-breakdowns-sidebar-title h4 lead">
+              Ratings & Reviews
+            </Row>
+            <Row className="review-breakdowns">
+              <RatingsBreakdown reviewData={currentBreakdowns} />
+            </Row>
+            <Row className="product-breakdowns">
+              <ProductBreakdown productBreakdown={currentBreakdowns} />
+            </Row>
+          </Col>
+          <Col className="review-review-list-container" sm={8}>
+            <Row>
+              <ReviewList reviewList={currentReviews.results} />
+            </Row>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

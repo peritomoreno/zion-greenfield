@@ -3,15 +3,6 @@ import RatingStars from '../../RatingStars';
 import { Container, Row, Col, ProgressBar } from 'react-bootstrap';
 
 const RatingsBreakdown = ({ reviewData }) => {
-  const ratingsBreakdown = {
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-    ...reviewData.ratings
-  };
-
   return (
     <Container
       data-testid="ratingsBreakdown"
@@ -30,31 +21,31 @@ const RatingsBreakdown = ({ reviewData }) => {
           <Row>
             <Col className="review-ratings-bars-label">5 Stars </Col>
             <Col className="review-ratings-bar" md={8}>
-              <ProgressBar />
+              <ProgressBar now={reviewData.fiveStars} />
             </Col>
           </Row>
           <Row>
             <Col className="review-ratings-bars-label">4 Stars </Col>
             <Col className="review-ratings-bar" md={8}>
-              <ProgressBar />
+              <ProgressBar now={reviewData.fourStars} />
             </Col>
           </Row>
           <Row>
             <Col className="review-ratings-bars-label">3 Stars </Col>
             <Col className="review-ratings-bar" md={8}>
-              <ProgressBar />
+              <ProgressBar now={reviewData.threeStars} />
             </Col>
           </Row>
           <Row>
             <Col className="review-ratings-bars-label">2 Stars </Col>
             <Col className="review-ratings-bar" md={8}>
-              <ProgressBar />
+              <ProgressBar now={reviewData.twoStars} />
             </Col>
           </Row>
           <Row>
             <Col className="review-ratings-bars-label">1 Stars </Col>
             <Col className="review-ratings-bar" md={8}>
-              <ProgressBar />
+              <ProgressBar now={reviewData.oneStar} />
             </Col>
           </Row>
         </Col>

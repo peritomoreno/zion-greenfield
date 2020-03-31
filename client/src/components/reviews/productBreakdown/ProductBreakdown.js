@@ -1,17 +1,19 @@
 import React from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const ProductBreakdown = (data) => {
   const { characteristics } = data.productBreakdown;
   const arr = Object.entries(characteristics);
 
   return (
-    <div data-testid="productBreakdown" className="review-product-breakdown">
+    <Col data-testid="productBreakdown" className="review-product-breakdown">
       {arr.map((rating) => (
-        <div>
-          {rating[0]}: {rating[1].value}
-        </div>
+        <Row>
+          <Col>{rating[0]}</Col>
+          <Col>{rating[1].value}</Col>
+        </Row>
       ))}
-    </div>
+    </Col>
   );
 };
 
