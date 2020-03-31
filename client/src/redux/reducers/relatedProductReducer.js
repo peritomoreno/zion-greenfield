@@ -1,4 +1,4 @@
-import { SET_PRODUCTS_INFO, SET_STYLES } from '../actions/related';
+import { SET_PRODUCTS_INFO, SET_RELATED_STYLES } from '../actions/related';
 
 const defaultState = { products: [], styles: [] };
 
@@ -8,7 +8,7 @@ const relatedProductReducer = (state = defaultState, action) => {
     case SET_PRODUCTS_INFO:
       currentState.products.push(action.payload);
       return currentState;
-    case SET_STYLES:
+    case SET_RELATED_STYLES:
       currentState.styles.push(action.payload);
       return currentState;
     default:

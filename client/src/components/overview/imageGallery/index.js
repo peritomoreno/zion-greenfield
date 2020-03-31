@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { setThumbnail } from '../../../redux/actions/selected';
 
 const ImageGallery = ({ style, thumbnailIndex, selectThumbnail }) => {
-  const { url } = style.photos[thumbnailIndex];
+  const currPhoto = style.photos[thumbnailIndex] || '';
 
   return (
     <div>
       <div data-testid="imageGallery">
-        <img src={url} alt="" style={{ maxWidth: '500px' }} />
+        <img src={currPhoto.url} alt="" style={{ maxWidth: '500px' }} />
       </div>
       <div>
         <ul>

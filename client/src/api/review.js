@@ -1,6 +1,6 @@
 const baseURL = 'http://3.134.102.30';
 
-const Review = {
+const Reviews = {
   // functionalities to support
   // 1. Write new review
   //    a. Title/summary capped at 60 chars
@@ -14,38 +14,42 @@ const Review = {
   // 4. Mark helpful/report
   //    Implemented through puts
 
-  getReviews: (id, currPage = 0) => {
+  getReviews: (id, currPage = 1) => {
     return fetch(
-      `${baseURL}/${id}/list/?page=${currPage}&count=4&sort=newest`
+      `${baseURL}/reviews/${id}/list/?page=${currPage}&count=4&sort=newest`
     ).then((res) => {
       return res.json();
     });
   },
 
-  getReviewsByHelpful: (id, currPage = 0) => {
+  getReviewsByHelpful: (id, currPage = 1) => {
     return fetch(
-      `${baseURL}/${id}/list/?page=${currPage}&count=4&sort=helpful`
+      `${baseURL}/reviews/${id}/list/?page=${currPage}&count=4&sort=helpful`
     ).then((res) => {
       return res.json();
     });
   },
 
-  getReviewsByRelevant: (id, currPage = 0) => {
+  getReviewsByRelevant: (id, currPage = 1) => {
     return fetch(
-      `${baseURL}/${id}/list/?page=${currPage}&count=4&sort=relevant`
+      `${baseURL}/reviews/${id}/list/?page=${currPage}&count=4&sort=relevant`
     ).then((res) => {
       return res.json();
     });
   },
 
   getMetaData: (id) => {
-    return fetch(`${baseURL}/${id}/meta`).then((res) => {
-      return res.json();
-    });
+    return fetch(`${baseURL}/reviews/${id}/meta`)
+      .then((res) => {
+        return res.json();
+      })
+      .catch((err) => {
+        console.error('An error occured fetching metadata, ', err);
+      });
   },
 
   postReview: (id, reviewObj) => {
-    return fetch(`${baseURL}/${id}/reviews`, {
+    return fetch(`${baseURL}/reviews/${id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(reviewObj)
@@ -83,4 +87,4 @@ const Review = {
   }
 };
 
-export default Review;
+export default Reviews;
