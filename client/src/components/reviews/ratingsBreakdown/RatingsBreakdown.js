@@ -1,5 +1,6 @@
 import React from 'react';
 import RatingStars from '../../RatingStars';
+import { Container, Row, Col, ProgressBar } from 'react-bootstrap';
 
 const RatingsBreakdown = ({ reviewData }) => {
   const ratingsBreakdown = {
@@ -12,35 +13,53 @@ const RatingsBreakdown = ({ reviewData }) => {
   };
 
   return (
-    <div data-testid="ratingsBreakdown">
-      <table className="reviews">
-        <tbody>
-          <tr>
-            <td>Overall Rating: {reviewData.productRating}</td>
-            <td>
-              <RatingStars rating={reviewData.productRating} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <RatingStars rating={5} />: {ratingsBreakdown['5']}
-            </td>
-          </tr>
-          <tr>
-            <RatingStars rating={4} />: {ratingsBreakdown['4']}
-          </tr>
-          <tr>
-            <RatingStars rating={3} />: {ratingsBreakdown['3']}
-          </tr>
-          <tr>
-            <RatingStars rating={2} />: {ratingsBreakdown['2']}
-          </tr>
-          <tr>
-            <RatingStars rating={1} />: {ratingsBreakdown['1']}
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <Container
+      data-testid="ratingsBreakdown"
+      className="review-ratings-breakdown"
+    >
+      <Row>
+        <Col className="review-ratings-overall-rating display-4">
+          {reviewData.productRating}
+        </Col>
+        <Col className="review-ratings-overall-stars">
+          <RatingStars rating={reviewData.productRating} />
+        </Col>
+      </Row>
+      <Row className="review-ratings-bars text-muted">
+        <Col>
+          <Row>
+            <Col className="review-ratings-bars-label">5 Stars </Col>
+            <Col className="review-ratings-bar" md={8}>
+              <ProgressBar />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="review-ratings-bars-label">4 Stars </Col>
+            <Col className="review-ratings-bar" md={8}>
+              <ProgressBar />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="review-ratings-bars-label">3 Stars </Col>
+            <Col className="review-ratings-bar" md={8}>
+              <ProgressBar />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="review-ratings-bars-label">2 Stars </Col>
+            <Col className="review-ratings-bar" md={8}>
+              <ProgressBar />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="review-ratings-bars-label">1 Stars </Col>
+            <Col className="review-ratings-bar" md={8}>
+              <ProgressBar />
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

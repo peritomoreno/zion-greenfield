@@ -5,7 +5,7 @@ const ProductBreakdown = (data) => {
   const arr = Object.entries(characteristics);
 
   return (
-    <div data-testid="productBreakdown">
+    <div data-testid="productBreakdown" className="review-product-breakdown">
       {arr.map((rating) => (
         <div>
           {rating[0]}: {rating[1].value}

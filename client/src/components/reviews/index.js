@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+
 import ReviewList from './reviewList/ReviewList';
 import RatingsBreakdown from './ratingsBreakdown/RatingsBreakdown';
 import ProductBreakdown from './productBreakdown/ProductBreakdown';
+
 import '../../styles/Reviews.css';
 
 class ReviewWidget extends React.Component {
@@ -14,30 +17,26 @@ class ReviewWidget extends React.Component {
 
   render() {
     const { currentReviews, currentBreakdowns } = this.props;
+    console.log(currentBreakdowns);
 
     return (
       <div data-testid="reviews">
-        <table>
-          <tr>
-            <th>Ratings & Reviews</th>
-            <th> </th>
-          </tr>
-          <tr>
-            <td valign="top">
-              <section>
-                <RatingsBreakdown reviewData={currentBreakdowns} />
-              </section>
-              <section>
-                <ProductBreakdown productBreakdown={currentBreakdowns} />
-              </section>
-            </td>
-            <td>
-              <section>
-                <ReviewList reviewList={currentReviews.results} />
-              </section>
-            </td>
-          </tr>
-        </table>
+        <div className="review-breakdowns-sidebar-container">
+          <div className="review-breakdowns-sidebar-title h4 lead">
+            Ratings & Reviews
+          </div>
+          <div className="review-breakdowns">
+            <RatingsBreakdown reviewData={currentBreakdowns} />
+          </div>
+          <div className="product-breakdowns">
+            <ProductBreakdown productBreakdown={currentBreakdowns} />
+          </div>
+        </div>
+        <div className="review-review-list-container">
+          <div>
+            <ReviewList reviewList={currentReviews.results} />
+          </div>
+        </div>
       </div>
     );
   }
