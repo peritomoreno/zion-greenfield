@@ -20,8 +20,6 @@ class RelateAndCompare extends React.Component {
   }
 
   componentDidMount() {
-    // const { currentProduct, _getRelatedProduct } = this.props;
-    // _getRelatedProduct(currentProduct.id);
     const storage = localStorage.getItem('yourOutfit');
     if (storage !== null) {
       this.setState({ outfit: JSON.parse(storage) });
@@ -44,7 +42,7 @@ class RelateAndCompare extends React.Component {
       name: currentProduct.name,
       category: currentProduct.category,
       price: currentProduct.default_price,
-      thumbnail_url: selected.style.photos[0].thumbnail_url
+      thumbnail_url: selected.style.photos[0].url
     };
     let storage = localStorage.getItem('yourOutfit');
     if (storage === null) {

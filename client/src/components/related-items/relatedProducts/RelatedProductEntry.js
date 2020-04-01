@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import ToggleDispatch from '../context';
 import ComparisonModal from '../comparisonModal/ComparisonModal';
 import RatingStars from '../../RatingStars';
 import {
   setProductsInfo,
   getRelatedProduct
 } from '../../../redux/actions/related';
+
+const initialState = { isCompareClicked: false };
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'toggleCompare':
+      return { isCompareClicked: !state.isCompareClicked };
+    default:
+      throw new Error();
+  }
+};
 
 const RelatedProductsEntry = ({
   category,
@@ -29,10 +40,8 @@ const RelatedProductsEntry = ({
     return results;
   };
 
-  const [isCompareClicked, toggleCompare] = useState(false);
-
+  const [toggle, dispatch] = useReducer(reducer, initialState);
   const { styles } = relatedProducts;
-
   const imageStyle = {
     width: '100%',
     height: '270px',
@@ -47,7 +56,7 @@ const RelatedProductsEntry = ({
       <button
         type="button"
         className="related-button"
-        onClick={() => toggleCompare(!isCompareClicked)}
+        onClick={() => dispatch({ type: 'toggleCompare' })}
       >
         <FontAwesomeIcon icon={faStar} />
       </button>
@@ -60,12 +69,10 @@ const RelatedProductsEntry = ({
         <p className="related-price">${price}</p>
         <RatingStars rating={5} />
       </div>
-      {isCompareClicked ? (
-        <ComparisonModal
-          features={features}
-          name={name}
-          toggleCompare={toggleCompare}
-        />
+      {toggle.isCompareClicked ? (
+        <ToggleDispatch.Provider value={dispatch}>
+          <ComparisonModal features={features} name={name} toggle={toggle} />
+        </ToggleDispatch.Provider>
       ) : (
         ''
       )}

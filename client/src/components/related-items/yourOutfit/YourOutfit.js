@@ -2,17 +2,6 @@ import React from 'react';
 import YourOutfitEntry from './YourOutfitEntry';
 import AddOutfit from './AddOutfit';
 
-/*
-const getDefaultStyle = (styles) => {
-  let result = null;
-  styles.forEach((style) => {
-    if (style['default?'] === 1) {
-      result = style;
-    }
-  });
-  return result;
-};
-*/
 const YourOutfit = ({ outfit, addOutfitHandler, deleteOutfitHandler }) => {
   return (
     <div className="related-container">

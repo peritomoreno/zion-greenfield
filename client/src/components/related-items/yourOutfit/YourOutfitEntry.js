@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import RatingStars from '../../RatingStars';
 
 const YourOutfitEntry = ({
@@ -22,10 +24,10 @@ const YourOutfitEntry = ({
     <div data-testid="your-outfit-entry" className="related-card">
       <button
         type="button"
-        className="related-button"
+        className="related-button your-outfit-button"
         onClick={() => deleteOutfitHandler(productId)}
       >
-        temp
+        <FontAwesomeIcon icon={faTimes} />
       </button>
       <div className="related-image-container">
         <div style={imageStyle} />

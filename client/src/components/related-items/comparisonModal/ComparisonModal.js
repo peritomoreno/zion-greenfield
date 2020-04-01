@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { connect } from 'react-redux';
 import Features from './Features';
-
+import ToggleDispatch from '../context';
 import {
   setProductsInfo,
   getRelatedProduct
@@ -9,7 +9,7 @@ import {
 
 const ComparisonModal = ({ features, currentProduct, name }) => {
   const CurrentFeatures = currentProduct.features;
-
+  const dispatch = useContext(ToggleDispatch);
   const getFeature = (featuresArr) => {
     let feat = featuresArr;
     feat = feat.map((ft) => {
@@ -23,11 +23,6 @@ const ComparisonModal = ({ features, currentProduct, name }) => {
     });
     return feat;
   };
-
-  // [
-  //   {"feature description 1": [true, false]},
-  //   {"feature description 2": [true, true]}
-  // ]
 
   const combineFeatures = (current, related) => {
     const storage = {};
@@ -57,7 +52,11 @@ const ComparisonModal = ({ features, currentProduct, name }) => {
 
   return (
     <div data-testid="comparison-modal">
-      <div className="comparison-modal-container">
+      <button
+        type="button"
+        className="comparison-modal-container"
+        onClick={() => dispatch({ type: 'toggleCompare' })}
+      >
         <div className="comparison-modal">
           <div>
             <p className="comparing">Comparing</p>
@@ -70,7 +69,7 @@ const ComparisonModal = ({ features, currentProduct, name }) => {
             return <Features feature={feature} />;
           })}
         </div>
-      </div>
+      </button>
     </div>
   );
 };

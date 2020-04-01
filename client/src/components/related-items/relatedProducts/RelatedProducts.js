@@ -6,20 +6,6 @@ import {
   getRelatedProduct
 } from '../../../redux/actions/related';
 
-/*
-const getDefaultStyle = (styles) => {
-  let result = null;
-  styles.forEach((style) => {
-    style.results.forEach((data) => {
-      if (data.results['default?'] === 1) {
-        result = data;
-      }
-    });
-  });
-  return result;
-};
-*/
-
 const RelatedProducts = ({ relatedProducts }) => {
   return (
     <div className="related-container" data-testid="related-products">
