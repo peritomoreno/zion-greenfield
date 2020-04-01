@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import ReviewList from './reviewList/ReviewList';
 import RatingsBreakdown from './ratingsBreakdown/RatingsBreakdown';
 import ProductBreakdown from './productBreakdown/ProductBreakdown';
+import updateReviews from '../../redux/actions/updateReviews';
 
 import '../../styles/Reviews.css';
 
@@ -14,13 +15,33 @@ class ReviewWidget extends React.Component {
 
     this.state = {
       moreReviewsAvailable: false,
-      sortType: 'newest'
+      sortType: 'newest',
+      currentPage: 1
     };
+
+    this.filterReviews = this.filterReviews.bind(this);
+    this.moreReviews = this.filterReviews.bind(this);
+  }
+
+  filterReviews(sort) {
+    this.setState({ sortType: sort }).then(() => {
+      const { productID, sortType } = this.state;
+      updateReviews(productID, sortType, '1');
+    });
+  }
+
+  moreReviews() {
+    const { currentPage } = this.state;
+
+    this.setState({ currentPage: currentPage + 1 }).then(() => {
+      const { productID, sortType } = this.state;
+      updateReviews(productID, sortType, currentPage);
+    });
   }
 
   render() {
     const { currentReviews, currentBreakdowns } = this.props;
-    console.log(currentBreakdowns);
+    const { sortType, moreReviewsAvailable } = this.state;
 
     return (
       <Container data-testid="reviews">
@@ -40,8 +61,10 @@ class ReviewWidget extends React.Component {
             <Row>
               <ReviewList
                 reviewList={currentReviews.results}
-                sortType={this.state.sortType}
-                moreReviewsAvailable={this.state.moreReviewsAvailable}
+                sortType={sortType}
+                filterReviews={this.filterReviews}
+                moreReviews={this.moreReviews}
+                moreReviewsAvailable={moreReviewsAvailable}
               />
             </Row>
           </Col>
@@ -54,7 +77,8 @@ class ReviewWidget extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentReviews: state.currentReviews,
-    currentBreakdowns: state.currentBreakdowns
+    currentBreakdowns: state.currentBreakdowns,
+    productID: state.currentProduct.id
   };
 };
 

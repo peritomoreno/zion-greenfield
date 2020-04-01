@@ -1,9 +1,15 @@
 import React from 'react';
-import ReviewTile from './ReviewTile';
-
 import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap';
 
-const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
+import ReviewTile from './ReviewTile';
+
+const ReviewList = ({
+  reviewList,
+  filterReviews,
+  moreReviews,
+  sortType,
+  moreReviewsAvailable
+}) => {
   return (
     <Container data-testid="reviews">
       <Col>
@@ -18,9 +24,15 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item>Helpful</Dropdown.Item>
-                <Dropdown.Item>Newest</Dropdown.Item>
-                <Dropdown.Item>Relevance</Dropdown.Item>
+                <Dropdown.Item onChange={filterReviews('helpful')}>
+                  Helpful
+                </Dropdown.Item>
+                <Dropdown.Item onChange={filterReviews('newest')}>
+                  Newest
+                </Dropdown.Item>
+                <Dropdown.Item onChange={filterReviews('relevance')}>
+                  Relevance
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Col>
@@ -41,7 +53,9 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
 
             <Row>
               {moreReviewsAvailable && (
-                <Button variant="light">Load more reviews</Button>
+                <Button variant="light" onClick={moreReviews}>
+                  Load more reviews
+                </Button>
               )}{' '}
               <Button variant="light">Submit Review</Button>
             </Row>
