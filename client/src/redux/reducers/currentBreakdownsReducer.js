@@ -20,7 +20,20 @@ const currentBreakdownsReducer = (state = defaultState, action) => {
       }
 
       const prodScore = Math.round((agg / num) * 10) / 10;
-      Object.assign(action.payload, { productRating: prodScore });
+      let starPercentages = {};
+
+      Object.keys(ratings).forEach((rating) => {
+        starPercentages[rating] = Math.round((ratings[rating] / num) * 100);
+      });
+
+      Object.assign(action.payload, {
+        productRating: prodScore,
+        oneStar: starPercentages['1'],
+        twoStars: starPercentages['2'],
+        threeStars: starPercentages['3'],
+        fourStars: starPercentages['4'],
+        fiveStars: starPercentages['5']
+      });
 
       return action.payload;
     default:
@@ -29,3 +42,9 @@ const currentBreakdownsReducer = (state = defaultState, action) => {
 };
 
 export default currentBreakdownsReducer;
+
+// oneStar: ,
+// twoStar: ,
+// threeStar: ,
+// fourStar: ,
+// fiveStar:
