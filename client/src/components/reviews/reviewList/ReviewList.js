@@ -27,19 +27,18 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
         </Row>
         <Row className="reviews">
           <Col>
-            <Row>
-              {reviewList.map((review) => (
-                <ReviewTile
-                  key={review.review_id}
-                  summary={review.summary}
-                  body={review.body}
-                  reviewerName={review.reviewer_name}
-                  date={review.date}
-                  rating={review.rating}
-                  helpful={review.helpfulness}
-                />
-              ))}
-            </Row>
+            {reviewList.map((review) => (
+              <ReviewTile
+                key={review.review_id}
+                summary={review.summary}
+                body={review.body}
+                reviewerName={review.reviewer_name}
+                date={review.date}
+                rating={review.rating}
+                helpful={review.helpfulness}
+              />
+            ))}
+
             <Row>
               {moreReviewsAvailable && (
                 <Button variant="light">Load more reviews</Button>
