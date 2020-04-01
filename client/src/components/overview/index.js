@@ -4,6 +4,7 @@ import ImageGallery from './imageGallery';
 import ProductDescription from './productDescription';
 import StyleSelector from './styleSelector';
 import CartForm from './cartForm';
+import '../../styles/Overview.css';
 
 // const { selected, currentProduct, styles } = sampleStore;
 
