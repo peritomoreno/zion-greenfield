@@ -1,11 +1,15 @@
 import React from 'react';
 
+const isValid = (value) => {
+  return value && value !== 'null';
+};
+
 const FeatureList = ({ features }) => {
   return (
     <div data-testid="featureList">
       <ul>
-        {features.map((f) => (
-          <li>{`${f.feature} ${f.value ? `: ${f.value}` : ''}`}</li>
+        {features.map(({ feature, value }) => (
+          <li>{`${feature}${isValid(value) ? `: ${value}` : ''}`}</li>
         ))}
       </ul>
     </div>

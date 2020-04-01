@@ -1,6 +1,21 @@
 import React from 'react';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  PinterestShareButton
+} from 'react-share';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faFacebookSquare,
+  faTwitterSquare,
+  faPinterestSquare
+} from '@fortawesome/free-brands-svg-icons';
+import { connect } from 'react-redux';
 
-const SocialCard = () => {
+const SocialCard = ({
+  productName,
+  url = 'https://developer.mozilla.org/en-US/docs/Web/JavaScript'
+}) => {
   const ulStyles = {
     display: 'inline',
     padding: '0px'
@@ -11,22 +26,31 @@ const SocialCard = () => {
     margin: '2px'
   };
 
+  const quote = `I <3 the ${productName} from Team Zion!`;
+
   return (
     <div data-testid="socialCard">
-      Share:
       <ul style={ulStyles}>
         <li style={liStyles}>
-          <a href="default.asp">FB</a>
+          <FacebookShareButton url={url} quote={quote}>
+            <FontAwesomeIcon icon={faFacebookSquare} size="lg" color="gray" />
+          </FacebookShareButton>
         </li>
         <li style={liStyles}>
-          <a href="news.asp">TW</a>
+          <TwitterShareButton url={url} title={quote}>
+            <FontAwesomeIcon icon={faTwitterSquare} size="lg" color="gray" />
+          </TwitterShareButton>
         </li>
         <li style={liStyles}>
-          <a href="contact.asp">IG</a>
+          <PinterestShareButton url={url} description={quote}>
+            <FontAwesomeIcon icon={faPinterestSquare} size="lg" color="gray" />
+          </PinterestShareButton>
         </li>
       </ul>
     </div>
   );
 };
 
-export default SocialCard;
+const mapStateToProps = (state) => ({ productName: state.currentProduct.name });
+
+export default connect(mapStateToProps)(SocialCard);
