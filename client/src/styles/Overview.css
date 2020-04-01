@@ -1,0 +1,8 @@
+.carousel {
+  background-color: rgb(236, 236, 236);
+}
+
+.carousel img {
+  height: 60vh;
+  min-height: 400px;
+}

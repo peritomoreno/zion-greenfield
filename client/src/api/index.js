@@ -1,8 +1,8 @@
 import Product from './product';
-import Review from './review';
+import Reviews from './review';
 import QA from './qa';
 import Cart from './cart';
 
-const API = { Product, Review, QA, Cart };
+const API = { Product, Reviews, QA, Cart };
 
-export { Product, Review, QA, Cart, API as default };
+export { Product, Reviews, QA, Cart, API as default };

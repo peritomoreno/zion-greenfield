@@ -4,10 +4,11 @@ import ImageGallery from './imageGallery';
 import ProductDescription from './productDescription';
 import StyleSelector from './styleSelector';
 import CartForm from './cartForm';
+import '../../styles/Overview.css';
 
 // const { selected, currentProduct, styles } = sampleStore;
 
-const Overview = ({ sampleStore: { selected, currentProduct } }) => (
+const Overview = () => (
   <div data-testid="productOverview">
     <div className="row">
       <div className="col-md-8">
@@ -16,11 +17,11 @@ const Overview = ({ sampleStore: { selected, currentProduct } }) => (
       <div className="col-md-4">
         <ProductInfo />
         <StyleSelector />
-        <CartForm selectedStyle={selected.style} />
+        <CartForm />
       </div>
     </div>
 
-    <ProductDescription currentProduct={currentProduct} />
+    <ProductDescription />
   </div>
 );
 

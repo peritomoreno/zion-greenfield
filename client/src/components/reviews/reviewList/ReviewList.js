@@ -1,11 +1,11 @@
 import React from 'react';
 import ReviewTile from './ReviewTile';
 
-const ReviewList = ({ reviewList }) => {
+const ReviewList = (reviews) => {
   return (
-    <div data-testid="reviewList">
+    <div data-testid="reviews">
       <h2>
-        {reviewList.length} reviews, sorted by{' '}
+        {reviews.length} reviews, sorted by{' '}
         <select>
           <option value="helpful">Helpful</option>
           <option value="newest">Newest</option>
@@ -14,7 +14,7 @@ const ReviewList = ({ reviewList }) => {
       </h2>
       <table className="reviews">
         <tbody>
-          {reviewList.map((review) => (
+          {reviews.reviewList.map((review) => (
             <tr>
               <ReviewTile
                 key={review.review_id}

@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import QA_API from '../../api/qa';
+import { connect } from 'react-redux';
 import SearchQuestion from './Search/SearchQuestion';
 import QuestionList from './Questions/QuestionList';
+import ModalForm from './Modal/ModalForm';
 
-const QA = () => {
+const QA = ({ storeQuestions }) => {
   const [questions, setQuestions] = useState([]);
-
-  const updateQuestions = async () => {
-    const response = await QA_API.fetchAllQuestions(10);
-    if (response.error) return;
-    setQuestions(response.results);
-  };
+  const [showAddQuestion, setshowAddQuestion] = useState(false);
 
   useEffect(() => {
-    updateQuestions();
-  }, []);
+    setQuestions(storeQuestions);
+  }, [storeQuestions]);
+
+  const handleAddQuestionModalClose = () => {
+    setshowAddQuestion(false);
+  };
+
+  const showAddQuestionModal = () => {
+    setshowAddQuestion(true);
+  };
 
   const renderQuestionList = () => {
     if (questions.length === 0) {
-      return <button type="button">Submit A New Question</button>;
+      return (
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          onClick={showAddQuestionModal}
+        >
+          Submit A New Question
+        </button>
+      );
     }
     return (
       <div>
@@ -27,7 +39,11 @@ const QA = () => {
           <button className="btn btn-outline-secondary" type="button">
             MORE ANSWERED QUESTIONS
           </button>
-          <button className="btn btn-outline-secondary ml-2" type="button">
+          <button
+            className="btn btn-outline-secondary"
+            type="button"
+            onClick={showAddQuestionModal}
+          >
             ADD A QUESTION +
           </button>
         </div>
@@ -39,9 +55,29 @@ const QA = () => {
     <div id="qa" data-testid="qaTest">
       <h1>QUESTIONS & ANSWERS</h1>
       <SearchQuestion />
+      {/* {FIXME: Console err: findDOMNode is deprecated in StrictMode} */}
+      <ModalForm
+        show={showAddQuestion}
+        handleClose={handleAddQuestionModalClose}
+        content={{
+          title: 'Ask Your Question',
+          subtitle: 'About the [Product Name]',
+          body: [
+            {
+              labelName: 'Your Question',
+              inputType: 'text',
+              placeholder: 'test'
+            }
+          ]
+        }}
+      />
       {renderQuestionList()}
     </div>
   );
 };
 
-export default QA;
+const mapStatetoProps = (state) => ({
+  storeQuestions: state.currentQuestion
+});
+
+export default connect(mapStatetoProps, null)(QA);

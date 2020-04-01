@@ -1,15 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const ProductDetails = ({ category, name, originalPrice, salePrice }) => (
-  <div data-testid="productDetails">
-    <div>{category.toUpperCase()}</div>
-    <div>
-      <h2>{name}</h2>
+const ProductDetails = ({ category, name, originalPrice, salePrice }) => {
+  let priceDiv;
+  if (salePrice)
+    priceDiv = (
+      <div>
+        <span className="text-danger">${salePrice}</span>{' '}
+        <del>${originalPrice}</del>
+      </div>
+    );
+  else {
+    priceDiv = <div>{`$${salePrice || originalPrice}`}</div>;
+  }
+  return (
+    <div data-testid="productDetails">
+      <div>{category.toUpperCase()}</div>
+      <div>
+        <h2>{name}</h2>
+      </div>
+      {priceDiv}
     </div>
-    <div>{`$${salePrice || originalPrice}`}</div>
-  </div>
-);
+  );
+};
 
 const mapStateToProps = (state) => ({
   category: state.currentProduct.category,

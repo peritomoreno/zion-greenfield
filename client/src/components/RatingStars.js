@@ -5,7 +5,6 @@ const RatingStars = ({ rating }) => {
   const ratingPercentage = `${Math.floor(
     (Number(rating) / 5) * 100
   ).toString()}%`;
-  console.log(ratingPercentage);
   const styles = {
     width: ratingPercentage
   };
