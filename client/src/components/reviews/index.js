@@ -12,7 +12,10 @@ class ReviewWidget extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      moreReviewsAvailable: false,
+      sortType: 'newest'
+    };
   }
 
   render() {
@@ -35,7 +38,11 @@ class ReviewWidget extends React.Component {
           </Col>
           <Col className="review-review-list-container" sm={8}>
             <Row>
-              <ReviewList reviewList={currentReviews.results} />
+              <ReviewList
+                reviewList={currentReviews.results}
+                sortType={this.state.sortType}
+                moreReviewsAvailable={this.state.moreReviewsAvailable}
+              />
             </Row>
           </Col>
         </Row>

@@ -1,32 +1,55 @@
 import React from 'react';
 import ReviewTile from './ReviewTile';
 
-const ReviewList = ({ reviewList }) => {
-  console.log(reviewList);
+import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap';
+
+const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
   return (
-    <div data-testid="reviews">
-      <h2>
-        {reviewList.length} reviews, sorted by{' '}
-        <select>
-          <option value="helpful">Helpful</option>
-          <option value="newest">Newest</option>
-          <option value="relevance">Relevance</option>
-        </select>
-      </h2>
-      <div className="reviews">
-        {reviewList.map((review) => (
-          <ReviewTile
-            key={review.review_id}
-            summary={review.summary}
-            body={review.body}
-            reviewerName={review.reviewer_name}
-            date={review.date}
-            rating={review.rating}
-            helpful={review.helpfulness}
-          />
-        ))}
-      </div>
-    </div>
+    <Container data-testid="reviews">
+      <Col>
+        <Row>
+          <Col>
+            <h2>{reviewList.length} reviews, sorted by </h2>
+          </Col>
+          <Col>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                {sortType}
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item>Helpful</Dropdown.Item>
+                <Dropdown.Item>Newest</Dropdown.Item>
+                <Dropdown.Item>Relevance</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Col>
+        </Row>
+        <Row className="reviews">
+          <Col>
+            <Row>
+              {reviewList.map((review) => (
+                <ReviewTile
+                  key={review.review_id}
+                  summary={review.summary}
+                  body={review.body}
+                  reviewerName={review.reviewer_name}
+                  date={review.date}
+                  rating={review.rating}
+                  helpful={review.helpfulness}
+                />
+              ))}
+            </Row>
+            <Row>
+              {moreReviewsAvailable && (
+                <Button variant="light">Load more reviews</Button>
+              )}{' '}
+              <Button variant="light">Submit Review</Button>
+            </Row>
+          </Col>
+        </Row>
+      </Col>
+    </Container>
   );
 };
 
