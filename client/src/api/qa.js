@@ -19,7 +19,7 @@ const postByURL = async (url, data) => {
       },
       body: JSON.stringify(data)
     });
-    return response.json();
+    return { result: response.status === 201 };
   } catch (err) {
     return { error: err };
   }
@@ -28,7 +28,7 @@ const postByURL = async (url, data) => {
 const putByURL = async (url) => {
   try {
     const response = await fetch(url, { method: 'PUT' });
-    return response.status === 204;
+    return { result: response.status === 204 };
   } catch (err) {
     return { error: err };
   }
@@ -36,7 +36,8 @@ const putByURL = async (url) => {
 
 const QA = {
   fetchAllQuestions: (id) => {
-    return fetchByURL(`${baseURL}/qa/${id}`);
+    return fetchByURL(`${baseURL}/qa/${id}?count=100`);
+    // return fetchByURL(`${baseURL}/qa/${id}`);
   },
   fetchAnswersByQuestion: (id) => {
     return fetchByURL(`${baseURL}/qa/${id}/answers`);

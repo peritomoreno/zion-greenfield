@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import SearchQuestion from './Search/SearchQuestion';
 import QuestionList from './Questions/QuestionList';
-import ModalForm from './Modal/ModalForm';
+import QuestionModalForm from './Modal/QuestionModalForm';
 
 const QA = ({ storeQuestions }) => {
   const [questions, setQuestions] = useState([]);
   const [showAddQuestion, setshowAddQuestion] = useState(false);
+  const [questionPaginate, setQuestionPaginate] = useState(2);
 
   useEffect(() => {
     setQuestions(storeQuestions);
@@ -18,6 +19,12 @@ const QA = ({ storeQuestions }) => {
 
   const showAddQuestionModal = () => {
     setshowAddQuestion(true);
+  };
+
+  const handleLoadMoreQuestion = () => {
+    if (questionPaginate <= questions.length - 1) {
+      setQuestionPaginate(questionPaginate + 2);
+    }
   };
 
   const renderQuestionList = () => {
@@ -34,11 +41,17 @@ const QA = ({ storeQuestions }) => {
     }
     return (
       <div>
-        <QuestionList questions={questions} />
+        <QuestionList questions={questions.slice(0, questionPaginate)} />
         <div className="bottomButton">
-          <button className="btn btn-outline-secondary" type="button">
-            MORE ANSWERED QUESTIONS
-          </button>
+          {!(questions.length <= 2 || questionPaginate >= questions.length) && (
+            <button
+              className="btn btn-outline-secondary"
+              type="button"
+              onClick={handleLoadMoreQuestion}
+            >
+              MORE ANSWERED QUESTIONS
+            </button>
+          )}
           <button
             className="btn btn-outline-secondary"
             type="button"
@@ -56,20 +69,9 @@ const QA = ({ storeQuestions }) => {
       <h1>QUESTIONS & ANSWERS</h1>
       <SearchQuestion />
       {/* {FIXME: Console err: findDOMNode is deprecated in StrictMode} */}
-      <ModalForm
+      <QuestionModalForm
         show={showAddQuestion}
         handleClose={handleAddQuestionModalClose}
-        content={{
-          title: 'Ask Your Question',
-          subtitle: 'About the [Product Name]',
-          body: [
-            {
-              labelName: 'Your Question',
-              inputType: 'text',
-              placeholder: 'test'
-            }
-          ]
-        }}
       />
       {renderQuestionList()}
     </div>
