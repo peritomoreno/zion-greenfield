@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import ReviewList from './reviewList/ReviewList';
 import RatingsBreakdown from './ratingsBreakdown/RatingsBreakdown';
 import ProductBreakdown from './productBreakdown/ProductBreakdown';
-import updateReviews from '../../redux/actions/updateReviews';
+import {
+  filterByNewest,
+  filterByHelpful,
+  filterByRelevance,
+  moreReviews
+} from '../../redux/actions/updateReviews';
 
 import '../../styles/Reviews.css';
 
@@ -15,33 +20,13 @@ class ReviewWidget extends React.Component {
 
     this.state = {
       moreReviewsAvailable: false,
-      sortType: 'newest',
-      currentPage: 1
+      sortType: 'newest'
     };
-
-    this.filterReviews = this.filterReviews.bind(this);
-    this.moreReviews = this.filterReviews.bind(this);
-  }
-
-  filterReviews(sort) {
-    this.setState({ sortType: sort }).then(() => {
-      const { productID, sortType } = this.state;
-      updateReviews(productID, sortType, '1');
-    });
-  }
-
-  moreReviews() {
-    const { currentPage } = this.state;
-
-    this.setState({ currentPage: currentPage + 1 }).then(() => {
-      const { productID, sortType } = this.state;
-      updateReviews(productID, sortType, currentPage);
-    });
   }
 
   render() {
     const { currentReviews, currentBreakdowns } = this.props;
-    const { sortType, moreReviewsAvailable } = this.state;
+    console.log(currentBreakdowns);
 
     return (
       <Container data-testid="reviews">
@@ -61,10 +46,10 @@ class ReviewWidget extends React.Component {
             <Row>
               <ReviewList
                 reviewList={currentReviews.results}
-                sortType={sortType}
-                filterReviews={this.filterReviews}
-                moreReviews={this.moreReviews}
-                moreReviewsAvailable={moreReviewsAvailable}
+                sortType={this.state.sortType}
+                filters={(filterByNewest, filterByHelpful, filterByRelevance)}
+                nextPage={moreReviews}
+                moreReviewsAvailable={this.state.moreReviewsAvailable}
               />
             </Row>
           </Col>
@@ -82,4 +67,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ReviewWidget);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterByNewest: (id) => dispatch(filterByNewest(id)),
+    filterByHelpful: (id) => dispatch(filterByHelpful(id)),
+    filterByRelevance: (id) => dispatch(filterByRelevance(id)),
+    moreReviews: (id, sort, page) => dispatch(moreReviews(id, sort, page))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewWidget);
