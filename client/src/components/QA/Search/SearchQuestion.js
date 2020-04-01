@@ -7,7 +7,8 @@ const SearchQuestion = () => {
         data-testid="searchQuestion"
         type="text"
         placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS..."
-        style={{ height: '60px', width: '880px' }}
+        style={{ height: '60px', marginBottom: '12px' }}
+        className="col"
       />
     </div>
   );
