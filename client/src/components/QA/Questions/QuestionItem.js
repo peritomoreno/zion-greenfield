@@ -41,7 +41,12 @@ const QuestionItem = ({ currentQuestion }) => {
   return (
     <div data-testid="questionItem">
       <div className="row">
-        <h5 className="col align-self-start">Q: {title}</h5>
+        <h5
+          className="col align-self-start"
+          style={{ color: 'rgb(82, 82, 82)', fontWeight: 'bolder' }}
+        >
+          Q: {title}
+        </h5>
         <div className="col-3 sideAction fcol align-self-end">
           <AnswerModalForm
             show={showAddAnswer}
@@ -77,24 +82,16 @@ const QuestionItem = ({ currentQuestion }) => {
           </button>
         </div>
       </div>
-      <div className="row">
-        <h5 className="col-1 align-self-start">A: </h5>
-        <div className="col">
-          <AnswerList answers={sortedAnswers.slice(0, answerPaginate)} />
-          {!(
+      <AnswerList
+        answers={sortedAnswers.slice(0, answerPaginate)}
+        handleLoadMoreAnswer={handleLoadMoreAnswer}
+        showLoadMore={
+          !(
             sortedAnswers.length <= 2 ||
             answerPaginate >= sortedAnswers.length - 1
-          ) && (
-            <button
-              type="button"
-              onClick={handleLoadMoreAnswer}
-              style={{ fontWeight: 'bold', border: 'none' }}
-            >
-              LOAD MORE ANSWERS
-            </button>
-          )}
-        </div>
-      </div>
+          )
+        }
+      />
     </div>
   );
 };

@@ -13,7 +13,7 @@ const YourOutfitEntry = ({
 }) => {
   const imageStyle = {
     width: '100%',
-    height: '270px',
+    height: '295px',
     backgroundImage: `url(${image})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',

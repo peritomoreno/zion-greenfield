@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const AddOutfit = ({ addOutfitHandler }) => {
   return (
@@ -10,9 +12,9 @@ const AddOutfit = ({ addOutfitHandler }) => {
     >
       <div className="">
         <div>
-          <p>+</p>
+          <FontAwesomeIcon className="plus" icon={faPlus} />
           <div className="">
-            <p className="">Add to Outfit</p>
+            <p style={{ color: 'rgb(93, 93, 93)' }}>Add to Outfit</p>
           </div>
         </div>
       </div>
