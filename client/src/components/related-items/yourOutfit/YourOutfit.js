@@ -10,11 +10,11 @@ import AddOutfit from './AddOutfit';
 const YourOutfit = ({ outfit, addOutfitHandler, deleteOutfitHandler }) => {
   let scroller = null;
   const handleRightClick = () => {
-    scroller.scrollLeft += 590;
+    scroller.scrollLeft += 650;
   };
 
   const handleLeftClick = () => {
-    scroller.scrollLeft -= 590;
+    scroller.scrollLeft -= 650;
   };
 
   const [scrollPosition, setScrollPosition] = useState(0);

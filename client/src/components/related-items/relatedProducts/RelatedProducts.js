@@ -18,11 +18,11 @@ const RelatedProducts = ({ relatedProducts }) => {
   };
   let scroller = null;
   const handleRightClick = () => {
-    scroller.scrollLeft += 595;
+    scroller.scrollLeft += 650;
   };
 
   const handleLeftClick = () => {
-    scroller.scrollLeft -= 595;
+    scroller.scrollLeft -= 650;
   };
 
   const [scrollPosition, setScrollPosition] = useState(0);

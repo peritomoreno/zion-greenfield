@@ -7,9 +7,7 @@ import ComparisonModal from '../comparisonModal/ComparisonModal';
 import changeProduct from '../../../redux/actions/changeProduct';
 import RatingStars from '../../RatingStars';
 
-const defaultImgae =
-  'https://images.squarespace-cdn.com/content/v1/5161eef2e4b05c308167a6fa/1555279090674-AG75CRP3YADFPC3XXUGO/ke17ZwdGBToddI8pDm48kN_ZoNdj1kv_gIvm4zjH76N7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jG2lbcDYBOeMi4OFSYem8AelHsSihC3tfiYK1eHEM7W3AVjJQSBul2wE-DqW7dygg/_MG_8028-1.jpg?format=1500w';
-
+const defaultImgae = 'https://images.squarespace-cdn.com/content/v1/5161eef2e4b05c308167a6fa/1555279090674-AG75CRP3YADFPC3XXUGO/ke17ZwdGBToddI8pDm48kN_ZoNdj1kv_gIvm4zjH76N7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jG2lbcDYBOeMi4OFSYem8AelHsSihC3tfiYK1eHEM7W3AVjJQSBul2wE-DqW7dygg/_MG_8028-1.jpg?format=1500w';
 const initialState = { isCompareClicked: false };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -80,13 +78,15 @@ const RelatedProductsEntry = ({
         <p className="related-price">${price}</p>
         <RatingStars rating={5} />
       </div>
-      {toggle.isCompareClicked ? (
-        <ToggleDispatch.Provider value={dispatch}>
-          <ComparisonModal features={features} name={name} toggle={toggle} />
-        </ToggleDispatch.Provider>
-      ) : (
-        ''
-      )}
+      <div className="related-modal-div">
+        {toggle.isCompareClicked ? (
+          <ToggleDispatch.Provider value={dispatch}>
+            <ComparisonModal features={features} name={name} toggle={toggle} />
+          </ToggleDispatch.Provider>
+        ) : (
+          ''
+        )}
+      </div>
     </div>
   );
 };

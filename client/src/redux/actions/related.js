@@ -21,14 +21,16 @@ export const setRelatedStyles = (styles) => ({
 
 export const getRelatedProduct = (currentProductId) => (dispatch) => {
   dispatch(startRelatedProduct());
-  Product.getRelated(currentProductId).then((ids) => {
-    ids.forEach((id) => {
-      Product.getProduct(id)
-        .then((product) => dispatch(setProductsInfo(product)))
-        .then(() => Product.getStyles(id))
-        .then((res) => {
-          dispatch(setRelatedStyles(res));
-        });
+  Product.getRelated(currentProductId)
+    .then((ids) => ids.filter((a, b) => ids.indexOf(a) === b))
+    .then((ids) => {
+      ids.forEach((id) => {
+        Product.getProduct(id)
+          .then((product) => dispatch(setProductsInfo(product)))
+          .then(() => Product.getStyles(id))
+          .then((res) => {
+            dispatch(setRelatedStyles(res));
+          });
+      });
     });
-  });
 };

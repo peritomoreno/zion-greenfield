@@ -61,10 +61,14 @@ class RelateAndCompare extends React.Component {
     const { outfit } = this.state;
     return (
       <div data-testid="relate-compare" className="ralated-widget">
-        <RelatedProducts
-          relatedProducts={relatedProducts.products}
-          styles={relatedProducts.styles}
-        />
+        {relatedProducts.products.length > 0 ? (
+          <RelatedProducts
+            relatedProducts={relatedProducts.products}
+            styles={relatedProducts.styles}
+          />
+        ) : (
+          ''
+        )}
         <YourOutfit
           outfit={outfit}
           addOutfitHandler={this.addOutfitHandler}
