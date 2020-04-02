@@ -16,8 +16,11 @@ const currentReviewsReducer = (state = defaultState, action) => {
     case 'FILTER_BY_RELEVANCE':
       return action.payload;
     case 'NEXT_REVIEW_PAGE':
-      console.log(state);
-      return action.payload;
+      const newResults = state.results.concat(action.payload.results);
+      const newState = Object.assign({}, state);
+      newState.results = newResults;
+      console.log(newState);
+      return newState;
     default:
       return state;
   }

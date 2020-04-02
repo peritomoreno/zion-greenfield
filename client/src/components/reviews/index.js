@@ -36,7 +36,7 @@ class ReviewWidget extends React.Component {
 
     this.setState({ page: page + 1 });
 
-    getMoreReviews(productID, page, currentSort);
+    getMoreReviews(productID, page + 1, currentSort);
   }
 
   sortByNewest() {
@@ -61,8 +61,8 @@ class ReviewWidget extends React.Component {
   }
 
   render() {
-    const { currentReviews, currentBreakdowns } = this.props;
-    const { currentSort, moreReviewsAvailable, page, productID } = this.state;
+    const { currentReviews, currentBreakdowns, productID } = this.props;
+    const { currentSort, moreReviewsAvailable, page } = this.state;
 
     return (
       <Container data-testid="reviews">

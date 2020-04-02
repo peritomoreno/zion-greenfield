@@ -63,6 +63,7 @@ const ReviewList = ({
                 date={review.date}
                 rating={review.rating}
                 helpful={review.helpfulness}
+                reviewID={review.review_id}
               />
             ))}
 
