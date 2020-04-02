@@ -16,6 +16,12 @@ const ReviewList = ({
 }) => {
   const { postReview } = Review;
 
+<<<<<<< HEAD
+=======
+import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap';
+
+const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
+>>>>>>> master
   return (
     <Container data-testid="reviews">
       <Col>
@@ -26,6 +32,7 @@ const ReviewList = ({
           <Col>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
+<<<<<<< HEAD
                 {currentSort}
               </Dropdown.Toggle>
 
@@ -51,6 +58,15 @@ const ReviewList = ({
                 >
                   Relevance
                 </Dropdown.Item>
+=======
+                {sortType}
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item>Helpful</Dropdown.Item>
+                <Dropdown.Item>Newest</Dropdown.Item>
+                <Dropdown.Item>Relevance</Dropdown.Item>
+>>>>>>> master
               </Dropdown.Menu>
             </Dropdown>
           </Col>
@@ -66,12 +82,16 @@ const ReviewList = ({
                 date={review.date}
                 rating={review.rating}
                 helpful={review.helpfulness}
+<<<<<<< HEAD
                 reviewID={review.review_id}
+=======
+>>>>>>> master
               />
             ))}
 
             <Row>
               {moreReviewsAvailable && (
+<<<<<<< HEAD
                 <Button
                   variant="light"
                   onClick={() => {
@@ -90,6 +110,11 @@ const ReviewList = ({
               >
                 Submit Review
               </Button>
+=======
+                <Button variant="light">Load more reviews</Button>
+              )}{' '}
+              <Button variant="light">Submit Review</Button>
+>>>>>>> master
             </Row>
           </Col>
         </Row>

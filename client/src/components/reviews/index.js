@@ -1,16 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import { Container, Row, Col } from 'react-bootstrap';
+=======
+import { Container, Row, Col, Button } from 'react-bootstrap';
+>>>>>>> master
 
 import ReviewList from './reviewList/ReviewList';
 import RatingsBreakdown from './ratingsBreakdown/RatingsBreakdown';
 import ProductBreakdown from './productBreakdown/ProductBreakdown';
+<<<<<<< HEAD
 import {
   filterByNewest,
   filterByHelpful,
   filterByRelevance,
   moreReviews
 } from '../../redux/actions/updateReviews';
+=======
+>>>>>>> master
 
 import '../../styles/Reviews.css';
 
@@ -19,6 +26,7 @@ class ReviewWidget extends React.Component {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
       page: 1,
       moreReviewsAvailable: true,
       currentSort: 'newest'
@@ -63,6 +71,16 @@ class ReviewWidget extends React.Component {
   render() {
     const { currentReviews, currentBreakdowns, productID } = this.props;
     const { currentSort, moreReviewsAvailable, page } = this.state;
+=======
+      moreReviewsAvailable: false,
+      sortType: 'newest'
+    };
+  }
+
+  render() {
+    const { currentReviews, currentBreakdowns } = this.props;
+    console.log(currentBreakdowns);
+>>>>>>> master
 
     return (
       <Container data-testid="reviews">
@@ -82,6 +100,7 @@ class ReviewWidget extends React.Component {
             <Row>
               <ReviewList
                 reviewList={currentReviews.results}
+<<<<<<< HEAD
                 currentSort={currentSort}
                 newest={this.sortByNewest}
                 helpful={this.sortByHelpful}
@@ -90,6 +109,10 @@ class ReviewWidget extends React.Component {
                 productID={productID}
                 nextPage={this.nextPage}
                 moreReviewsAvailable={moreReviewsAvailable}
+=======
+                sortType={this.state.sortType}
+                moreReviewsAvailable={this.state.moreReviewsAvailable}
+>>>>>>> master
               />
             </Row>
           </Col>

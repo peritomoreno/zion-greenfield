@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Row, Col } from 'react-bootstrap';
 import {
   setProductsInfo,
   getRelatedProduct
@@ -9,15 +10,17 @@ import {
 
 const Features = ({ feature }) => {
   return (
-    <div data-testid="features" className="row related-features">
-      <span className="col related-current-check">
+    <Row data-testid="features" className="related-features">
+      <Col className="related-current-check">
         {feature.current ? <FontAwesomeIcon icon={faCheck} /> : ''}
-      </span>
-      <span className="col-6 related-feature">{feature.description}</span>
-      <span className="col related-related-check">
+      </Col>
+      <Col xs={6} className="related-feature" id="feature-description">
+        {feature.description}
+      </Col>
+      <Col className="related-related-check">
         {feature.related ? <FontAwesomeIcon icon={faCheck} /> : ''}
-      </span>
-    </div>
+      </Col>
+    </Row>
   );
 };
 

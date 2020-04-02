@@ -49,7 +49,8 @@ class RelateAndCompare extends React.Component {
       localStorage.setItem('yourOutfit', JSON.stringify([product]));
     } else {
       storage = JSON.parse(localStorage.getItem('yourOutfit'));
-      storage.push(product);
+      storage = storage.filter((outfit) => outfit.id !== product.id);
+      storage.unshift(product);
       localStorage.setItem('yourOutfit', JSON.stringify(storage));
       this.setState({ outfit: storage });
     }
@@ -60,10 +61,14 @@ class RelateAndCompare extends React.Component {
     const { outfit } = this.state;
     return (
       <div data-testid="relate-compare" className="ralated-widget">
-        <RelatedProducts
-          relatedProducts={relatedProducts.products}
-          styles={relatedProducts.styles}
-        />
+        {relatedProducts.products.length > 0 ? (
+          <RelatedProducts
+            relatedProducts={relatedProducts.products}
+            styles={relatedProducts.styles}
+          />
+        ) : (
+          ''
+        )}
         <YourOutfit
           outfit={outfit}
           addOutfitHandler={this.addOutfitHandler}

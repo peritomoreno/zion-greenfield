@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { connect } from 'react-redux';
+import { Container, Row, Col } from 'react-bootstrap';
 import Features from './Features';
 import ToggleDispatch from '../context';
 import {
@@ -55,19 +56,24 @@ const ComparisonModal = ({ features, currentProduct, name }) => {
       <button
         type="button"
         className="comparison-modal-container"
-        onClick={() => dispatch({ type: 'toggleCompare' })}
+        onClick={(e) => {
+          e.stopPropagation();
+          dispatch({ type: 'toggleCompare' });
+        }}
       >
         <div className="comparison-modal">
           <div>
             <p className="comparing">Comparing</p>
           </div>
-          <div className="row">
-            <p className="col compare-current-name">{currentProduct.name}</p>
-            <p className="col compare-related-name">{name}</p>
-          </div>
-          {combineFeatures(CurrentFeatures, features).map((feature) => {
-            return <Features feature={feature} />;
-          })}
+          <Container>
+            <Row>
+              <Col className="compare-current-name">{currentProduct.name}</Col>
+              <Col className="compare-related-name">{name}</Col>
+            </Row>
+            {combineFeatures(CurrentFeatures, features).map((feature) => {
+              return <Features feature={feature} />;
+            })}
+          </Container>
         </div>
       </button>
     </div>
