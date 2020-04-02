@@ -47,6 +47,7 @@ const QuestionItem = ({ currentQuestion }) => {
             show={showAddAnswer}
             handleClose={() => setShowAddAnswer(false)}
             questionId={id}
+            questionBody={title}
           />
           Helpful?{' '}
           <button
