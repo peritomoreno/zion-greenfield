@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, ProgressBar } from 'react-bootstrap';
 import RatingStars from '../../RatingStars';
-import { Container, Row, Col, ProgressBar } from 'react-bootstrap';
 
 const RatingsBreakdown = ({ reviewData }) => {
   return (

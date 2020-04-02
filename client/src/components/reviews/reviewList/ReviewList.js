@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap';
 import ReviewTile from './ReviewTile';
-import Review from '../../../api/review';
+import ReviewModalForm from '../Modal/ReviewModalForm';
 
 const ReviewList = ({
   reviewList,
@@ -14,16 +14,17 @@ const ReviewList = ({
   page,
   productID
 }) => {
-  const { postReview } = Review;
+  const [showForm, setShowForm] = useState('false');
 
-<<<<<<< HEAD
-=======
-import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap';
-
-const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
->>>>>>> master
   return (
     <Container data-testid="reviews">
+      <div>
+        <ReviewModalForm
+          show={showForm}
+          handleClose={() => setShowForm(false)}
+          productID={productID}
+        />
+      </div>
       <Col>
         <Row>
           <Col>
@@ -32,7 +33,6 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
           <Col>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
-<<<<<<< HEAD
                 {currentSort}
               </Dropdown.Toggle>
 
@@ -58,15 +58,6 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
                 >
                   Relevance
                 </Dropdown.Item>
-=======
-                {sortType}
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item>Helpful</Dropdown.Item>
-                <Dropdown.Item>Newest</Dropdown.Item>
-                <Dropdown.Item>Relevance</Dropdown.Item>
->>>>>>> master
               </Dropdown.Menu>
             </Dropdown>
           </Col>
@@ -82,16 +73,12 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
                 date={review.date}
                 rating={review.rating}
                 helpful={review.helpfulness}
-<<<<<<< HEAD
                 reviewID={review.review_id}
-=======
->>>>>>> master
               />
             ))}
 
             <Row>
               {moreReviewsAvailable && (
-<<<<<<< HEAD
                 <Button
                   variant="light"
                   onClick={() => {
@@ -105,16 +92,11 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
               <Button
                 variant="light"
                 onClick={() => {
-                  postReview(productID);
+                  setShowForm(true);
                 }}
               >
                 Submit Review
               </Button>
-=======
-                <Button variant="light">Load more reviews</Button>
-              )}{' '}
-              <Button variant="light">Submit Review</Button>
->>>>>>> master
             </Row>
           </Col>
         </Row>

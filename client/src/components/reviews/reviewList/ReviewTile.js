@@ -48,3 +48,5 @@ const ReviewTile = ({
     </Row>
   );
 };
+
+export default ReviewTile;
