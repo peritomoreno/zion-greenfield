@@ -38,14 +38,19 @@ const AnswerItem = ({ answer, reportAnswer }) => {
   };
 
   return (
-    <>
+    <div
+      style={{
+        paddingBottom: '20px',
+        fontSize: '20px'
+      }}
+    >
       <ImageModal
         url={clickedImage}
         show={showImageModal}
         setShow={setShowImageModal}
       />
       <div data-testid="answerItem">
-        <span>{answer.body}</span>
+        <span style={{ color: 'rgb(104, 104, 104)' }}>{answer.body}</span>
         <br />
         {answer.photos.map((photoUrl) => (
           <Image
@@ -55,47 +60,51 @@ const AnswerItem = ({ answer, reportAnswer }) => {
             style={{
               width: '160px',
               height: '100px',
-              margin: '10px',
+              marginRight: '10px',
+              marginTop: '12px',
+              marginBottom: '12px',
               objectFit: 'cover'
             }}
-            className="img-thumbnail"
             onClick={(e) => {
               setClickedImage(e.target.src);
               setShowImageModal(true);
             }}
           />
         ))}
-        <br />
-        by {answer.answerer_name}
-        {', '}
-        {dateFormatter(answer.date)} | Helpful?{' '}
-        <button
-          type="button"
-          style={{
-            color: '#919191',
-            border: 'none',
-            textDecoration: 'underline',
-            outline: 'none'
-          }}
-          onClick={handleAnswerHelpful}
+        <div
+          style={{ fontSize: '16px', color: '#919191', background: 'white' }}
         >
-          Yes
-        </button>
-        ({helpfulness}) |{' '}
-        <button
-          type="button"
-          style={{
-            color: '#919191',
-            border: 'none',
-            textDecoration: 'underline',
-            outline: 'none'
-          }}
-          onClick={handleReportAnswer}
-        >
-          report
-        </button>
+          by {answer.answerer_name}
+          {', '}
+          {dateFormatter(answer.date)} | Helpful?{' '}
+          <button
+            type="button"
+            style={{
+              color: '#919191',
+              border: 'none',
+              textDecoration: 'underline',
+              outline: 'none'
+            }}
+            onClick={handleAnswerHelpful}
+          >
+            Yes
+          </button>
+          ({helpfulness}) |{' '}
+          <button
+            type="button"
+            style={{
+              color: '#919191',
+              border: 'none',
+              textDecoration: 'underline',
+              outline: 'none'
+            }}
+            onClick={handleReportAnswer}
+          >
+            report
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
