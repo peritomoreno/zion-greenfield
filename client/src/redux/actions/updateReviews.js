@@ -15,6 +15,10 @@ const filterRelevance = (reviews) => ({
   type: `FILTER_BY_RELEVANCE`,
   payload: reviews
 });
+const nextPage = (reviews) => ({
+  type: `NEXT_REVIEW_PAGE`,
+  payload: reviews
+});
 
 export const filterByNewest = (id) => {
   return async (dispatch) => {
@@ -37,9 +41,9 @@ export const filterByRelevance = (id) => {
   };
 };
 
-export const moreReviews = (id, sort, page) => {
+export const moreReviews = (id, page, sort) => {
   return async (dispatch) => {
-    const reviews = await Reviews.getReviews(id, sort, page);
-    dispatch(setReviews(reviews.error ? [] : reviews));
+    const reviews = await Reviews.getReviews(id, page, sort);
+    dispatch(nextPage(reviews.error ? [] : reviews));
   };
 };

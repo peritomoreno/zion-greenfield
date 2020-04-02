@@ -8,7 +8,7 @@ import QA from './QA';
 
 function App({ initStore }) {
   useEffect(() => {
-    initStore(20);
+    initStore(8);
   }, [initStore]);
 
   return (

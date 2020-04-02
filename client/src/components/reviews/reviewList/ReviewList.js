@@ -70,7 +70,9 @@ const ReviewList = ({
               {moreReviewsAvailable && (
                 <Button
                   variant="light"
-                  onClick={nextPage(productID, currentSort, page + 1)}
+                  onClick={() => {
+                    nextPage(productID, currentSort, page + 1);
+                  }}
                 >
                   {' '}
                   Load more reviews

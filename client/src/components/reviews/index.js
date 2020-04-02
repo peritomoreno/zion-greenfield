@@ -31,10 +31,12 @@ class ReviewWidget extends React.Component {
   }
 
   nextPage() {
-    const { productID } = this.props;
+    const { productID, getMoreReviews } = this.props;
     const { page, currentSort } = this.state;
 
-    moreReviews(productID, currentSort, page);
+    this.setState({ page: page + 1 });
+
+    getMoreReviews(productID, page, currentSort);
   }
 
   sortByNewest() {
@@ -86,9 +88,7 @@ class ReviewWidget extends React.Component {
                 relevant={this.sortByRelevance}
                 page={page}
                 productID={productID}
-                nextPage={() => {
-                  this.nextPage();
-                }}
+                nextPage={this.nextPage}
                 moreReviewsAvailable={moreReviewsAvailable}
               />
             </Row>
@@ -112,7 +112,7 @@ const mapDispatchToProps = (dispatch) => {
     filterNewest: (id) => dispatch(filterByNewest(id)),
     filterHelpful: (id) => dispatch(filterByHelpful(id)),
     filterRelevance: (id) => dispatch(filterByRelevance(id)),
-    moreReviews: (id, sort, page) => dispatch(moreReviews(id, sort, page))
+    getMoreReviews: (id, page, sort) => dispatch(moreReviews(id, page, sort))
   };
 };
 

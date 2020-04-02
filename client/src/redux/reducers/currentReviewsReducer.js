@@ -16,6 +16,7 @@ const currentReviewsReducer = (state = defaultState, action) => {
     case 'FILTER_BY_RELEVANCE':
       return action.payload;
     case 'NEXT_REVIEW_PAGE':
+      console.log(state);
       return action.payload;
     default:
       return state;
