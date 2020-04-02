@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap';
 import ReviewTile from './ReviewTile';
+import Review from '../../../api/review';
 
 const ReviewList = ({
   reviewList,
@@ -13,6 +14,8 @@ const ReviewList = ({
   page,
   productID
 }) => {
+  const { postReview } = Review;
+
   return (
     <Container data-testid="reviews">
       <Col>
@@ -79,7 +82,14 @@ const ReviewList = ({
                   Load more reviews
                 </Button>
               )}{' '}
-              <Button variant="light">Submit Review</Button>
+              <Button
+                variant="light"
+                onClick={() => {
+                  postReview(productID);
+                }}
+              >
+                Submit Review
+              </Button>
             </Row>
           </Col>
         </Row>
