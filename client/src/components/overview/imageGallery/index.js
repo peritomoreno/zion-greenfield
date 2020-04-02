@@ -21,6 +21,7 @@ const ImageGallery = ({
         photos={photos}
         photoIndex={thumbnailIndex}
         setPhotoIndex={selectThumbnail}
+        expanded={expanded}
       />
       <ThumbnailCarousel
         photos={photos}
