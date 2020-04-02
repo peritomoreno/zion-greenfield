@@ -1,8 +1,13 @@
 import React from 'react';
 
-const ThumbnailCarousel = ({ photos, thumbnailIndex, selectThumbnail }) => {
+const ThumbnailCarousel = ({
+  photos,
+  thumbnailIndex,
+  selectThumbnail,
+  hidden
+}) => {
   return (
-    <div id="thumbnailCarousel">
+    <div id="thumbnailCarousel" className={`${hidden ? 'd-none' : null}`}>
       {photos.map((photo, index) => (
         // <div className="row">
         <div

@@ -12,7 +12,11 @@ const ImageGallery = ({
   setExpanded
 }) => {
   return (
-    <div data-testid="imageGallery" id="imageGallery">
+    <div
+      data-testid="imageGallery"
+      id="imageGallery"
+      className={`${expanded ? 'ovExpanded' : 'ovNormal'}`}
+    >
       <ImageCarousel
         photos={photos}
         photoIndex={thumbnailIndex}
@@ -22,6 +26,7 @@ const ImageGallery = ({
         photos={photos}
         thumbnailIndex={thumbnailIndex}
         selectThumbnail={selectThumbnail}
+        hidden={expanded}
       />
       <button
         type="button"
