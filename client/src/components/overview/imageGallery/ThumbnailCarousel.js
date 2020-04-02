@@ -8,7 +8,7 @@ const ThumbnailCarousel = ({
 }) => {
   return (
     <div id="thumbnailCarousel" className={`${hidden ? 'd-none' : null}`}>
-      {photos.map((photo, index) => (
+      {photos.slice(0, 6).map((photo, index) => (
         // <div className="row">
         <div
           className={`thumbnailContainer ${

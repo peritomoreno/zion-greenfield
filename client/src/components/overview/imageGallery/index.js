@@ -42,7 +42,7 @@ const ImageGallery = ({
       >
         <FontAwesomeIcon
           icon={expanded ? faCompress : faExpand}
-          color="white"
+          // color="white"
           size="lg"
         />
       </button>
