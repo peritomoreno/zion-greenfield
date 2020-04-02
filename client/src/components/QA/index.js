@@ -8,10 +8,22 @@ const QA = ({ storeQuestions }) => {
   const [questions, setQuestions] = useState([]);
   const [showAddQuestion, setshowAddQuestion] = useState(false);
   const [questionPaginate, setQuestionPaginate] = useState(2);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     setQuestions(storeQuestions);
   }, [storeQuestions]);
+
+  useEffect(() => {
+    if (searchTerm.length < 3) {
+      setQuestions(storeQuestions);
+    } else {
+      const filtered = storeQuestions.filter((question) =>
+        question.question_body.toLowerCase().includes(searchTerm)
+      );
+      setQuestions(filtered);
+    }
+  }, [searchTerm, storeQuestions]);
 
   const handleAddQuestionModalClose = () => {
     setshowAddQuestion(false);
@@ -22,7 +34,7 @@ const QA = ({ storeQuestions }) => {
   };
 
   const handleLoadMoreQuestion = () => {
-    if (questionPaginate <= questions.length - 1) {
+    if (questionPaginate < questions.length) {
       setQuestionPaginate(questionPaginate + 2);
     }
   };
@@ -67,7 +79,7 @@ const QA = ({ storeQuestions }) => {
   return (
     <div id="qa" data-testid="qaTest">
       <h1>QUESTIONS & ANSWERS</h1>
-      <SearchQuestion />
+      <SearchQuestion term={searchTerm} setTerm={setSearchTerm} />
       {/* {FIXME: Console err: findDOMNode is deprecated in StrictMode} */}
       <QuestionModalForm
         show={showAddQuestion}
