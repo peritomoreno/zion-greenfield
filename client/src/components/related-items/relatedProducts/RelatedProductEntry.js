@@ -20,16 +20,6 @@ const reducer = (state, action) => {
   }
 };
 
-const initialState = { isCompareClicked: false };
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'toggleCompare':
-      return { isCompareClicked: !state.isCompareClicked };
-    default:
-      throw new Error();
-  }
-};
-
 const RelatedProductsEntry = ({
   category,
   name,
