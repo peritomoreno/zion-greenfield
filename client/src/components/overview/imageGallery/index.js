@@ -4,7 +4,13 @@ import { setThumbnail } from '../../../redux/actions/selected';
 import ImageCarousel from './ImageCarousel';
 import ThumbnailCarousel from './ThumbnailCarousel';
 
-const ImageGallery = ({ photos, thumbnailIndex, selectThumbnail }) => {
+const ImageGallery = ({
+  photos,
+  thumbnailIndex,
+  selectThumbnail,
+  expanded,
+  setExpanded
+}) => {
   return (
     <div data-testid="imageGallery" id="imageGallery">
       <ImageCarousel
@@ -17,6 +23,15 @@ const ImageGallery = ({ photos, thumbnailIndex, selectThumbnail }) => {
         thumbnailIndex={thumbnailIndex}
         selectThumbnail={selectThumbnail}
       />
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          setExpanded(!expanded);
+        }}
+      >
+        toggle expand
+      </button>
     </div>
   );
 };
