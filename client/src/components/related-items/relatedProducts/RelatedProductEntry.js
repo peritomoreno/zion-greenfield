@@ -4,11 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import ToggleDispatch from '../context';
 import ComparisonModal from '../comparisonModal/ComparisonModal';
+import changeProduct from '../../../redux/actions/changeProduct';
 import RatingStars from '../../RatingStars';
-import {
-  setProductsInfo,
-  getRelatedProduct
-} from '../../../redux/actions/related';
+
+const defaultImgae =
+  'https://images.squarespace-cdn.com/content/v1/5161eef2e4b05c308167a6fa/1555279090674-AG75CRP3YADFPC3XXUGO/ke17ZwdGBToddI8pDm48kN_ZoNdj1kv_gIvm4zjH76N7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jG2lbcDYBOeMi4OFSYem8AelHsSihC3tfiYK1eHEM7W3AVjJQSBul2wE-DqW7dygg/_MG_8028-1.jpg?format=1500w';
+
+const initialState = { isCompareClicked: false };
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'toggleCompare':
+      return { isCompareClicked: !state.isCompareClicked };
+    default:
+      throw new Error();
+  }
+};
 
 const initialState = { isCompareClicked: false };
 const reducer = (state, action) => {
@@ -26,14 +36,16 @@ const RelatedProductsEntry = ({
   price,
   productId,
   relatedProducts,
-  features
+  features,
+  initProduct
 }) => {
   const getImage = (relatedStyles) => {
     let results = null;
     relatedStyles.forEach((style) => {
       if (Number(style.product_id) === productId) {
         if (style.results.length > 0) {
-          results = style.results[0].photos[0].url;
+          const imgURL = style.results[0].photos[0].url;
+          results = imgURL === null ? defaultImgae : imgURL;
         }
       }
     });
@@ -44,19 +56,28 @@ const RelatedProductsEntry = ({
   const { styles } = relatedProducts;
   const imageStyle = {
     width: '100%',
-    height: '270px',
+    height: '295px',
     backgroundImage: `url(${getImage(styles)})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center'
   };
-
   return (
-    <div className="related-card" data-testid="related-product-entry">
+    <div
+      role="button"
+      tabIndex={0}
+      className="related-card"
+      data-testid="related-product-entry"
+      onClick={() => initProduct(productId)}
+      onKeyPress={() => {}}
+    >
       <button
         type="button"
         className="related-button"
-        onClick={() => dispatch({ type: 'toggleCompare' })}
+        onClick={(e) => {
+          e.stopPropagation();
+          dispatch({ type: 'toggleCompare' });
+        }}
       >
         <FontAwesomeIcon icon={faStar} />
       </button>
@@ -87,7 +108,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  _setProductsInfo: setProductsInfo,
-  _getRelatedProduct: getRelatedProduct
-})(RelatedProductsEntry);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    initProduct: (id) => dispatch(changeProduct(id))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RelatedProductsEntry);
