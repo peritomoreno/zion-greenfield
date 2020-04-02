@@ -19,14 +19,48 @@ class ReviewWidget extends React.Component {
     super(props);
 
     this.state = {
-      moreReviewsAvailable: false,
-      sortType: 'newest'
+      page: 1,
+      moreReviewsAvailable: true,
+      currentSort: 'newest'
     };
+
+    this.nextPage = this.nextPage.bind(this);
+    this.sortByNewest = this.sortByNewest.bind(this);
+    this.sortByHelpful = this.sortByHelpful.bind(this);
+    this.sortByRelevance = this.sortByRelevance.bind(this);
+  }
+
+  nextPage() {
+    const { productID } = this.props;
+    const { page, currentSort } = this.state;
+
+    moreReviews(productID, currentSort, page);
+  }
+
+  sortByNewest() {
+    const { filterNewest, productID } = this.props;
+
+    this.setState({ page: 1, currentSort: 'newest' });
+    filterNewest(productID);
+  }
+
+  sortByHelpful() {
+    const { filterHelpful, productID } = this.props;
+
+    this.setState({ page: 1, currentSort: 'helpful' });
+    filterHelpful(productID);
+  }
+
+  sortByRelevance() {
+    const { filterRelevance, productID } = this.props;
+
+    this.setState({ page: 1, currentSort: 'relevance' });
+    filterRelevance(productID);
   }
 
   render() {
     const { currentReviews, currentBreakdowns } = this.props;
-    console.log(currentBreakdowns);
+    const { currentSort, moreReviewsAvailable, page, productID } = this.state;
 
     return (
       <Container data-testid="reviews">
@@ -46,10 +80,16 @@ class ReviewWidget extends React.Component {
             <Row>
               <ReviewList
                 reviewList={currentReviews.results}
-                sortType={this.state.sortType}
-                filters={(filterByNewest, filterByHelpful, filterByRelevance)}
-                nextPage={moreReviews}
-                moreReviewsAvailable={this.state.moreReviewsAvailable}
+                currentSort={currentSort}
+                newest={this.sortByNewest}
+                helpful={this.sortByHelpful}
+                relevant={this.sortByRelevance}
+                page={page}
+                productID={productID}
+                nextPage={() => {
+                  this.nextPage();
+                }}
+                moreReviewsAvailable={moreReviewsAvailable}
               />
             </Row>
           </Col>
@@ -69,9 +109,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    filterByNewest: (id) => dispatch(filterByNewest(id)),
-    filterByHelpful: (id) => dispatch(filterByHelpful(id)),
-    filterByRelevance: (id) => dispatch(filterByRelevance(id)),
+    filterNewest: (id) => dispatch(filterByNewest(id)),
+    filterHelpful: (id) => dispatch(filterByHelpful(id)),
+    filterRelevance: (id) => dispatch(filterByRelevance(id)),
     moreReviews: (id, sort, page) => dispatch(moreReviews(id, sort, page))
   };
 };
