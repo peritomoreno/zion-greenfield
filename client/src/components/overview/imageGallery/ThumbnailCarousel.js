@@ -13,6 +13,7 @@ const ThumbnailCarousel = ({ photos, thumbnailIndex, selectThumbnail }) => {
           onKeyDown={() => selectThumbnail(index)}
           role="button"
           tabIndex={0}
+          key={photo.thumbnail_url}
         >
           <img src={photo.thumbnail_url} alt="" />
         </div>
