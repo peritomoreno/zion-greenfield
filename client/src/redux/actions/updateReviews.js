@@ -3,17 +3,17 @@ import setReviews from './setReviews';
 
 // Use API calls to init redux store
 
-const filterNewest = (id) => ({
+const filterNewest = (reviews) => ({
   type: `FILTER_BY_NEWEST`,
-  payload: id
+  payload: reviews
 });
-const filterHelpful = (id) => ({
+const filterHelpful = (reviews) => ({
   type: `FILTER_BY_HELPFUL`,
-  payload: id
+  payload: reviews
 });
-const filterRelevance = (id) => ({
+const filterRelevance = (reviews) => ({
   type: `FILTER_BY_RELEVANCE`,
-  payload: id
+  payload: reviews
 });
 
 export const filterByNewest = (id) => {

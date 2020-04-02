@@ -9,6 +9,14 @@ const currentReviewsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'SET_CURRENT_REVIEWS':
       return action.payload;
+    case 'FILTER_BY_NEWEST':
+      return action.payload;
+    case 'FILTER_BY_HELPFUL':
+      return action.payload;
+    case 'FILTER_BY_RELEVANCE':
+      return action.payload;
+    case 'NEXT_REVIEW_PAGE':
+      return action.payload;
     default:
       return state;
   }

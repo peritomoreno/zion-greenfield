@@ -152,6 +152,7 @@ sketch
 # End of https://www.gitignore.io/api/node,react,macos
 
 config.js
+firebaseConfig.js
 build/
 package-lock.json
 .vscode

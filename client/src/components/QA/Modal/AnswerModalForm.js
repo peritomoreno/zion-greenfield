@@ -6,7 +6,7 @@ import { Modal, Button, Form, Image } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import setQuestions from '../../../redux/actions/setQuestions';
 import { QA } from '../../../api';
-import firebaseConfig from '../../../firebaseConfig';
+import firebaseConfig from '../../../firebaseConfig.js';
 
 firebase.initializeApp(firebaseConfig);
 
