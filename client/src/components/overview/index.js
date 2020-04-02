@@ -9,7 +9,7 @@ import '../../styles/Overview.css';
 // const { selected, currentProduct, styles } = sampleStore;
 
 const Overview = () => (
-  <div data-testid="productOverview">
+  <div data-testid="productOverview" id="overview">
     <div className="row">
       <div className="col-md-8">
         <ImageGallery />
