@@ -1,3 +1,14 @@
+.ovBtn {
+  background-color: Transparent;
+  /* background-repeat: no-repeat; */
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: 0.1s ease all;
+  z-index: 1000;
+  padding: 1px 3px;
+}
+
 #imageGallery {
   position: relative;
 }
@@ -14,6 +25,14 @@
 
 #imageGallery.ovNormal .carousel-control-prev {
   left: 10%;
+}
+
+#expandBtn {
+  background-color: rgba(236, 236, 236, 0.5);
+  outline: none;
+  position: absolute;
+  top: 4%;
+  right: 4%;
 }
 
 #thumbnailCarousel {

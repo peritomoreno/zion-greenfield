@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
 import { setThumbnail } from '../../../redux/actions/selected';
 import ImageCarousel from './ImageCarousel';
 import ThumbnailCarousel from './ThumbnailCarousel';
@@ -31,12 +33,18 @@ const ImageGallery = ({
       />
       <button
         type="button"
+        id="expandBtn"
+        className="ovBtn"
         onClick={(e) => {
           e.preventDefault();
           setExpanded(!expanded);
         }}
       >
-        toggle expand
+        <FontAwesomeIcon
+          icon={expanded ? faCompress : faExpand}
+          color="white"
+          size="lg"
+        />
       </button>
     </div>
   );
