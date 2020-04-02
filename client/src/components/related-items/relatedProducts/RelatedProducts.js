@@ -78,6 +78,7 @@ const RelatedProducts = ({ relatedProducts }) => {
                 name={product.name}
                 price={product.default_price}
                 features={product.features}
+                rating={product.rating}
               />
             );
           })}
