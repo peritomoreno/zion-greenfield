@@ -14,12 +14,7 @@ const ImageCarousel = ({ photos, photoIndex, setPhotoIndex }) => {
     >
       {photos.map(({ url }) => (
         <Carousel.Item key={url}>
-          <img
-            className="w-100"
-            src={url}
-            alt="First slide"
-            style={{ objectFit: 'contain' }}
-          />
+          <img className="w-100" src={url} alt="First slide" />
         </Carousel.Item>
       ))}
     </Carousel>
