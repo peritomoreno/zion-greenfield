@@ -13,8 +13,8 @@ const AddOutfit = ({ addOutfitHandler }) => {
       <div>
         <div className="add-outfit-card-inner">
           <FontAwesomeIcon className="plus" icon={faPlus} />
-          <div className="">
-            <p style={{ color: 'rgb(93, 93, 93)' }}>Add to Outfit</p>
+          <div className="add-outfit-title">
+            <p>Add to Outfit</p>
           </div>
         </div>
       </div>

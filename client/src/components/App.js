@@ -6,6 +6,7 @@ import changeProduct from '../redux/actions/changeProduct';
 import Overview from './overview';
 import RelateAndCompare from './related-items/RelateAndCompare';
 import ReviewWidget from './reviews';
+import logo from '../styles/zionlogo.png';
 
 import QA from './QA';
 
@@ -19,6 +20,9 @@ function App({ initStore }) {
   return (
     <div className={isDarkMode ? 'darkmode' : ''}>
       <div className="container">
+        <div className="Banner">
+          <img className="logo" src={logo} alt="Logo" />
+        </div>
         <button
           type="button"
           className="darkmode-button"
@@ -34,9 +38,6 @@ function App({ initStore }) {
         </button>
         <br />
         <br />
-        <header>
-          <h1>Zion Greenfield</h1>
-        </header>
         <Overview />
         <br />
         <br />

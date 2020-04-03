@@ -162,6 +162,7 @@
 
 .comparing {
   margin-bottom: 5px;
+  margin-left: -3px;
 }
 
 .compare-current-name,
@@ -170,6 +171,7 @@
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 20px;
+  margin-left: -34px;
 }
 
 .compare-related-name {
