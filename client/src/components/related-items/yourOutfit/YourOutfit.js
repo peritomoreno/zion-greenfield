@@ -95,6 +95,7 @@ const YourOutfit = ({ outfit, addOutfitHandler, deleteOutfitHandler }) => {
                 name={product.name}
                 price={product.price}
                 deleteOutfitHandler={deleteOutfitHandler}
+                rating={product.rating}
               />
             );
           })}

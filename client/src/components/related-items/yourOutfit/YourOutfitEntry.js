@@ -9,6 +9,7 @@ const YourOutfitEntry = ({
   price,
   image,
   productId,
+  rating,
   deleteOutfitHandler
 }) => {
   const imageStyle = {
@@ -36,7 +37,7 @@ const YourOutfitEntry = ({
         <p className="related-category">{category}</p>
         <p className="related-name">{name}</p>
         <p className="related-price">${price}</p>
-        <RatingStars rating={5} />
+        <RatingStars rating={rating} />
       </div>
     </div>
   );

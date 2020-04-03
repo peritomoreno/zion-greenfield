@@ -36,14 +36,16 @@ class RelateAndCompare extends React.Component {
   }
 
   addOutfitHandler() {
-    const { currentProduct, selected } = this.props;
+    const { currentProduct, selected, rating } = this.props;
     const product = {
       id: currentProduct.id,
       name: currentProduct.name,
       category: currentProduct.category,
       price: currentProduct.default_price,
-      thumbnail_url: selected.style.photos[0].url
+      thumbnail_url: selected.style.photos[0].url,
+      rating
     };
+
     let storage = localStorage.getItem('yourOutfit');
     if (storage === null) {
       localStorage.setItem('yourOutfit', JSON.stringify([product]));
@@ -83,7 +85,8 @@ const mapStateToProps = (state) => {
   return {
     relatedProducts: state.relatedProducts,
     currentProduct: state.currentProduct,
-    selected: state.selected
+    selected: state.selected,
+    rating: state.currentBreakdowns.productRating
   };
 };
 
