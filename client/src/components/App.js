@@ -7,6 +7,7 @@ import Overview from './overview';
 import RelateAndCompare from './related-items/RelateAndCompare';
 import ReviewWidget from './reviews';
 import logo from '../styles/zionlogo.png';
+import search from '../styles/search.png';
 
 import QA from './QA';
 
@@ -22,6 +23,7 @@ function App({ initStore }) {
       <div className="container">
         <div className="Banner">
           <img className="logo" src={logo} alt="Logo" />
+          <img className="search" src={search} alt="search" />
         </div>
         <button
           type="button"

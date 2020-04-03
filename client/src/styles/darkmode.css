@@ -19,6 +19,12 @@
   height: 100%;
 }
 
+.search {
+  margin: 23px 20px 0 0;
+  height: 33%;
+  float: right;
+}
+
 .darkmode .Banner {
   background: linear-gradient(rgba(38, 38, 38), rgba(24, 24, 24), rgb(0, 0, 0));
 }
