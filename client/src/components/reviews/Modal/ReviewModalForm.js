@@ -83,6 +83,7 @@ const ReviewModalForm = ({
     };
 
     Reviews.postReview(productID, newReview);
+    handleClose();
   };
 
   return (

@@ -27,7 +27,7 @@ const ReviewTile = ({
 
   const [showTile, setShowTile] = useState(true);
   const [helpfulToggle, setHelpfulToggle] = useState(false);
-  const [showFullReview, showFullReviewToggle] = useState(longReview);
+  const [showFullReview, showFullReviewToggle] = useState(!longReview);
   const shortenedReview = (
     <div>
       <Card.Text>{`${body.slice(0, 246)}...`};</Card.Text>
