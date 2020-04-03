@@ -1,7 +1,7 @@
 import React from 'react';
+import { Card, Row, Button } from 'react-bootstrap';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RatingStars from '../../RatingStars';
-import { Card, Container, Row, Col, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Review from '../../../api/review';
 
 const dateFormatter = (dateStr) => {

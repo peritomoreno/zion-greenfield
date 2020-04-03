@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import * as firebase from 'firebase/app';
 // import 'firebase/storage';
 import { connect } from 'react-redux';
-import { Modal, Button, Form, Image } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 // import { v4 as uuidv4 } from 'uuid';
 // import firebaseConfig from '../../../firebaseConfig.js';
 import Reviews from '../../../api/review';
@@ -24,7 +24,8 @@ const ReviewModalForm = ({
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   //   const [selectedImage, setSelectedImage] = useState('');
-  const [imgUrls, setImgUrls] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [imgUrls, setImgUrls] = useState([]); // var will be used if image functionality added
   const charArr = Object.entries(characteristics);
   const dumberCharArr = [];
   charArr.forEach((ele) => {
