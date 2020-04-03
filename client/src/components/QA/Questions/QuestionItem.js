@@ -42,7 +42,7 @@ const QuestionItem = ({ currentQuestion }) => {
     <div data-testid="questionItem">
       <div className="row">
         <h5
-          className="col align-self-start"
+          className="col align-self-start dark"
           style={{ color: 'rgb(82, 82, 82)', fontWeight: 'bolder' }}
         >
           Q: {title}
