@@ -9,7 +9,6 @@ const defaultState = {
 const currentBreakdownsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'SET_CURRENT_BREAKDOWNS':
-      console.log(action.payload);
       const { ratings, recommended } = action.payload;
       let num = 0;
       let agg = 0;
@@ -23,8 +22,9 @@ const currentBreakdownsReducer = (state = defaultState, action) => {
 
       const prodScore = Math.round((agg / num) * 10) / 10;
       const starPercentages = {};
+      const totalReviews = recommended[1] + recommended[0];
       const recommendPercentage = Math.round(
-        (recommended[1] / (recommended[0] + recommended[1])) * 100
+        (recommended[1] / totalReviews) * 100
       );
 
       Object.keys(ratings).forEach((rating) => {
@@ -38,7 +38,8 @@ const currentBreakdownsReducer = (state = defaultState, action) => {
         threeStars: starPercentages['3'],
         fourStars: starPercentages['4'],
         fiveStars: starPercentages['5'],
-        recommendPercentage
+        recommendPercentage,
+        totalReviews
       });
 
       return action.payload;

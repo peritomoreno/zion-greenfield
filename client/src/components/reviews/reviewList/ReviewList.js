@@ -14,7 +14,8 @@ const ReviewList = ({
   currentlyShowing,
   page,
   productID,
-  characteristics
+  characteristics,
+  totalReviews
 }) => {
   const [showForm, setShowForm] = useState(false);
 
@@ -31,7 +32,7 @@ const ReviewList = ({
       <Col>
         <Row>
           <Col>
-            <h2>{reviewList.length} reviews, sorted by </h2>
+            <h2>{totalReviews} reviews, sorted by </h2>
           </Col>
           <Col>
             <Dropdown>

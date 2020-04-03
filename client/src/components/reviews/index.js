@@ -35,11 +35,13 @@ class ReviewWidget extends React.Component {
     const { productID, getMoreReviews, currentReviews } = this.props;
     const { page, currentSort, currentlyShowing } = this.state;
 
+    console.log(currentlyShowing);
+
     const remainingCachedReviews =
       currentReviews.results.length - currentlyShowing > 2
         ? 2
         : currentReviews.results.length - currentlyShowing;
-
+    console.log(remainingCachedReviews);
     const reviewsLeft = !(currentReviews.results.length === currentlyShowing);
 
     this.setState({
@@ -81,7 +83,7 @@ class ReviewWidget extends React.Component {
       currentlyShowing
     } = this.state;
     // eslint-disable-next-line react/destructuring-assignment
-    const { characteristics } = this.props.currentBreakdowns;
+    const { characteristics, totalReviews } = this.props.currentBreakdowns;
 
     return (
       <Container data-testid="reviews">
@@ -111,6 +113,7 @@ class ReviewWidget extends React.Component {
                 moreReviewsAvailable={moreReviewsAvailable}
                 currentlyShowing={currentlyShowing}
                 characteristics={characteristics}
+                totalReviews={totalReviews}
               />
             </Row>
           </Col>
