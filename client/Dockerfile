@@ -10,6 +10,9 @@ COPY . .
 EXPOSE 3000
 CMD npm start
 
+# Build image
+# In client folder
+# docker build -t zion-greenfield:1.0 .
 # To run this image
 # docker run -it -p 80:3000 zion-greenfield:1.0
 
