@@ -19,11 +19,13 @@
 #thumbnailCarousel {
   position: absolute;
   top: 50%;
+  left: 2%;
   transform: translateY(-50%);
   z-index: 100;
   width: 10%;
-  min-width: 40px;
-  margin: 0 2.5%;
+  min-width: 50px;
+  max-width: 10vh;
+  margin: 0;
   padding: 1% 1%;
   background-color: rgb(236, 236, 236, 0.5);
 }
@@ -60,9 +62,9 @@
 }
 
 .thumbnailContainer.selected img {
-  border-bottom: 5px solid slategray;
+  border-bottom: 5px solid black;
 }
 
 .thumbnailContainer img:hover {
-  border-bottom: 5px solid slategray;
+  border-bottom: 5px solid black;
 }

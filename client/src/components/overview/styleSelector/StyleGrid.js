@@ -18,6 +18,7 @@ const StyleGrid = ({
       {Array.isArray(styles) &&
         styles.map((style) => (
           <StyleEntry
+            key={style.style_id}
             thumbnailUrl={style.photos[0].thumbnail_url}
             isSelected={selectedStyleId === style.style_id}
             handleClick={() => {
