@@ -11,8 +11,11 @@ import {
   filterByRelevance,
   moreReviews
 } from '../../redux/actions/updateReviews';
+import Review from '../../api/review';
 
 import '../../styles/Reviews.css';
+
+const { markReported, markHelpful } = Review;
 
 class ReviewWidget extends React.Component {
   constructor(props) {
@@ -31,40 +34,42 @@ class ReviewWidget extends React.Component {
     this.sortByHelpful = this.sortByHelpful.bind(this);
     this.sortByRelevance = this.sortByRelevance.bind(this);
     this.setStarFilter = this.setStarFilter.bind(this);
+    this.setReviewReported = this.setReviewReported.bind(this);
+    this.setReviewHelpful = this.setReviewHelpful.bind(this);
   }
 
   setStarFilter(rating) {
     const { starFilter } = this.state;
-    let updatedFilter = Object.assign(starFilter, {
-      rating: !starFilter[rating]
+    const showAll = { 1: false, 2: false, 3: false, 4: false, 5: false };
+    let updatedFilter;
+
+    updatedFilter = Object.assign(starFilter, {
+      [rating]: !starFilter[rating]
     });
 
     if (
-      !(
-        updatedFilter[0] &&
-        updatedFilter[0] &&
-        updatedFilter[0] &&
-        updatedFilter[0] &&
-        updatedFilter[0]
-      )
+      updatedFilter[1] &&
+      updatedFilter[2] &&
+      updatedFilter[3] &&
+      updatedFilter[4] &&
+      updatedFilter[5]
     ) {
-      updatedFilter = { 1: false, 2: false, 3: false, 4: false, 5: false };
+      updatedFilter = showAll;
     }
 
-    this.setState({ starFilter: updatedFilter });
+    this.setState({ starFilter: updatedFilter }, () => {
+      console.log('starFilter: ', starFilter);
+    });
   }
 
   nextPage() {
     const { productID, getMoreReviews, currentReviews } = this.props;
     const { page, currentSort, currentlyShowing } = this.state;
 
-    console.log(currentlyShowing);
-
     const remainingCachedReviews =
       currentReviews.results.length - currentlyShowing > 2
         ? 2
         : currentReviews.results.length - currentlyShowing;
-    console.log(remainingCachedReviews);
     const reviewsLeft = !(currentReviews.results.length === currentlyShowing);
 
     this.setState({
@@ -97,6 +102,14 @@ class ReviewWidget extends React.Component {
     filterRelevance(productID);
   }
 
+  setReviewHelpful(reviewID) {
+    markHelpful(reviewID);
+  }
+
+  setReviewReported(reviewID) {
+    markReported(reviewID);
+  }
+
   render() {
     const { currentReviews, currentBreakdowns, productID } = this.props;
     const {
@@ -120,6 +133,7 @@ class ReviewWidget extends React.Component {
               <RatingsBreakdown
                 reviewData={currentBreakdowns}
                 setStarFilter={this.setStarFilter}
+                starFilter={starFilter}
               />
             </Row>
             <Row className="product-breakdowns">
@@ -142,6 +156,8 @@ class ReviewWidget extends React.Component {
                 characteristics={characteristics}
                 totalReviews={totalReviews}
                 starFilter={starFilter}
+                markReported={this.setReviewReported}
+                markHelpful={this.setReviewHelpful}
               />
             </Row>
           </Col>

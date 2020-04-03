@@ -16,7 +16,9 @@ const ReviewList = ({
   productID,
   characteristics,
   totalReviews,
-  starFilter
+  starFilter,
+  markReported,
+  markHelpful
 }) => {
   const [showForm, setShowForm] = useState(false);
 
@@ -54,7 +56,7 @@ const ReviewList = ({
                     helpful();
                   }}
                 >
-                  Helpful
+                  <span class="helpful-label">Helpful</span>
                 </Dropdown.Item>
                 <Dropdown.Item
                   onSelect={() => {
@@ -70,17 +72,22 @@ const ReviewList = ({
         <Row className="reviews">
           <Col>
             {reviewList.slice(0, currentlyShowing).map((review) => (
-              <ReviewTile
-                key={review.review_id}
-                summary={review.summary}
-                body={review.body}
-                reviewerName={review.reviewer_name}
-                date={review.date}
-                rating={review.rating}
-                helpful={review.helpfulness}
-                reviewID={review.review_id}
-                hidden={starFilter[review.rating]}
-              />
+              <div>
+                {!starFilter[review.rating] && (
+                  <ReviewTile
+                    key={review.review_id}
+                    summary={review.summary}
+                    body={review.body}
+                    reviewerName={review.reviewer_name}
+                    date={review.date}
+                    rating={review.rating}
+                    helpful={review.helpfulness}
+                    reviewID={review.review_id}
+                    markHelpful={markHelpful}
+                    markReported={markReported}
+                  />
+                )}
+              </div>
             ))}
 
             <Row>

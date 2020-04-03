@@ -19,6 +19,10 @@
   float: right;
 }
 
+.shrinkify {
+  font-size: 15.5px;
+}
+
 .review-tile {
   margin: 10px;
 }
@@ -56,10 +60,12 @@
 
 .review-ratings-bars-label {
   width: 10%;
+  padding-bottom: 5px;
 }
 
 .review-ratings-bar {
   width: 90%;
+  margin-top: 6px;
 }
 
 /* Don't judge me CSS is hard :( abandon all hope ye who read after here */
