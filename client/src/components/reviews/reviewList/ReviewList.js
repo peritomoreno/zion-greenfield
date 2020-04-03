@@ -56,7 +56,7 @@ const ReviewList = ({
                     helpful();
                   }}
                 >
-                  <span class="helpful-label">Helpful</span>
+                  <span className="helpful-label">Helpful</span>
                 </Dropdown.Item>
                 <Dropdown.Item
                   onSelect={() => {
@@ -83,6 +83,8 @@ const ReviewList = ({
                     rating={review.rating}
                     helpful={review.helpfulness}
                     reviewID={review.review_id}
+                    response={review.response}
+                    recommend={review.recommend}
                     markHelpful={markHelpful}
                     markReported={markReported}
                   />

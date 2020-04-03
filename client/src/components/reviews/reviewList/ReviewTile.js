@@ -21,7 +21,9 @@ const ReviewTile = ({
   helpful,
   reviewID,
   markHelpful,
-  markReported
+  markReported,
+  recommend,
+  response
 }) => {
   const longReview = body.length > 249;
 
@@ -78,10 +80,22 @@ const ReviewTile = ({
               <Card.Title>{summary}</Card.Title>
               <Card.Text>
                 {showFullReview || !longReview ? fullReview : shortenedReview}
+                {recommend && (
+                  <div className="recommend-checkmark">
+                    <strong>✔ I recommend this product</strong>
+                  </div>
+                )}
+                {!(response === 'null' || response === null) && (
+                  <div className="seller-response">
+                    <strong>Response:</strong>
+                    <br />
+                    {response}
+                  </div>
+                )}
               </Card.Text>
             </Card.Body>
             <Card.Footer>
-              <span class="text-muted shrinkify">Helpful?</span>
+              <span className="text-muted shrinkify">Helpful?</span>
               <Button
                 variant="light"
                 size="sm"
