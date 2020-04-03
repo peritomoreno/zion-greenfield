@@ -41,11 +41,7 @@ const ImageGallery = ({
           setExpanded(!expanded);
         }}
       >
-        <FontAwesomeIcon
-          icon={expanded ? faCompress : faExpand}
-          // color="white"
-          size="lg"
-        />
+        <FontAwesomeIcon icon={expanded ? faCompress : faExpand} size="lg" />
       </button>
     </div>
   );

@@ -4,6 +4,7 @@ import ImageGallery from './imageGallery';
 import ProductDescription from './productDescription';
 import StyleSelector from './styleSelector';
 import CartForm from './cartForm';
+import Zoomer from './imageGallery/Zoomer';
 import '../../styles/Overview.css';
 
 // const { selected, currentProduct, styles } = sampleStore;
@@ -25,6 +26,7 @@ const Overview = () => {
       </div>
 
       <ProductDescription />
+      <Zoomer />
     </div>
   );
 };
