@@ -36,10 +36,11 @@ export const getRelatedProduct = (currentProductId) => (dispatch) => {
           .then(() => Product.getStyles(id))
           .then((res) => {
             dispatch(setRelatedStyles(res));
+          })
+          .then(() => Reviews.getMetaData(id))
+          .then((meta) => {
+            dispatch(setRelatedRating(meta));
           });
-        Reviews.getMetaData(id).then((meta) => {
-          dispatch(setRelatedRating(meta));
-        });
       });
     });
 };

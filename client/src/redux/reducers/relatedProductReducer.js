@@ -38,7 +38,7 @@ const relatedProductReducer = (state = defaultRelatedState, action) => {
         products: state.products.map((product) => {
           return {
             ...product,
-            rating: calculateRatingFromReview(action.payload)
+            rating: calculateRatingFromReview(action.payload.ratings)
           };
         })
       };
