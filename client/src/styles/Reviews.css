@@ -1,3 +1,5 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css);
+
 .review-card {
   border: 1px solid black;
   position: relative;
@@ -53,4 +55,168 @@
 
 .review-ratings-bar {
   width: 90%;
+}
+
+/* Don't judge me CSS is hard :( abandon all hope ye who read after here */
+
+input[type='radio']#overall-rating-star-1 {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+input[type='radio']#overall-rating-star-1 ~ label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  content: '\2605';
+  letter-spacing: 10px;
+  font-size: 1.2em;
+  color: #535353;
+  width: 1.4em;
+}
+
+input[type='radio']#overall-rating-star-1:checked ~ label:before {
+  content: '\2605';
+  font-size: 1.2em;
+  color: gold;
+  letter-spacing: 5px;
+}
+
+input[type='radio']#overall-rating-star-1:focus ~ label:before,
+input[type='radio']#overall-rating-star-1:focus ~ label {
+  color: gold;
+}
+
+input[type='radio']#overall-rating-star-2 {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+input[type='radio']#overall-rating-star-2 ~ label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  content: '\2605';
+  letter-spacing: 10px;
+  font-size: 1.2em;
+  color: #535353;
+  width: 1.4em;
+}
+
+input[type='radio']#overall-rating-star-2:checked ~ label:before {
+  content: '\2605';
+  font-size: 1.2em;
+  color: gold;
+  letter-spacing: 5px;
+}
+
+input[type='radio']#overall-rating-star-2:focus ~ label:before,
+input[type='radio']#overall-rating-star-2:focus ~ label {
+  color: gold;
+}
+input[type='radio']#overall-rating-star-3 {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+input[type='radio']#overall-rating-star-3 ~ label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  content: '\2605';
+  letter-spacing: 10px;
+  font-size: 1.2em;
+  color: #535353;
+  width: 1.4em;
+}
+
+input[type='radio']#overall-rating-star-3:checked ~ label:before {
+  content: '\2605';
+  font-size: 1.2em;
+  color: gold;
+  letter-spacing: 5px;
+}
+
+input[type='radio']#overall-rating-star-3:focus ~ label:before,
+input[type='radio']#overall-rating-star-3:focus ~ label {
+  color: gold;
+}
+input[type='radio']#overall-rating-star-4 {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+input[type='radio']#overall-rating-star-4 ~ label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  content: '\2605';
+  letter-spacing: 10px;
+  font-size: 1.2em;
+  color: #535353;
+  width: 1.4em;
+}
+
+input[type='radio']#overall-rating-star-4:checked ~ label:before {
+  content: '\2605';
+  font-size: 1.2em;
+  color: gold;
+  letter-spacing: 5px;
+}
+
+input[type='radio']#overall-rating-star-4:focus ~ label:before,
+input[type='radio']#overall-rating-star-4:focus ~ label {
+  color: gold;
+}
+input[type='radio']#overall-rating-star-5 {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+input[type='radio']#overall-rating-star-5 ~ label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  content: '\2605';
+  letter-spacing: 10px;
+  font-size: 1.2em;
+  color: #535353;
+  width: 1.4em;
+}
+
+input[type='radio']#overall-rating-star-5:checked ~ label:before {
+  content: '\2605';
+  font-size: 1.2em;
+  color: gold;
+  letter-spacing: 5px;
+}
+
+input[type='radio']#overall-rating-star-5:focus ~ label:before,
+input[type='radio']#overall-rating-star-5:focus ~ label {
+  color: gold;
 }

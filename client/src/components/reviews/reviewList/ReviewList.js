@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap';
 import ReviewTile from './ReviewTile';
+import ReviewModalForm from '../Modal/ReviewModalForm';
 
-const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
+const ReviewList = ({
+  reviewList,
+  currentSort,
+  newest,
+  helpful,
+  relevant,
+  nextPage,
+  moreReviewsAvailable,
+  page,
+  productID,
+  characteristics
+}) => {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <Container data-testid="reviews">
+      <div>
+        <ReviewModalForm
+          show={showForm}
+          handleClose={() => setShowForm(false)}
+          productID={productID}
+          characteristics={characteristics}
+        />
+      </div>
       <Col>
         <Row>
           <Col>
@@ -13,13 +35,31 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
           <Col>
             <Dropdown>
               <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                {sortType}
+                {currentSort}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item>Helpful</Dropdown.Item>
-                <Dropdown.Item>Newest</Dropdown.Item>
-                <Dropdown.Item>Relevance</Dropdown.Item>
+                <Dropdown.Item
+                  onSelect={() => {
+                    newest();
+                  }}
+                >
+                  Newest
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onSelect={() => {
+                    helpful();
+                  }}
+                >
+                  Helpful
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onSelect={() => {
+                    relevant();
+                  }}
+                >
+                  Relevance
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Col>
@@ -35,14 +75,30 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
                 date={review.date}
                 rating={review.rating}
                 helpful={review.helpfulness}
+                reviewID={review.review_id}
               />
             ))}
 
             <Row>
               {moreReviewsAvailable && (
-                <Button variant="light">Load more reviews</Button>
+                <Button
+                  variant="light"
+                  onClick={() => {
+                    nextPage(productID, currentSort, page + 1);
+                  }}
+                >
+                  {' '}
+                  Load more reviews
+                </Button>
               )}{' '}
-              <Button variant="light">Submit Review</Button>
+              <Button
+                variant="light"
+                onClick={() => {
+                  setShowForm(true);
+                }}
+              >
+                Submit Review
+              </Button>
             </Row>
           </Col>
         </Row>

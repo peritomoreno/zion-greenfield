@@ -2,6 +2,7 @@ import React from 'react';
 import RatingStars from '../../RatingStars';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Review from '../../../api/review';
 
 const dateFormatter = (dateStr) => {
   return new Date(dateStr).toLocaleDateString('en-US', {
@@ -11,11 +12,20 @@ const dateFormatter = (dateStr) => {
   });
 };
 
-const ReviewTile = ({ summary, body, reviewerName, date, rating, helpful }) => {
+const ReviewTile = ({
+  summary,
+  body,
+  reviewerName,
+  date,
+  rating,
+  helpful,
+  reviewID
+}) => {
   const displayDate = dateFormatter(date);
+  const { markHelpful, markReported } = Review;
 
   return (
-    <Row>
+    <Row md={1}>
       <Card border="light" className="review-tile">
         <Card.Header>
           <span className="card-rating-stars">
@@ -30,15 +40,9 @@ const ReviewTile = ({ summary, body, reviewerName, date, rating, helpful }) => {
           <Card.Text>{body}</Card.Text>
         </Card.Body>
         <Card.Footer>
-          <small className="text-muted">
-            Helpful?
-            <a href="#" className="btn btn-link">
-              Yes ({helpful})
-            </a>
-            <a href="#" className="btn btn-link">
-              Report
-            </a>
-          </small>
+          Helpful?
+          <Button onClick={() => markHelpful(reviewID)}>Yes ({helpful})</Button>
+          <Button onClick={() => markReported(reviewID)}>Report</Button>
         </Card.Footer>
       </Card>
     </Row>
@@ -46,13 +50,3 @@ const ReviewTile = ({ summary, body, reviewerName, date, rating, helpful }) => {
 };
 
 export default ReviewTile;
-
-/*
-<td className="review-card" data-testid="reviewTile">
-      <p>{summary}</p>
-      <p>{body}</p>
-      <p>{reviewerName}</p>
-      <p>{date}</p>
-    </td>
-
-*/

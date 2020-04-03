@@ -14,25 +14,9 @@ const Reviews = {
   // 4. Mark helpful/report
   //    Implemented through puts
 
-  getReviews: (id, currPage = 1) => {
+  getReviews: (id, currPage = 1, sort = 'newest') => {
     return fetch(
-      `${baseURL}/reviews/${id}/list/?page=${currPage}&count=4&sort=newest`
-    ).then((res) => {
-      return res.json();
-    });
-  },
-
-  getReviewsByHelpful: (id, currPage = 1) => {
-    return fetch(
-      `${baseURL}/reviews/${id}/list/?page=${currPage}&count=4&sort=helpful`
-    ).then((res) => {
-      return res.json();
-    });
-  },
-
-  getReviewsByRelevant: (id, currPage = 1) => {
-    return fetch(
-      `${baseURL}/reviews/${id}/list/?page=${currPage}&count=4&sort=relevant`
+      `${baseURL}/reviews/${id}/list/?page=${currPage}&count=4&sort=${sort}`
     ).then((res) => {
       return res.json();
     });

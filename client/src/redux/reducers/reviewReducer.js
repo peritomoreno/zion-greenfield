@@ -1,9 +1,17 @@
-const defaultState = {
-  product: 0,
-  page: 0,
-  count: 0,
-  results: []
-};
+const defaultState = [
+  {
+    review_id: 0,
+    rating: 5,
+    summary: 'Loading Reviews',
+    recommend: 0,
+    response: null,
+    body: '...',
+    date: '2020-02-26T00:00:00.000Z',
+    reviewer_name: '',
+    helpfulness: 0,
+    photos: []
+  }
+];
 
 const currentReviewsReducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -16,10 +24,7 @@ const currentReviewsReducer = (state = defaultState, action) => {
     case 'FILTER_BY_RELEVANCE':
       return action.payload;
     case 'NEXT_REVIEW_PAGE':
-      const newResults = state.results.concat(action.payload.results);
-      const newState = Object.assign({}, state);
-      newState.results = newResults;
-      return newState;
+      return action.payload;
     default:
       return state;
   }

@@ -1,10 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import ReviewList from './reviewList/ReviewList';
 import RatingsBreakdown from './ratingsBreakdown/RatingsBreakdown';
 import ProductBreakdown from './productBreakdown/ProductBreakdown';
+import {
+  filterByNewest,
+  filterByHelpful,
+  filterByRelevance,
+  moreReviews
+} from '../../redux/actions/updateReviews';
 
 import '../../styles/Reviews.css';
 
@@ -13,14 +19,51 @@ class ReviewWidget extends React.Component {
     super(props);
 
     this.state = {
-      moreReviewsAvailable: false,
-      sortType: 'newest'
+      page: 1,
+      moreReviewsAvailable: true,
+      currentSort: 'newest'
     };
+
+    this.nextPage = this.nextPage.bind(this);
+    this.sortByNewest = this.sortByNewest.bind(this);
+    this.sortByHelpful = this.sortByHelpful.bind(this);
+    this.sortByRelevance = this.sortByRelevance.bind(this);
+  }
+
+  nextPage() {
+    const { productID, getMoreReviews } = this.props;
+    const { page, currentSort } = this.state;
+
+    this.setState({ page: page + 1 });
+
+    getMoreReviews(productID, page + 1, currentSort);
+  }
+
+  sortByNewest() {
+    const { filterNewest, productID } = this.props;
+
+    this.setState({ page: 1, currentSort: 'newest' });
+    filterNewest(productID);
+  }
+
+  sortByHelpful() {
+    const { filterHelpful, productID } = this.props;
+
+    this.setState({ page: 1, currentSort: 'helpful' });
+    filterHelpful(productID);
+  }
+
+  sortByRelevance() {
+    const { filterRelevance, productID } = this.props;
+
+    this.setState({ page: 1, currentSort: 'relevance' });
+    filterRelevance(productID);
   }
 
   render() {
-    const { currentReviews, currentBreakdowns } = this.props;
-    console.log(currentBreakdowns);
+    const { currentReviews, currentBreakdowns, productID } = this.props;
+    const { currentSort, moreReviewsAvailable, page } = this.state;
+    const { characteristics } = this.props.currentBreakdowns;
 
     return (
       <Container data-testid="reviews">
@@ -40,8 +83,15 @@ class ReviewWidget extends React.Component {
             <Row>
               <ReviewList
                 reviewList={currentReviews.results}
-                sortType={this.state.sortType}
-                moreReviewsAvailable={this.state.moreReviewsAvailable}
+                currentSort={currentSort}
+                newest={this.sortByNewest}
+                helpful={this.sortByHelpful}
+                relevant={this.sortByRelevance}
+                page={page}
+                productID={productID}
+                nextPage={this.nextPage}
+                moreReviewsAvailable={moreReviewsAvailable}
+                characteristics={characteristics}
               />
             </Row>
           </Col>
@@ -54,8 +104,18 @@ class ReviewWidget extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentReviews: state.currentReviews,
-    currentBreakdowns: state.currentBreakdowns
+    currentBreakdowns: state.currentBreakdowns,
+    productID: state.currentProduct.id
   };
 };
 
-export default connect(mapStateToProps)(ReviewWidget);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterNewest: (id) => dispatch(filterByNewest(id)),
+    filterHelpful: (id) => dispatch(filterByHelpful(id)),
+    filterRelevance: (id) => dispatch(filterByRelevance(id)),
+    getMoreReviews: (id, page, sort) => dispatch(moreReviews(id, page, sort))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewWidget);
