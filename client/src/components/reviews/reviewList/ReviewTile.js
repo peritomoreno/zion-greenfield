@@ -23,8 +23,41 @@ const ReviewTile = ({
   markHelpful,
   markReported
 }) => {
+  const longReview = body.length > 249;
+
   const [showTile, setShowTile] = useState(true);
   const [helpfulToggle, setHelpfulToggle] = useState(false);
+  const [showFullReview, showFullReviewToggle] = useState(longReview);
+  const shortenedReview = (
+    <div>
+      <Card.Text>{`${body.slice(0, 246)}...`};</Card.Text>
+      <Button
+        variant="light light-outline"
+        size="sm"
+        onClick={() => {
+          showFullReviewToggle(true);
+        }}
+      >
+        show more
+      </Button>
+    </div>
+  );
+  const fullReview = (
+    <div>
+      <Card.Text>{body}</Card.Text>
+      {longReview && (
+        <Button
+          variant="light light-outline"
+          size="sm"
+          onClick={() => {
+            showFullReviewToggle(false);
+          }}
+        >
+          show less
+        </Button>
+      )}
+    </div>
+  );
   const displayDate = dateFormatter(date);
   // const { markHelpful, markReported } = Review;
 
@@ -43,7 +76,9 @@ const ReviewTile = ({
             </Card.Header>
             <Card.Body>
               <Card.Title>{summary}</Card.Title>
-              <Card.Text>{body}</Card.Text>
+              <Card.Text>
+                {showFullReview || !longReview ? fullReview : shortenedReview}
+              </Card.Text>
             </Card.Body>
             <Card.Footer>
               <span class="text-muted shrinkify">Helpful?</span>

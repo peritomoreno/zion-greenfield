@@ -82,11 +82,7 @@ const ReviewModalForm = ({
       characteristics: reviewCharacteristics
     };
 
-    const response = await Reviews.postReview(productID, newReview);
-
-    if (!response.error) {
-      alert('review submitted!');
-    }
+    Reviews.postReview(productID, newReview);
   };
 
   return (
