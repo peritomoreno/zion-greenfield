@@ -9,7 +9,9 @@ const FeatureList = ({ features }) => {
     <div data-testid="featureList">
       <ul>
         {features.map(({ feature, value }) => (
-          <li>{`${feature}${isValid(value) ? `: ${value}` : ''}`}</li>
+          <li key={feature + value}>{`${feature}${
+            isValid(value) ? `: ${value}` : ''
+          }`}</li>
         ))}
       </ul>
     </div>

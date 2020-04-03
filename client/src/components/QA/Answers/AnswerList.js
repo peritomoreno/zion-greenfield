@@ -31,7 +31,8 @@ const AnswerList = ({ answers, handleLoadMoreAnswer, showLoadMore }) => {
               border: 'none',
               paddingLeft: '0px',
               color: 'rgb(88,88,88)',
-              outline: 'none'
+              outline: 'none',
+              background: 'white'
             }}
           >
             LOAD MORE ANSWERS

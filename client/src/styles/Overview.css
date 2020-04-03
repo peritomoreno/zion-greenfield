@@ -1,9 +1,17 @@
-#imageGallery {
-  position: relative;
+.ovBtn {
+  background-color: Transparent;
+  /* background-repeat: no-repeat; */
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: 0.1s ease all;
+  z-index: 1000;
 }
 
-.carousel {
+#imageGallery {
+  position: relative;
   background-color: rgb(236, 236, 236);
+  height: 60vh;
 }
 
 .carousel img {
@@ -12,18 +20,35 @@
   object-fit: contain;
 }
 
-.carousel-control-prev {
+#imageGallery.ovNormal .carousel-control-prev {
   left: 10%;
+}
+
+#expandBtn {
+  padding: 2px 4px;
+  color: white;
+  background-color: rgba(236, 236, 236, 0.5);
+  border-radius: 100%;
+  outline: none;
+  position: absolute;
+  top: 4%;
+  right: 4%;
+}
+
+.carousel-indicators li {
+  border-bottom-width: 20px;
 }
 
 #thumbnailCarousel {
   position: absolute;
   top: 50%;
+  left: 2%;
   transform: translateY(-50%);
   z-index: 100;
   width: 10%;
-  min-width: 40px;
-  margin: 0 2.5%;
+  min-width: 50px;
+  max-width: 10vh;
+  margin: 0;
   padding: 1% 1%;
   background-color: rgb(236, 236, 236, 0.5);
 }
@@ -60,9 +85,33 @@
 }
 
 .thumbnailContainer.selected img {
-  border-bottom: 5px solid slategray;
+  border-bottom: 5px solid black;
 }
 
 .thumbnailContainer img:hover {
-  border-bottom: 5px solid slategray;
+  border-bottom: 5px solid black;
+}
+
+.zoom {
+  position: relative;
+  height: 100%;
+  width: auto;
+  overflow: hidden;
+  display: none;
+}
+
+#imageGallery.ovZoomed .zoom {
+  display: block;
+}
+
+.zoomPhoto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.25s ease-out;
 }

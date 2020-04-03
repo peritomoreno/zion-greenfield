@@ -156,3 +156,5 @@ firebaseConfig.js
 build/
 package-lock.json
 .vscode
+
+firebaseConfig.js

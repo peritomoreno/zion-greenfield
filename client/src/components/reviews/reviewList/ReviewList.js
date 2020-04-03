@@ -37,7 +37,7 @@ const ReviewList = ({
           </Col>
           <Col>
             <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
+              <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                 {currentSort}
               </Dropdown.Toggle>
 

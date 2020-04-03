@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronRight,
@@ -18,10 +18,32 @@ const YourOutfit = ({ outfit, addOutfitHandler, deleteOutfitHandler }) => {
   };
 
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [rightButtonPosition, setRightButtonPosition] = useState(0);
 
   const handleScroll = () => {
     setScrollPosition(scroller.scrollLeft);
   };
+
+  const updateRightButtonPosition = () => {
+    if (scroller !== null) {
+      setRightButtonPosition(
+        window.innerWidth - scroller.getBoundingClientRect().right
+      );
+    }
+  };
+
+  useEffect(() => {
+    updateRightButtonPosition();
+  });
+
+  const handleResize = () => {
+    updateRightButtonPosition();
+  };
+
+  React.useEffect(() => {
+    window.addEventListener('resize', handleResize);
+  });
+
   return (
     <div className="related-container">
       <p className="related-title">Your Outfit</p>
@@ -52,6 +74,9 @@ const YourOutfit = ({ outfit, addOutfitHandler, deleteOutfitHandler }) => {
               ? 'hide-button'
               : ''
           }`}
+          style={{
+            right: rightButtonPosition
+          }}
           onClick={() => {
             handleRightClick();
           }}

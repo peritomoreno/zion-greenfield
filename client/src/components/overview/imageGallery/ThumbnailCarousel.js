@@ -1,9 +1,14 @@
 import React from 'react';
 
-const ThumbnailCarousel = ({ photos, thumbnailIndex, selectThumbnail }) => {
+const ThumbnailCarousel = ({
+  photos,
+  thumbnailIndex,
+  selectThumbnail,
+  hidden
+}) => {
   return (
-    <div id="thumbnailCarousel">
-      {photos.map((photo, index) => (
+    <div id="thumbnailCarousel" className={`${hidden ? 'd-none' : null}`}>
+      {photos.slice(0, 6).map((photo, index) => (
         // <div className="row">
         <div
           className={`thumbnailContainer ${
@@ -13,6 +18,7 @@ const ThumbnailCarousel = ({ photos, thumbnailIndex, selectThumbnail }) => {
           onKeyDown={() => selectThumbnail(index)}
           role="button"
           tabIndex={0}
+          key={photo.thumbnail_url}
         >
           <img src={photo.thumbnail_url} alt="" />
         </div>
