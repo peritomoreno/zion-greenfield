@@ -22,7 +22,14 @@ const ImageModal = ({ url, show, setShow }) => {
           padding: '0px'
         }}
       >
-        <Image src={url} onClick={() => setShow(false)} />
+        <Image
+          src={url}
+          onClick={() => setShow(false)}
+          style={{
+            maxWidth: window.innerWidth * 0.8,
+            maxHeight: window.innerHeight
+          }}
+        />
       </Modal.Body>
     </Modal>
   );

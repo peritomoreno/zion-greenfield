@@ -7,7 +7,8 @@ import ComparisonModal from '../comparisonModal/ComparisonModal';
 import changeProduct from '../../../redux/actions/changeProduct';
 import RatingStars from '../../RatingStars';
 
-const defaultImgae = 'https://images.squarespace-cdn.com/content/v1/5161eef2e4b05c308167a6fa/1555279090674-AG75CRP3YADFPC3XXUGO/ke17ZwdGBToddI8pDm48kN_ZoNdj1kv_gIvm4zjH76N7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jG2lbcDYBOeMi4OFSYem8AelHsSihC3tfiYK1eHEM7W3AVjJQSBul2wE-DqW7dygg/_MG_8028-1.jpg?format=1500w';
+const defaultImgae =
+  'https://s7d5.scene7.com/is/image/UrbanOutfitters/55514509_005_b?$xlarge$&hei=900&qlt=80&fit=constrain';
 const initialState = { isCompareClicked: false };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -25,7 +26,8 @@ const RelatedProductsEntry = ({
   productId,
   relatedProducts,
   features,
-  initProduct
+  initProduct,
+  rating
 }) => {
   const getImage = (relatedStyles) => {
     let results = null;
@@ -50,6 +52,7 @@ const RelatedProductsEntry = ({
     backgroundSize: 'cover',
     backgroundPosition: 'center'
   };
+  // console.log(rating);
   return (
     <div
       role="button"
@@ -76,7 +79,7 @@ const RelatedProductsEntry = ({
         <p className="related-category">{category}</p>
         <p className="related-name">{name}</p>
         <p className="related-price">${price}</p>
-        <RatingStars rating={5} />
+        <RatingStars rating={rating} />
       </div>
       <div className="related-modal-div">
         {toggle.isCompareClicked ? (

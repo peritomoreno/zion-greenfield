@@ -1,0 +1,194 @@
+.darkmode-button {
+  background: none;
+  border: none;
+  outline: none;
+  color: rgb(255, 225, 0);
+  position: fixed;
+  font-size: 25px;
+  right: 15px;
+  bottom: 15px;
+  transition: 0.2s ease all;
+}
+
+.darkmode-button:focus {
+  background: none;
+  border: none;
+  outline: none;
+  color: rgb(255, 225, 0);
+}
+
+.darkmode-button:hover {
+  font-size: 45px;
+}
+
+body .darkmode {
+  background-color: rgb(0, 0, 0);
+  color: rgb(230, 230, 230);
+}
+
+.darkmode .carousel-inner {
+  background-color: rgb(17, 17, 17);
+}
+
+.darkmode .form-control {
+  background-color: rgb(17, 17, 17);
+  border-color: rgb(114, 114, 114);
+  color: rgb(206, 206, 206);
+}
+
+.darkmode .form-control:hover {
+  background-image: linear-gradient(
+    to bottom right,
+    #833ab4,
+    #e2243e,
+    #fd522b,
+    #fcb045
+  );
+}
+
+.darkmode .add-outfit-card-inner {
+  color: rgb(255, 255, 255);
+}
+
+.darkmode .related-gallery-button {
+  color: #bababa;
+}
+
+.darkmode .related-gallery-button:hover {
+  color: #fd522b;
+}
+
+.darkmode #thumbnailCarousel {
+  background-color: rgba(17, 17, 17, 0.3);
+}
+
+.darkmode #imageGallery {
+  margin-bottom: 15px;
+}
+
+.darkmode .related-gallery-button.right {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 1)
+  );
+}
+
+.darkmode .related-gallery-button.left {
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 1)
+  );
+}
+
+.darkmode .related-card {
+  border-color: rgb(114, 114, 114);
+  box-shadow: 0 0 20px rgb(0, 0, 0);
+  border-width: 1.7px;
+  background-color: rgb(17, 17, 17);
+}
+
+.darkmode .related-card:hover {
+  border-color: rgb(211, 211, 211);
+}
+
+.darkmode .add-outfit-card {
+  background-color: rgb(34, 34, 34);
+}
+
+.darkmode .add-outfit-card:hover {
+  background-image: linear-gradient(
+    to bottom right,
+    #833ab4,
+    #e2243e,
+    #fd522b,
+    #fcb045
+  );
+}
+
+h4 .darkmode {
+  color: rgb(240, 240, 240) !important;
+}
+
+.darkmode .darkModal {
+  background-color: teal;
+}
+
+.darkmode .btn-outline-secondary {
+  border-color: rgb(114, 114, 114);
+}
+
+.darkmode .btn-outline-secondary:hover {
+  background-image: linear-gradient(
+    to bottom right,
+    #833ab4,
+    #e2243e,
+    #fd522b,
+    #fcb045
+  );
+}
+
+.darkmode .progress {
+  background-color: rgb(58, 58, 58);
+}
+
+.darkmode .progress-bar {
+  background: linear-gradient(to right, #833ab4, #e2243e, #fd522b, #fcb045);
+}
+
+.darkmode input[type='range']::-webkit-slider-runnable-track {
+  /* background-color: rgb(58, 58, 58); */
+  background: rgb(58, 58, 58);
+}
+
+.darkmode .custom-range::-webkit-slider-thumb {
+  background-image: linear-gradient(
+    to bottom right,
+    #833ab4,
+    #e2243e,
+    #fd522b,
+    #fcb045
+  );
+}
+
+.darkmode .btn-success {
+  background-color: rgb(58, 58, 58);
+  border-color: rgb(114, 114, 114);
+  outline: none;
+}
+
+.darkmode .btn-success:hover {
+  background-image: linear-gradient(
+    to bottom right,
+    #833ab4,
+    #e2243e,
+    #fd522b,
+    #fcb045
+  );
+  outline: none;
+}
+
+.darkmode .dropdown-item:focus {
+  outline: none;
+  border: none;
+}
+
+.darkmode .dropdown-item,
+.darkmode .dropdown-menu {
+  color: rgb(221, 221, 221);
+  background-color: rgb(58, 58, 58);
+}
+
+.darkmode .review-tile.card {
+  background-color: rgb(17, 17, 17);
+  color: rgb(220, 220, 220);
+  width: 100%;
+}
+
+.darkmode .btn-light {
+  background-color: rgb(17, 17, 17);
+  color: rgb(220, 220, 220);
+}

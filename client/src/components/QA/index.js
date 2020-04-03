@@ -65,7 +65,7 @@ const QA = ({ storeQuestions }) => {
                 marginRight: '16px',
                 fontSize: '18px',
                 fontWeight: 'bold',
-                padding: '22px',
+                padding: '10px',
                 outline: 'none'
               }}
             >
@@ -80,7 +80,7 @@ const QA = ({ storeQuestions }) => {
               marginRight: '16px',
               fontSize: '18px',
               fontWeight: 'bold',
-              padding: '22px',
+              padding: '10px',
               outline: 'none'
             }}
           >
