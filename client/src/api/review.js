@@ -14,7 +14,7 @@ const Reviews = {
   // 4. Mark helpful/report
   //    Implemented through puts
 
-  getReviews: (id, currPage = 1, sort = 'newest') => {
+  getReviews: (id, currPage = 1, sort = 'relevant') => {
     return fetch(
       `${baseURL}/reviews/${id}/list/?page=${currPage}&count=4&sort=${sort}`
     ).then((res) => {
