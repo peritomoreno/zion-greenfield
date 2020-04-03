@@ -25,7 +25,7 @@ class ReviewWidget extends React.Component {
       page: 1,
       moreReviewsAvailable: true,
       currentlyShowing: 2,
-      currentSort: 'newest',
+      currentSort: 'relevance',
       starFilter: { 1: false, 2: false, 3: false, 4: false, 5: false }
     };
 
@@ -62,6 +62,35 @@ class ReviewWidget extends React.Component {
     });
   }
 
+  setReviewHelpful(reviewID) {
+    markHelpful(reviewID);
+  }
+
+  setReviewReported(reviewID) {
+    markReported(reviewID);
+  }
+
+  sortByNewest() {
+    const { filterNewest, productID } = this.props;
+
+    filterNewest(productID);
+    this.setState({ page: 1, currentSort: 'newest' });
+  }
+
+  sortByHelpful() {
+    const { filterHelpful, productID } = this.props;
+
+    filterHelpful(productID);
+    this.setState({ page: 1, currentSort: 'helpful' });
+  }
+
+  sortByRelevance() {
+    const { filterRelevance, productID } = this.props;
+
+    filterRelevance(productID);
+    this.setState({ page: 1, currentSort: 'relevance' });
+  }
+
   nextPage() {
     const { productID, getMoreReviews, currentReviews } = this.props;
     const { page, currentSort, currentlyShowing } = this.state;
@@ -79,35 +108,6 @@ class ReviewWidget extends React.Component {
     });
 
     getMoreReviews(productID, page + 1, currentSort);
-  }
-
-  sortByNewest() {
-    const { filterNewest, productID } = this.props;
-
-    this.setState({ page: 1, currentSort: 'newest' });
-    filterNewest(productID);
-  }
-
-  sortByHelpful() {
-    const { filterHelpful, productID } = this.props;
-
-    this.setState({ page: 1, currentSort: 'helpful' });
-    filterHelpful(productID);
-  }
-
-  sortByRelevance() {
-    const { filterRelevance, productID } = this.props;
-
-    this.setState({ page: 1, currentSort: 'relevance' });
-    filterRelevance(productID);
-  }
-
-  setReviewHelpful(reviewID) {
-    markHelpful(reviewID);
-  }
-
-  setReviewReported(reviewID) {
-    markReported(reviewID);
   }
 
   render() {
