@@ -22,13 +22,36 @@ class ReviewWidget extends React.Component {
       page: 1,
       moreReviewsAvailable: true,
       currentlyShowing: 2,
-      currentSort: 'newest'
+      currentSort: 'newest',
+      starFilter: { 1: false, 2: false, 3: false, 4: false, 5: false }
     };
 
     this.nextPage = this.nextPage.bind(this);
     this.sortByNewest = this.sortByNewest.bind(this);
     this.sortByHelpful = this.sortByHelpful.bind(this);
     this.sortByRelevance = this.sortByRelevance.bind(this);
+    this.setStarFilter = this.setStarFilter.bind(this);
+  }
+
+  setStarFilter(rating) {
+    const { starFilter } = this.state;
+    let updatedFilter = Object.assign(starFilter, {
+      rating: !starFilter[rating]
+    });
+
+    if (
+      !(
+        updatedFilter[0] &&
+        updatedFilter[0] &&
+        updatedFilter[0] &&
+        updatedFilter[0] &&
+        updatedFilter[0]
+      )
+    ) {
+      updatedFilter = { 1: false, 2: false, 3: false, 4: false, 5: false };
+    }
+
+    this.setState({ starFilter: updatedFilter });
   }
 
   nextPage() {
@@ -80,7 +103,8 @@ class ReviewWidget extends React.Component {
       currentSort,
       moreReviewsAvailable,
       page,
-      currentlyShowing
+      currentlyShowing,
+      starFilter
     } = this.state;
     // eslint-disable-next-line react/destructuring-assignment
     const { characteristics, totalReviews } = this.props.currentBreakdowns;
@@ -93,7 +117,10 @@ class ReviewWidget extends React.Component {
               Ratings & Reviews
             </Row>
             <Row className="review-breakdowns">
-              <RatingsBreakdown reviewData={currentBreakdowns} />
+              <RatingsBreakdown
+                reviewData={currentBreakdowns}
+                setStarFilter={this.setStarFilter}
+              />
             </Row>
             <Row className="product-breakdowns">
               <ProductBreakdown productBreakdown={currentBreakdowns} />
@@ -114,6 +141,7 @@ class ReviewWidget extends React.Component {
                 currentlyShowing={currentlyShowing}
                 characteristics={characteristics}
                 totalReviews={totalReviews}
+                starFilter={starFilter}
               />
             </Row>
           </Col>

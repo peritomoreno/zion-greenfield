@@ -15,7 +15,8 @@ const ReviewList = ({
   page,
   productID,
   characteristics,
-  totalReviews
+  totalReviews,
+  starFilter
 }) => {
   const [showForm, setShowForm] = useState(false);
 
@@ -78,6 +79,7 @@ const ReviewList = ({
                 rating={review.rating}
                 helpful={review.helpfulness}
                 reviewID={review.review_id}
+                hidden={starFilter[review.rating]}
               />
             ))}
 
