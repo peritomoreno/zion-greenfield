@@ -7,11 +7,11 @@ const AddOutfit = ({ addOutfitHandler }) => {
     <button
       type="button"
       data-testid="your-outfit"
-      className="related-card"
+      className="related-card add-outfit-card"
       onClick={addOutfitHandler}
     >
-      <div className="">
-        <div>
+      <div>
+        <div className="add-outfit-card-inner">
           <FontAwesomeIcon className="plus" icon={faPlus} />
           <div className="">
             <p style={{ color: 'rgb(93, 93, 93)' }}>Add to Outfit</p>

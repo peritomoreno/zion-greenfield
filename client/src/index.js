@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
+import './styles/darkmode.css';
 
 ReactDOM.render(
   <React.StrictMode>

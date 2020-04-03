@@ -215,7 +215,7 @@
   border: none;
   outline: none;
   transition: opacity 0.2s linear;
-  transition: color 0.2s linear;
+  /* transition: color 0.2s linear; */
   opacity: 1;
 }
 

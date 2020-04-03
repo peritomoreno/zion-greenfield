@@ -1,7 +1,6 @@
 import React from 'react';
-import ReviewTile from './ReviewTile';
-
 import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap';
+import ReviewTile from './ReviewTile';
 
 const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
   return (
@@ -13,7 +12,7 @@ const ReviewList = ({ reviewList, sortType, moreReviewsAvailable }) => {
           </Col>
           <Col>
             <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
+              <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                 {sortType}
               </Dropdown.Toggle>
 
