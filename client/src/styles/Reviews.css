@@ -57,6 +57,8 @@
   width: 90%;
 }
 
+/* Don't judge me CSS is hard :( abandon all hope ye who read after here */
+
 input[type='radio']#overall-rating-star-1 {
   border: 0;
   clip: rect(0 0 0 0);
