@@ -52,6 +52,7 @@ const RelatedProductsEntry = ({
     backgroundSize: 'cover',
     backgroundPosition: 'center'
   };
+  // console.log(rating);
   return (
     <div
       role="button"

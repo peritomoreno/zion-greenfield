@@ -215,8 +215,8 @@
   border: none;
   outline: none;
   transition: opacity 0.2s linear;
+  transition: color 0.2s linear;
   opacity: 1;
-  transition: all 0.25s ease;
 }
 
 .related-gallery-button:focus {
@@ -224,7 +224,6 @@
 }
 
 .related-gallery-button.right {
-  left: 1350px;
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0),
