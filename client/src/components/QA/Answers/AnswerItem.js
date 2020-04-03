@@ -83,7 +83,8 @@ const AnswerItem = ({ answer, reportAnswer }) => {
               color: '#919191',
               border: 'none',
               textDecoration: 'underline',
-              outline: 'none'
+              outline: 'none',
+              background: 'white'
             }}
             onClick={handleAnswerHelpful}
           >
@@ -96,7 +97,8 @@ const AnswerItem = ({ answer, reportAnswer }) => {
               color: '#919191',
               border: 'none',
               textDecoration: 'underline',
-              outline: 'none'
+              outline: 'none',
+              background: 'white'
             }}
             onClick={handleReportAnswer}
           >

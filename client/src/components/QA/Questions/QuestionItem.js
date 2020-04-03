@@ -61,7 +61,8 @@ const QuestionItem = ({ currentQuestion }) => {
               color: '#919191',
               border: 'none',
               textDecoration: 'underline',
-              outline: 'none'
+              outline: 'none',
+              background: 'white'
             }}
             onClick={handleQuestionHelpful}
           >
@@ -74,7 +75,8 @@ const QuestionItem = ({ currentQuestion }) => {
               color: '#919191',
               border: 'none',
               textDecoration: 'underline',
-              outline: 'none'
+              outline: 'none',
+              background: 'white'
             }}
             onClick={() => setShowAddAnswer(true)}
           >
