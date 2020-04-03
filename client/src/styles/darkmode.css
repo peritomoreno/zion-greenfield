@@ -184,6 +184,10 @@ h4 .darkmode {
   border-color: rgb(114, 114, 114);
 }
 
+.darkmode .btn-light {
+  margin-right: 10px;
+}
+
 .darkmode .btn-outline-secondary:hover {
   background-image: linear-gradient(
     to bottom right,
@@ -232,6 +236,14 @@ h4 .darkmode {
     #fcb045
   );
   outline: none;
+}
+
+.darkmode .fix-me {
+  margin-left: 10px;
+}
+
+.darkmode .fix-me-neg {
+  margin-left: 10px;
 }
 
 .darkmode .dropdown-item:focus {
