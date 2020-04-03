@@ -6,7 +6,7 @@ import { Modal, Button, Form, Image } from 'react-bootstrap';
 // import { v4 as uuidv4 } from 'uuid';
 // import firebaseConfig from '../../../firebaseConfig.js';
 import Reviews from '../../../api/review';
-
+import '../../../styles/Reviews.css';
 // firebase.initializeApp(firebaseConfig);
 
 const ReviewModalForm = ({
@@ -115,14 +115,14 @@ const ReviewModalForm = ({
                 setOverallRating(Number(e.target.value));
               }}
             >
-              <div key={`inline-radio`} className="mb-3">
+              <div key={`inline-radio`} className="overall-rating-radio">
                 <Form.Check
                   inline
                   label="1"
                   value="1"
                   type="radio"
                   name="overall-rating-radio"
-                  id={`inline-radio-1`}
+                  id={`overall-rating-star-1`}
                 />
                 <Form.Check
                   inline
@@ -130,7 +130,7 @@ const ReviewModalForm = ({
                   value="2"
                   type="radio"
                   name="overall-rating-radio"
-                  id={`inline-radio-2`}
+                  id={`overall-rating-star-2`}
                 />
                 <Form.Check
                   inline
@@ -138,7 +138,7 @@ const ReviewModalForm = ({
                   value="3"
                   type="radio"
                   name="overall-rating-radio"
-                  id={`inline-radio-3`}
+                  id={`overall-rating-star-3`}
                 />
                 <Form.Check
                   inline
@@ -146,7 +146,7 @@ const ReviewModalForm = ({
                   value="4"
                   type="radio"
                   name="overall-rating-radio"
-                  id={`inline-radio-4`}
+                  id={`overall-rating-star-4`}
                 />
                 <Form.Check
                   inline
@@ -154,7 +154,7 @@ const ReviewModalForm = ({
                   value="5"
                   type="radio"
                   name="overall-rating-radio"
-                  id={`inline-radio-5`}
+                  id={`overall-rating-star-5`}
                 />
               </div>
             </Form.Group>
