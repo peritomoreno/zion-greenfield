@@ -1,5 +1,4 @@
 import { Reviews } from '../../api';
-import setReviews from './setReviews';
 
 // Use API calls to init redux store
 

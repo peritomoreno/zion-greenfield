@@ -11,9 +11,14 @@ const ReviewList = ({
   relevant,
   nextPage,
   moreReviewsAvailable,
+  currentlyShowing,
   page,
   productID,
-  characteristics
+  characteristics,
+  totalReviews,
+  starFilter,
+  markReported,
+  markHelpful
 }) => {
   const [showForm, setShowForm] = useState(false);
 
@@ -30,7 +35,7 @@ const ReviewList = ({
       <Col>
         <Row>
           <Col>
-            <h2>{reviewList.length} reviews, sorted by </h2>
+            <h2>{totalReviews} reviews, sorted by </h2>
           </Col>
           <Col>
             <Dropdown>
@@ -51,7 +56,7 @@ const ReviewList = ({
                     helpful();
                   }}
                 >
-                  Helpful
+                  <span class="helpful-label">Helpful</span>
                 </Dropdown.Item>
                 <Dropdown.Item
                   onSelect={() => {
@@ -66,17 +71,23 @@ const ReviewList = ({
         </Row>
         <Row className="reviews">
           <Col>
-            {reviewList.map((review) => (
-              <ReviewTile
-                key={review.review_id}
-                summary={review.summary}
-                body={review.body}
-                reviewerName={review.reviewer_name}
-                date={review.date}
-                rating={review.rating}
-                helpful={review.helpfulness}
-                reviewID={review.review_id}
-              />
+            {reviewList.slice(0, currentlyShowing).map((review) => (
+              <div>
+                {!starFilter[review.rating] && (
+                  <ReviewTile
+                    key={review.review_id}
+                    summary={review.summary}
+                    body={review.body}
+                    reviewerName={review.reviewer_name}
+                    date={review.date}
+                    rating={review.rating}
+                    helpful={review.helpfulness}
+                    reviewID={review.review_id}
+                    markHelpful={markHelpful}
+                    markReported={markReported}
+                  />
+                )}
+              </div>
             ))}
 
             <Row>

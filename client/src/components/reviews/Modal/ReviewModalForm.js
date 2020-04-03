@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import * as firebase from 'firebase/app';
 // import 'firebase/storage';
 import { connect } from 'react-redux';
-import { Modal, Button, Form, Image } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 // import { v4 as uuidv4 } from 'uuid';
 // import firebaseConfig from '../../../firebaseConfig.js';
 import Reviews from '../../../api/review';
@@ -24,7 +24,8 @@ const ReviewModalForm = ({
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   //   const [selectedImage, setSelectedImage] = useState('');
-  const [imgUrls, setImgUrls] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [imgUrls, setImgUrls] = useState([]); // var will be used if image functionality added
   const charArr = Object.entries(characteristics);
   const dumberCharArr = [];
   charArr.forEach((ele) => {
@@ -60,7 +61,7 @@ const ReviewModalForm = ({
     if (typeof reviewerRecommends !== 'boolean')
       msgBody += '* Recommendation\n';
     if (reviewSummary.length < 1) msgBody += '* Review Summary\n';
-    if (reviewBody.length < 1) msgBody += '* Review\n';
+    if (reviewBody.length < 50) msgBody += '* Longer review\n';
     if (nickname.length < 1) msgBody += '* Nickname\n';
     if (email.length < 1) msgBody += '* Email\n';
     if (!isValidEmail() && email.length > 0) msgBody += '* Valid Email\n';
@@ -81,8 +82,11 @@ const ReviewModalForm = ({
       characteristics: reviewCharacteristics
     };
 
-    Reviews.postReview(productID, newReview);
-    handleClose();
+    const response = await Reviews.postReview(productID, newReview);
+
+    if (!response.error) {
+      alert('review submitted!');
+    }
   };
 
   return (
@@ -102,7 +106,6 @@ const ReviewModalForm = ({
         <Modal.Body>
           <Form.Group>
             <Form.Label>Overall Rating</Form.Label>
-            {/* needs to be a 1-5 star */}
             <Form.Group
               as="radio"
               value={overallRating}
@@ -185,16 +188,18 @@ const ReviewModalForm = ({
 
             <Form.Label>Characteristics</Form.Label>
             <br />
-            {/* needs to be an array of 5-radio button arrays labeled 1 2 3 4 5 (more descriptive labels in BRD for each possible characteristic) */}
+            {/* more descriptive labels in BRD for each possible characteristic */}
             {dumberCharArr.map((criterion) => (
               <Form.Group
                 as="radio"
                 onChange={(e) => {
                   const val = e.target.value;
-                  setCharacteristics((prevState) => ({
-                    ...prevState,
-                    [criterion[1][0][1]]: val
-                  }));
+                  setCharacteristics((prevState) =>
+                    // eslint-disable-next-line prefer-object-spread
+                    Object.assign({}, prevState, {
+                      [criterion[1][0][1]]: val
+                    })
+                  );
                 }}
               >
                 {criterion[0]}
@@ -246,7 +251,6 @@ const ReviewModalForm = ({
               </Form.Group>
             ))}
             <Form.Label>Review Summary</Form.Label>
-            {/* 60 Char Limit */}
             <Form.Control
               as="textarea"
               rows="3"
@@ -256,7 +260,6 @@ const ReviewModalForm = ({
               onChange={(e) => setReviewSummary(e.target.value)}
             />
             <Form.Label>Review</Form.Label>
-            {/* 1,000 char limit */}
             <Form.Control
               as="textarea"
               rows="3"

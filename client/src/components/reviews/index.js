@@ -11,8 +11,11 @@ import {
   filterByRelevance,
   moreReviews
 } from '../../redux/actions/updateReviews';
+import Review from '../../api/review';
 
 import '../../styles/Reviews.css';
+
+const { markReported, markHelpful } = Review;
 
 class ReviewWidget extends React.Component {
   constructor(props) {
@@ -21,20 +24,59 @@ class ReviewWidget extends React.Component {
     this.state = {
       page: 1,
       moreReviewsAvailable: true,
-      currentSort: 'newest'
+      currentlyShowing: 2,
+      currentSort: 'newest',
+      starFilter: { 1: false, 2: false, 3: false, 4: false, 5: false }
     };
 
     this.nextPage = this.nextPage.bind(this);
     this.sortByNewest = this.sortByNewest.bind(this);
     this.sortByHelpful = this.sortByHelpful.bind(this);
     this.sortByRelevance = this.sortByRelevance.bind(this);
+    this.setStarFilter = this.setStarFilter.bind(this);
+    this.setReviewReported = this.setReviewReported.bind(this);
+    this.setReviewHelpful = this.setReviewHelpful.bind(this);
+  }
+
+  setStarFilter(rating) {
+    const { starFilter } = this.state;
+    const showAll = { 1: false, 2: false, 3: false, 4: false, 5: false };
+    let updatedFilter;
+
+    updatedFilter = Object.assign(starFilter, {
+      [rating]: !starFilter[rating]
+    });
+
+    if (
+      updatedFilter[1] &&
+      updatedFilter[2] &&
+      updatedFilter[3] &&
+      updatedFilter[4] &&
+      updatedFilter[5]
+    ) {
+      updatedFilter = showAll;
+    }
+
+    this.setState({ starFilter: updatedFilter }, () => {
+      console.log('starFilter: ', starFilter);
+    });
   }
 
   nextPage() {
-    const { productID, getMoreReviews } = this.props;
-    const { page, currentSort } = this.state;
+    const { productID, getMoreReviews, currentReviews } = this.props;
+    const { page, currentSort, currentlyShowing } = this.state;
 
-    this.setState({ page: page + 1 });
+    const remainingCachedReviews =
+      currentReviews.results.length - currentlyShowing > 2
+        ? 2
+        : currentReviews.results.length - currentlyShowing;
+    const reviewsLeft = !(currentReviews.results.length === currentlyShowing);
+
+    this.setState({
+      page: page + 1,
+      currentlyShowing: currentlyShowing + remainingCachedReviews,
+      moreReviewsAvailable: reviewsLeft
+    });
 
     getMoreReviews(productID, page + 1, currentSort);
   }
@@ -60,10 +102,25 @@ class ReviewWidget extends React.Component {
     filterRelevance(productID);
   }
 
+  setReviewHelpful(reviewID) {
+    markHelpful(reviewID);
+  }
+
+  setReviewReported(reviewID) {
+    markReported(reviewID);
+  }
+
   render() {
     const { currentReviews, currentBreakdowns, productID } = this.props;
-    const { currentSort, moreReviewsAvailable, page } = this.state;
-    const { characteristics } = this.props.currentBreakdowns;
+    const {
+      currentSort,
+      moreReviewsAvailable,
+      page,
+      currentlyShowing,
+      starFilter
+    } = this.state;
+    // eslint-disable-next-line react/destructuring-assignment
+    const { characteristics, totalReviews } = this.props.currentBreakdowns;
 
     return (
       <Container data-testid="reviews">
@@ -73,7 +130,11 @@ class ReviewWidget extends React.Component {
               Ratings & Reviews
             </Row>
             <Row className="review-breakdowns">
-              <RatingsBreakdown reviewData={currentBreakdowns} />
+              <RatingsBreakdown
+                reviewData={currentBreakdowns}
+                setStarFilter={this.setStarFilter}
+                starFilter={starFilter}
+              />
             </Row>
             <Row className="product-breakdowns">
               <ProductBreakdown productBreakdown={currentBreakdowns} />
@@ -91,7 +152,12 @@ class ReviewWidget extends React.Component {
                 productID={productID}
                 nextPage={this.nextPage}
                 moreReviewsAvailable={moreReviewsAvailable}
+                currentlyShowing={currentlyShowing}
                 characteristics={characteristics}
+                totalReviews={totalReviews}
+                starFilter={starFilter}
+                markReported={this.setReviewReported}
+                markHelpful={this.setReviewHelpful}
               />
             </Row>
           </Col>
