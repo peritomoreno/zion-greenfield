@@ -6,30 +6,37 @@ const ImageCarousel = ({
   photoIndex,
   setPhotoIndex,
   expanded,
-  setExpanded
+  setExpanded,
+  setZoomed,
+  hidden
 }) => {
   return (
-    <Carousel
-      activeIndex={photoIndex}
-      onSelect={(index) => {
-        setPhotoIndex(index);
-      }}
-      fade
-      interval={null}
-      indicators={expanded}
-    >
-      {photos.map(({ url }) => (
-        <Carousel.Item>
-          <img
-            className="w-100"
-            src={url}
-            alt="First slide"
-            key={url}
-            onClick={() => setExpanded(!expanded)}
-          />
-        </Carousel.Item>
-      ))}
-    </Carousel>
+    <div className={`${hidden && 'd-none'}`}>
+      <Carousel
+        activeIndex={photoIndex}
+        onSelect={(index) => {
+          setPhotoIndex(index);
+        }}
+        fade
+        interval={null}
+        indicators={expanded}
+      >
+        {photos.map(({ url }) => (
+          <Carousel.Item>
+            <img
+              className="w-100"
+              src={url}
+              alt="First slide"
+              key={url}
+              onClick={() => {
+                if (!expanded) setExpanded(true);
+                else setZoomed(true);
+              }}
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </div>
   );
 };
 

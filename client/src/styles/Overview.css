@@ -10,10 +10,8 @@
 
 #imageGallery {
   position: relative;
-}
-
-.carousel {
   background-color: rgb(236, 236, 236);
+  height: 60vh;
 }
 
 .carousel img {
@@ -24,10 +22,6 @@
 
 #imageGallery.ovNormal .carousel-control-prev {
   left: 10%;
-}
-
-#imageGallery.ovExpanded .carousel img {
-  height: 80vh;
 }
 
 #expandBtn {
@@ -100,9 +94,14 @@
 
 .zoom {
   position: relative;
-  height: 500px;
+  height: 100%;
   width: auto;
   overflow: hidden;
+  display: none;
+}
+
+#imageGallery.ovZoomed .zoom {
+  display: block;
 }
 
 .zoomPhoto {
@@ -114,5 +113,5 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* transition: transform 0.25s ease-out; */
+  transition: transform 0.25s ease-out;
 }

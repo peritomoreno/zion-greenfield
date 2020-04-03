@@ -19,7 +19,7 @@ const ZoomPhoto = ({ photoUrl, hovered, parentRef, mouseX, mouseY }) => {
     const { x, y, height, width } = parentRef.current.getBoundingClientRect();
     xOffsetPct = (mouseX - x) / width;
     yOffsetPct = (mouseY - y) / height;
-    console.log(xOffsetPct, yOffsetPct);
+    // console.log(xOffsetPct, yOffsetPct);
   }
 
   return (
@@ -30,23 +30,13 @@ const ZoomPhoto = ({ photoUrl, hovered, parentRef, mouseX, mouseY }) => {
         transform: `scale(${hovered ? 2.4 : 1})`,
         transformOrigin: `${
           hovered ? `${xOffsetPct * 100}% ${yOffsetPct * 100}%` : 'center'
-          // 'center'
         }`
-      }}
-      onMouseClick={() => {
-        console.log('click!');
-        console.log(parentRef.current.getBoundingClientRect());
       }}
     />
   );
 };
 
 class Zoomer extends React.Component {
-  static defaultProps = {
-    photoUrl:
-      'https://images.unsplash.com/photo-1551489186-cf8726f514f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
-  };
-
   constructor(props) {
     super(props);
     this.state = { hovered: false, mouseX: 0, mouseY: 0 };
@@ -57,14 +47,12 @@ class Zoomer extends React.Component {
   }
 
   mouseOverHandler() {
-    console.log('hovered');
     this.setState({
       hovered: true
     });
   }
 
   mouseOutHandler() {
-    console.log('out');
     this.setState({ hovered: false });
   }
 
@@ -74,20 +62,27 @@ class Zoomer extends React.Component {
   }
 
   render() {
+    const { onClick, photoUrl } = this.props;
+    const { hovered, mouseX, mouseY } = this.state;
+
     return (
       <div
         className="zoom"
         onMouseOver={this.mouseOverHandler}
         onMouseOut={this.mouseOutHandler}
         onMouseMove={this.mouseMoveHandler}
+        onClick={onClick}
         ref={this.myRef}
       >
         <ZoomPhoto
-          photoUrl={this.props.photoUrl}
-          hovered={this.state.hovered}
+          photoUrl={
+            photoUrl ||
+            'https://images.unsplash.com/photo-1551489186-cf8726f514f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
+          }
+          hovered={hovered}
           parentRef={this.myRef}
-          mouseX={this.state.mouseX}
-          mouseY={this.state.mouseY}
+          mouseX={mouseX}
+          mouseY={mouseY}
         />
       </div>
     );

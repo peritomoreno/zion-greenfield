@@ -26,7 +26,6 @@ const Overview = () => {
       </div>
 
       <ProductDescription />
-      <Zoomer />
     </div>
   );
 };

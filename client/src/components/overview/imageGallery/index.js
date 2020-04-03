@@ -5,6 +5,7 @@ import { faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
 import { setThumbnail } from '../../../redux/actions/selected';
 import ImageCarousel from './ImageCarousel';
 import ThumbnailCarousel from './ThumbnailCarousel';
+import Zoomer from './Zoomer';
 
 const ImageGallery = ({
   photos,
@@ -13,29 +14,29 @@ const ImageGallery = ({
   expanded,
   setExpanded
 }) => {
-  return (
-    <div
-      data-testid="imageGallery"
-      id="imageGallery"
-      className={`${expanded ? 'ovExpanded' : 'ovNormal'}`}
-    >
+  const [zoomed, setZoomed] = React.useState(false);
+
+  const children = (
+    <>
       <ImageCarousel
         photos={photos}
         photoIndex={thumbnailIndex}
         setPhotoIndex={selectThumbnail}
         expanded={expanded}
         setExpanded={setExpanded}
+        setZoomed={setZoomed}
+        hidden={zoomed}
       />
       <ThumbnailCarousel
         photos={photos}
         thumbnailIndex={thumbnailIndex}
         selectThumbnail={selectThumbnail}
-        hidden={expanded}
+        hidden={expanded || zoomed}
       />
       <button
         type="button"
         id="expandBtn"
-        className="ovBtn"
+        className={`ovBtn ${zoomed && 'd-none'}`}
         onClick={(e) => {
           e.preventDefault();
           setExpanded(!expanded);
@@ -43,6 +44,22 @@ const ImageGallery = ({
       >
         <FontAwesomeIcon icon={expanded ? faCompress : faExpand} size="lg" />
       </button>
+      <Zoomer
+        photoUrl={photos[thumbnailIndex] && photos[thumbnailIndex].url}
+        onClick={() => setZoomed(false)}
+      />
+    </>
+  );
+
+  return (
+    <div
+      data-testid="imageGallery"
+      id="imageGallery"
+      className={`${expanded ? 'ovExpanded' : 'ovNormal'} ${
+        zoomed && 'ovZoomed'
+      }`}
+    >
+      {children}
     </div>
   );
 };
