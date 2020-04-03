@@ -50,7 +50,7 @@ const AnswerItem = ({ answer, reportAnswer }) => {
         setShow={setShowImageModal}
       />
       <div data-testid="answerItem">
-        <span style={{ color: 'rgb(104, 104, 104)' }}>{answer.body}</span>
+        <span className="QATitle">{answer.body}</span>
         <br />
         {answer.photos.map((photoUrl) => (
           <Image
@@ -71,20 +71,17 @@ const AnswerItem = ({ answer, reportAnswer }) => {
             }}
           />
         ))}
-        <div
-          style={{ fontSize: '16px', color: '#919191', background: 'white' }}
-        >
+        <div className="clickButton" style={{ fontSize: '16px' }}>
           by {answer.answerer_name}
           {', '}
           {dateFormatter(answer.date)} | Helpful?{' '}
           <button
             type="button"
+            className="clickButton"
             style={{
-              color: '#919191',
               border: 'none',
               textDecoration: 'underline',
-              outline: 'none',
-              background: 'white'
+              outline: 'none'
             }}
             onClick={handleAnswerHelpful}
           >
@@ -93,12 +90,11 @@ const AnswerItem = ({ answer, reportAnswer }) => {
           ({helpfulness}) |{' '}
           <button
             type="button"
+            className="clickButton"
             style={{
-              color: '#919191',
               border: 'none',
               textDecoration: 'underline',
-              outline: 'none',
-              background: 'white'
+              outline: 'none'
             }}
             onClick={handleReportAnswer}
           >

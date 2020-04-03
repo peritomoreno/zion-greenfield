@@ -255,3 +255,32 @@ h4 .darkmode {
   background-color: rgb(17, 17, 17);
   color: rgb(220, 220, 220);
 }
+
+.darkmode #QAHeader {
+  color: rgb(220, 220, 220);
+}
+
+.darkmode .bottomButton {
+  color: rgb(220, 220, 220);
+}
+
+.darkmode .searchBar {
+  color: rgb(220, 220, 220);
+  background: #e3e3e3;
+  border-radius: 5px;
+  border-width: 0px;
+}
+
+.darkmode .searchBarIcon {
+  background: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.darkmode .QATitle {
+  color: rgb(220, 220, 220);
+  background: rgb(0, 0, 0);
+}
+
+.darkmode .clickButton {
+  background: rgb(0, 0, 0);
+}
