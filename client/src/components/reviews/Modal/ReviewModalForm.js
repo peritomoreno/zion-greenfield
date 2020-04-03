@@ -9,16 +9,27 @@ import Reviews from '../../../api/review';
 
 // firebase.initializeApp(firebaseConfig);
 
-const ReviewModalForm = ({ show, handleClose, productID, productName }) => {
+const ReviewModalForm = ({
+  show,
+  handleClose,
+  productID,
+  productName,
+  characteristics
+}) => {
   const [overallRating, setOverallRating] = useState(0);
   const [reviewerRecommends, setReviewerRecommends] = useState(null);
-  const [characteristics, setCharacteristics] = useState({});
+  const [reviewCharacteristics, setCharacteristics] = useState({});
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   //   const [selectedImage, setSelectedImage] = useState('');
-  //   const [imgUrls, setImgUrls] = useState([]);
+  const [imgUrls, setImgUrls] = useState([]);
+  const charArr = Object.entries(characteristics);
+  const dumberCharArr = [];
+  charArr.forEach((ele) => {
+    dumberCharArr.push([ele[0], Object.entries(ele[1])]);
+  });
 
   const isValidEmail = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -66,15 +77,17 @@ const ReviewModalForm = ({ show, handleClose, productID, productName }) => {
       recommend: reviewerRecommends,
       name: nickname,
       email: email,
-      //   photos: imgUrls,
-      characteristics: characteristics
+      photos: imgUrls,
+      characteristics: reviewCharacteristics
     };
 
     const response = await Reviews.postReview(productID, newReview);
 
-    if (!response.error) {
-      alert('review submitted!');
-    }
+    console.log(response);
+
+    // if (!response.error) {
+    //   alert('review submitted!');
+    // }
   };
 
   return (
@@ -95,31 +108,149 @@ const ReviewModalForm = ({ show, handleClose, productID, productName }) => {
           <Form.Group>
             <Form.Label>Overall Rating</Form.Label>
             {/* needs to be a 1-5 star */}
-            <Form.Control
-              as="textarea"
-              rows="3"
-              maxLength={1000}
+            <Form.Group
+              as="radio"
               value={overallRating}
-              onChange={(e) => setOverallRating(e.target.value)}
-            />
+              onChange={(e) => {
+                setOverallRating(Number(e.target.value));
+              }}
+            >
+              <div key={`inline-radio`} className="mb-3">
+                <Form.Check
+                  inline
+                  label="1"
+                  value="1"
+                  type="radio"
+                  name="overall-rating-radio"
+                  id={`inline-radio-1`}
+                />
+                <Form.Check
+                  inline
+                  label="2"
+                  value="2"
+                  type="radio"
+                  name="overall-rating-radio"
+                  id={`inline-radio-2`}
+                />
+                <Form.Check
+                  inline
+                  label="3"
+                  value="3"
+                  type="radio"
+                  name="overall-rating-radio"
+                  id={`inline-radio-3`}
+                />
+                <Form.Check
+                  inline
+                  label="4"
+                  value="4"
+                  type="radio"
+                  name="overall-rating-radio"
+                  id={`inline-radio-4`}
+                />
+                <Form.Check
+                  inline
+                  label="5"
+                  value="5"
+                  type="radio"
+                  name="overall-rating-radio"
+                  id={`inline-radio-5`}
+                />
+              </div>
+            </Form.Group>
+
             <Form.Label>Do you recommend this product?</Form.Label>
             {/* needs to be a yes/no radio button */}
-            <Form.Control
-              as="textarea"
-              rows="3"
-              maxLength={1000}
-              value={reviewerRecommends}
-              onChange={(e) => setReviewerRecommends(e.target.value)}
-            />
+            <Form.Group
+              as="radio"
+              onChange={(e) => {
+                if (e.target.value === 'true') setReviewerRecommends(true);
+                else setReviewerRecommends(false);
+              }}
+            >
+              <div key={`inline-radio`} className="mb-3">
+                <Form.Check
+                  inline
+                  label="Yes"
+                  value={true}
+                  type="radio"
+                  name="recommend-radio"
+                  id={`inline-radio-6`}
+                />
+                <Form.Check
+                  inline
+                  label="No"
+                  value={false}
+                  type="radio"
+                  name="recommend-radio"
+                  id={`inline-radio-7`}
+                />
+              </div>
+            </Form.Group>
+
             <Form.Label>Characteristics</Form.Label>
+            <br />
             {/* needs to be an array of 5-radio button arrays labeled 1 2 3 4 5 (more descriptive labels in BRD for each possible characteristic) */}
-            <Form.Control
-              as="textarea"
-              rows="3"
-              maxLength={1000}
-              value={characteristics}
-              onChange={(e) => setCharacteristics(e.target.value)}
-            />
+            {dumberCharArr.map((criterion) => (
+              <Form.Group
+                as="radio"
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setCharacteristics((prevState) =>
+                    Object.assign({}, prevState, {
+                      [criterion[1][0][1]]: val
+                    })
+                  );
+                }}
+              >
+                {criterion[0]}
+                <div key={`inline-radio`} className="mb-3">
+                  <Form.Check
+                    inline
+                    label="1"
+                    value="1"
+                    type="radio"
+                    name={`recommend-radio-${criterion[0]}`}
+                    id={`inline-radio`}
+                  />
+
+                  <Form.Check
+                    inline
+                    label="2"
+                    value="2"
+                    type="radio"
+                    name={`recommend-radio-${criterion[0]}`}
+                    id={`inline-radio`}
+                  />
+
+                  <Form.Check
+                    inline
+                    label="3"
+                    value="3"
+                    type="radio"
+                    name={`recommend-radio-${criterion[0]}`}
+                    id={`inline-radio`}
+                  />
+                  <Form.Check
+                    inline
+                    label="4"
+                    value="4"
+                    type="radio"
+                    name={`recommend-radio-${criterion[0]}`}
+                    id={`inline-radio`}
+                  />
+
+                  <Form.Check
+                    inline
+                    label="5"
+                    value="5"
+                    type="radio"
+                    name={`recommend-radio-${criterion[0]}`}
+                    id={`inline-radio`}
+                  />
+                </div>
+              </Form.Group>
+            ))}
             <Form.Label>Review Summary</Form.Label>
             {/* 60 Char Limit */}
             <Form.Control

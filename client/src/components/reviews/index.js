@@ -63,6 +63,7 @@ class ReviewWidget extends React.Component {
   render() {
     const { currentReviews, currentBreakdowns, productID } = this.props;
     const { currentSort, moreReviewsAvailable, page } = this.state;
+    const { characteristics } = this.props.currentBreakdowns;
 
     return (
       <Container data-testid="reviews">
@@ -90,6 +91,7 @@ class ReviewWidget extends React.Component {
                 productID={productID}
                 nextPage={this.nextPage}
                 moreReviewsAvailable={moreReviewsAvailable}
+                characteristics={characteristics}
               />
             </Row>
           </Col>

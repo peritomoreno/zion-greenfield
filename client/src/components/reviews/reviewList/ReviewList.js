@@ -12,9 +12,10 @@ const ReviewList = ({
   nextPage,
   moreReviewsAvailable,
   page,
-  productID
+  productID,
+  characteristics
 }) => {
-  const [showForm, setShowForm] = useState('false');
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <Container data-testid="reviews">
@@ -23,6 +24,7 @@ const ReviewList = ({
           show={showForm}
           handleClose={() => setShowForm(false)}
           productID={productID}
+          characteristics={characteristics}
         />
       </div>
       <Col>
