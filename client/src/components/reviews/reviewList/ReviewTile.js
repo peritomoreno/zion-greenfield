@@ -97,6 +97,7 @@ const ReviewTile = ({
             <Card.Footer>
               <span className="text-muted shrinkify">Helpful?</span>
               <Button
+                className="fix-me"
                 variant="light"
                 size="sm"
                 onClick={() => {

@@ -95,6 +95,7 @@ const ReviewList = ({
             <Row>
               {moreReviewsAvailable && (
                 <Button
+                  className="fix-me-neg"
                   variant="light"
                   onClick={() => {
                     nextPage(productID, currentSort, page + 1);

@@ -238,6 +238,14 @@ h4 .darkmode {
   outline: none;
 }
 
+.darkmode .fix-me {
+  margin-left: 10px;
+}
+
+.darkmode .fix-me-neg {
+  margin-left: 10px;
+}
+
 .darkmode .dropdown-item:focus {
   outline: none;
   border: none;
