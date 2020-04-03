@@ -42,8 +42,8 @@ const QuestionItem = ({ currentQuestion }) => {
     <div data-testid="questionItem">
       <div className="row">
         <h5
-          className="col align-self-start dark"
-          style={{ color: 'rgb(82, 82, 82)', fontWeight: 'bolder' }}
+          className="QATitle col align-self-start dark"
+          style={{ fontWeight: 'bolder' }}
         >
           Q: {title}
         </h5>
@@ -57,28 +57,18 @@ const QuestionItem = ({ currentQuestion }) => {
           Helpful?{' '}
           <button
             type="button"
-            style={{
-              color: '#919191',
-              border: 'none',
-              textDecoration: 'underline',
-              outline: 'none',
-              background: 'white'
-            }}
+            className="clickButton"
             onClick={handleQuestionHelpful}
+            style={{ textDecoration: 'underline' }}
           >
             Yes
           </button>
           ({helpfulness}) |{' '}
           <button
             type="button"
-            style={{
-              color: '#919191',
-              border: 'none',
-              textDecoration: 'underline',
-              outline: 'none',
-              background: 'white'
-            }}
+            className="clickButton"
             onClick={() => setShowAddAnswer(true)}
+            style={{ textDecoration: 'underline' }}
           >
             Add Answer
           </button>

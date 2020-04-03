@@ -15,7 +15,7 @@ const AnswerList = ({ answers, handleLoadMoreAnswer, showLoadMore }) => {
           fontWeight: 'bolder'
         }}
       >
-        A:{' '}
+        {answers.length > 0 && <div className="QATitle">A:</div>}
       </h5>
 
       <div>
@@ -26,13 +26,12 @@ const AnswerList = ({ answers, handleLoadMoreAnswer, showLoadMore }) => {
           <button
             type="button"
             onClick={handleLoadMoreAnswer}
+            className="QATitle"
             style={{
               fontWeight: 'bold',
               border: 'none',
               paddingLeft: '0px',
-              color: 'rgb(88,88,88)',
-              outline: 'none',
-              background: 'white'
+              outline: 'none'
             }}
           >
             LOAD MORE ANSWERS

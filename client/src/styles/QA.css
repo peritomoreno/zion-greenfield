@@ -1,0 +1,27 @@
+#QAHeader {
+  color: rgb(104, 104, 104);
+  margin-bottom: 24px;
+}
+
+.bottomButton {
+  margin-right: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  outline: none;
+}
+
+.searchBar {
+  background: white;
+}
+
+.QATitle {
+  color: rgb(82, 82, 82);
+}
+
+.clickButton {
+  color: #919191;
+  border: none;
+  outline: none;
+  background: white;
+}

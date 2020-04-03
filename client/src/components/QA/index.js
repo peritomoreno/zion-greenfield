@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SearchQuestion from './Search/SearchQuestion';
 import QuestionList from './Questions/QuestionList';
 import QuestionModalForm from './Modal/QuestionModalForm';
+import '../../styles/QA.css';
 
 const QA = ({ storeQuestions }) => {
   const [questions, setQuestions] = useState([]);
@@ -43,7 +44,7 @@ const QA = ({ storeQuestions }) => {
     if (questions.length === 0) {
       return (
         <button
-          className="btn btn-outline-secondary"
+          className="bottomButton btn btn-outline-secondary"
           type="button"
           onClick={showAddQuestionModal}
           style={{ marginTop: '16px' }}
@@ -55,34 +56,21 @@ const QA = ({ storeQuestions }) => {
     return (
       <div>
         <QuestionList questions={questions.slice(0, questionPaginate)} />
-        <div className="bottomButton">
+        <div>
           {!(questions.length <= 2 || questionPaginate >= questions.length) && (
             <button
-              className="btn btn-outline-secondary"
+              className="bottomButton btn btn-outline-secondary"
+              id="bottomButton"
               type="button"
               onClick={handleLoadMoreQuestion}
-              style={{
-                marginRight: '16px',
-                fontSize: '18px',
-                fontWeight: 'bold',
-                padding: '10px',
-                outline: 'none'
-              }}
             >
               MORE ANSWERED QUESTIONS
             </button>
           )}
           <button
-            className="btn btn-outline-secondary"
+            className="bottomButton btn btn-outline-secondary"
             type="button"
             onClick={showAddQuestionModal}
-            style={{
-              marginRight: '16px',
-              fontSize: '18px',
-              fontWeight: 'bold',
-              padding: '10px',
-              outline: 'none'
-            }}
           >
             ADD A QUESTION +
           </button>
@@ -93,9 +81,7 @@ const QA = ({ storeQuestions }) => {
 
   return (
     <div id="qa" data-testid="qaTest">
-      <h4 style={{ color: 'rgb(104, 104, 104)', marginBottom: '24px' }}>
-        QUESTIONS & ANSWERS
-      </h4>
+      <h4 id="QAHeader">QUESTIONS & ANSWERS</h4>
       <SearchQuestion term={searchTerm} setTerm={setSearchTerm} />
       {/* {FIXME: Console err: findDOMNode is deprecated in StrictMode} */}
       <QuestionModalForm
