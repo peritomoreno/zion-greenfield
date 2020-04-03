@@ -36,10 +36,13 @@ const relatedProductReducer = (state = defaultRelatedState, action) => {
       return {
         ...state,
         products: state.products.map((product) => {
-          return {
-            ...product,
-            rating: calculateRatingFromReview(action.payload.ratings)
-          };
+          if (Number(action.payload.product_id) === Number(product.id)) {
+            return {
+              ...product,
+              rating: calculateRatingFromReview(action.payload.ratings)
+            };
+          }
+          return product;
         })
       };
     default:
