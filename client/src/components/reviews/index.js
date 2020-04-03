@@ -21,6 +21,7 @@ class ReviewWidget extends React.Component {
     this.state = {
       page: 1,
       moreReviewsAvailable: true,
+      currentlyShowing: 2,
       currentSort: 'newest'
     };
 
@@ -31,10 +32,21 @@ class ReviewWidget extends React.Component {
   }
 
   nextPage() {
-    const { productID, getMoreReviews } = this.props;
-    const { page, currentSort } = this.state;
+    const { productID, getMoreReviews, currentReviews } = this.props;
+    const { page, currentSort, currentlyShowing } = this.state;
 
-    this.setState({ page: page + 1 });
+    const remainingCachedReviews =
+      currentReviews.results.length - currentlyShowing > 2
+        ? 2
+        : currentReviews.results.length - currentlyShowing;
+
+    const reviewsLeft = !(currentReviews.results.length === currentlyShowing);
+
+    this.setState({
+      page: page + 1,
+      currentlyShowing: currentlyShowing + remainingCachedReviews,
+      moreReviewsAvailable: reviewsLeft
+    });
 
     getMoreReviews(productID, page + 1, currentSort);
   }
@@ -62,7 +74,13 @@ class ReviewWidget extends React.Component {
 
   render() {
     const { currentReviews, currentBreakdowns, productID } = this.props;
-    const { currentSort, moreReviewsAvailable, page } = this.state;
+    const {
+      currentSort,
+      moreReviewsAvailable,
+      page,
+      currentlyShowing
+    } = this.state;
+    // eslint-disable-next-line react/destructuring-assignment
     const { characteristics } = this.props.currentBreakdowns;
 
     return (
@@ -91,6 +109,7 @@ class ReviewWidget extends React.Component {
                 productID={productID}
                 nextPage={this.nextPage}
                 moreReviewsAvailable={moreReviewsAvailable}
+                currentlyShowing={currentlyShowing}
                 characteristics={characteristics}
               />
             </Row>

@@ -11,6 +11,7 @@ const ReviewList = ({
   relevant,
   nextPage,
   moreReviewsAvailable,
+  currentlyShowing,
   page,
   productID,
   characteristics
@@ -66,7 +67,7 @@ const ReviewList = ({
         </Row>
         <Row className="reviews">
           <Col>
-            {reviewList.map((review) => (
+            {reviewList.slice(0, currentlyShowing).map((review) => (
               <ReviewTile
                 key={review.review_id}
                 summary={review.summary}

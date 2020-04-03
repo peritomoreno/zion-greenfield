@@ -6,6 +6,11 @@
   margin-bottom: 25px;
 }
 
+.recommend-percentage {
+  font-size: 13px;
+  padding-bottom: 10px;
+}
+
 .card-rating-stars {
   float: left;
 }

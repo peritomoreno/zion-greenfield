@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 const defaultState = {
   product_id: 0,
   ratings: {},
@@ -8,7 +9,8 @@ const defaultState = {
 const currentBreakdownsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'SET_CURRENT_BREAKDOWNS':
-      const { ratings } = action.payload;
+      console.log(action.payload);
+      const { ratings, recommended } = action.payload;
       let num = 0;
       let agg = 0;
 
@@ -20,7 +22,10 @@ const currentBreakdownsReducer = (state = defaultState, action) => {
       }
 
       const prodScore = Math.round((agg / num) * 10) / 10;
-      let starPercentages = {};
+      const starPercentages = {};
+      const recommendPercentage = Math.round(
+        (recommended[1] / (recommended[0] + recommended[1])) * 100
+      );
 
       Object.keys(ratings).forEach((rating) => {
         starPercentages[rating] = Math.round((ratings[rating] / num) * 100);
@@ -32,7 +37,8 @@ const currentBreakdownsReducer = (state = defaultState, action) => {
         twoStars: starPercentages['2'],
         threeStars: starPercentages['3'],
         fourStars: starPercentages['4'],
-        fiveStars: starPercentages['5']
+        fiveStars: starPercentages['5'],
+        recommendPercentage
       });
 
       return action.payload;

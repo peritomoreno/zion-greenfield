@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 const defaultState = {
   product: 0,
   page: 0,
@@ -16,10 +17,10 @@ const currentReviewsReducer = (state = defaultState, action) => {
     case 'FILTER_BY_RELEVANCE':
       return action.payload;
     case 'NEXT_REVIEW_PAGE':
+      // eslint-disable-next-line no-case-declarations
       const newResults = state.results.concat(action.payload.results);
-      const newState = Object.assign({}, state);
+      const newState = { ...state };
       newState.results = newResults;
-      console.log(newState);
       return newState;
     default:
       return state;

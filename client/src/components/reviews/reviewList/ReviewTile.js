@@ -25,7 +25,7 @@ const ReviewTile = ({
   const { markHelpful, markReported } = Review;
 
   return (
-    <Row md={1}>
+    <Row md={1} className="review-tile-row">
       <Card border="light" className="review-tile">
         <Card.Header>
           <span className="card-rating-stars">

@@ -16,6 +16,12 @@ const RatingsBreakdown = ({ reviewData }) => {
           <RatingStars rating={reviewData.productRating} />
         </Col>
       </Row>
+      <Row>
+        <span className="text-muted recommend-percentage">
+          {reviewData.recommendPercentage}% of reviewers recommended this
+          product.
+        </span>
+      </Row>
       <Row className="review-ratings-bars text-muted">
         <Col>
           <Row>
