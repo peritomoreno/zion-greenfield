@@ -71,17 +71,21 @@ const RelatedProductsEntry = ({
       >
         <FontAwesomeIcon icon={faStar} />
       </button>
-      <div className="related-image-container">
-        <div style={imageStyle} />
-      </div>
-      <div className="related-product-info">
-        <p className="related-category">{category}</p>
-        <Link to={`/product/${productId}`}>
-          <p className="related-name">{name}</p>
-        </Link>
-        <p className="related-price">${price}</p>
-        <RatingStars rating={rating} />
-      </div>
+      <Link to={`/product/${productId}`} style={{ textDecoration: 'none' }}>
+        <div className="related-router">
+          <div className="related-image-container">
+            <div style={imageStyle} />
+          </div>
+          <div className="related-product-info">
+            <p className="related-category">{category}</p>
+
+            <p className="related-name">{name}</p>
+
+            <p className="related-price">${price}</p>
+            <RatingStars rating={rating} />
+          </div>
+        </div>
+      </Link>
       <div className="related-modal-div">
         {toggle.isCompareClicked ? (
           <ToggleDispatch.Provider value={dispatch}>
