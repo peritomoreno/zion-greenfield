@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const baseURL = 'http://3.134.102.30';
+const baseURL = 'http://18.224.200.47';
 
 const fetchByURL = async (url) => {
   try {
