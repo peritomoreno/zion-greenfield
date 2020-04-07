@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import RatingStars from '../../RatingStars';
@@ -35,7 +36,9 @@ const YourOutfitEntry = ({
       </div>
       <div className="related-product-info">
         <p className="related-category">{category}</p>
-        <p className="related-name">{name}</p>
+        <Link to={`/product/${productId}`}>
+          <p className="related-name">{name}</p>
+        </Link>
         <p className="related-price">${price}</p>
         <RatingStars rating={rating} />
       </div>

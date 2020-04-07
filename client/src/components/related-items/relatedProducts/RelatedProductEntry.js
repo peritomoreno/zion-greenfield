@@ -1,10 +1,10 @@
 import React, { useReducer } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import ToggleDispatch from '../context';
 import ComparisonModal from '../comparisonModal/ComparisonModal';
-import changeProduct from '../../../redux/actions/changeProduct';
 import RatingStars from '../../RatingStars';
 
 const defaultImgae =
@@ -26,7 +26,6 @@ const RelatedProductsEntry = ({
   productId,
   relatedProducts,
   features,
-  initProduct,
   rating
 }) => {
   const getImage = (relatedStyles) => {
@@ -59,7 +58,7 @@ const RelatedProductsEntry = ({
       tabIndex={0}
       className="related-card"
       data-testid="related-product-entry"
-      onClick={() => initProduct(productId)}
+      // onClick={() => initProduct(productId)}
       onKeyPress={() => {}}
     >
       <button
@@ -77,7 +76,9 @@ const RelatedProductsEntry = ({
       </div>
       <div className="related-product-info">
         <p className="related-category">{category}</p>
-        <p className="related-name">{name}</p>
+        <Link to={`/product/${productId}`}>
+          <p className="related-name">{name}</p>
+        </Link>
         <p className="related-price">${price}</p>
         <RatingStars rating={rating} />
       </div>
@@ -101,13 +102,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    initProduct: (id) => dispatch(changeProduct(id))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RelatedProductsEntry);
+export default connect(mapStateToProps, null)(RelatedProductsEntry);

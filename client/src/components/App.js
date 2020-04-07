@@ -11,10 +11,12 @@ import search from '../styles/search.png';
 
 import QA from './QA';
 
-function App({ initStore }) {
+function App({ initStore, id = 4, match, history }) {
+  const productId = match.params.id ? match.params.id : id;
+
   useEffect(() => {
-    initStore(111);
-  }, [initStore]);
+    initStore(productId);
+  }, [initStore, productId]);
 
   const [isDarkMode, setDarkMode] = useState(false);
 
@@ -43,7 +45,7 @@ function App({ initStore }) {
         <Overview />
         <br />
         <br />
-        <RelateAndCompare />
+        <RelateAndCompare history={history} />
         <br />
         <br />
         <QA />
