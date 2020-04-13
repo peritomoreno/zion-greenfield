@@ -257,3 +257,7 @@
   /* visibility: hidden; */
   opacity: 0;
 }
+
+.related-router {
+  color: black;
+}
