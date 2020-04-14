@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './styles/index.css';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
@@ -11,7 +12,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       {/* use AppContainer in futre */}
-      <App />
+      <Router>
+        <Route path="/" exact component={App} id={4} />
+        <Route path="/product/:id" component={App} />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
