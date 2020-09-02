@@ -1,4 +1,4 @@
-const baseURL = 'http://18.224.200.47';
+const baseURL = 'http://3.22.222.1';
 
 const Reviews = {
   // functionalities to support

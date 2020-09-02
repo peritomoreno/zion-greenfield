@@ -85,7 +85,7 @@ const ReviewTile = ({
                     <strong>✔ I recommend this product</strong>
                   </div>
                 )}
-                {!(response === 'null' || response === null) && (
+                {!(response === 'null' || response === null || response === '') && (
                   <div className="seller-response">
                     <strong>Response:</strong>
                     <br />
